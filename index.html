@@ -521,68 +521,68 @@
 
 <!-- ══════════════════════════════════════════ PAGE 3: DAILY DRILLS ══ -->
 <div class="page" id="page-drills">
-  <div class="section-title">The Daily Core (~45 Mins) — Do these EVERY day</div>
+  <div class="section-title">The Daily Core — do these EVERY day first, even on mock days</div>
+
   <div class="mb-24">
     <div class="drill-card">
       <div class="drill-icon" style="background:rgba(45,212,191,0.1);">✍️</div>
       <div class="drill-info">
         <div class="drill-name">Write from Dictation (WFD)</div>
-        <div class="drill-skills"><span class="skill-badge badge-li">Listening</span><span class="skill-badge badge-wr">Writing</span></div>
-        <div class="drill-detail">Wks 1-5: ×20/day &nbsp;·&nbsp; Wk 6: ×10/day (32 Marks)</div>
+        <div class="drill-skills">
+          <span class="skill-badge badge-li">Listening</span>
+          <span class="skill-badge badge-wr">Writing</span>
+          <span class="p-tag p-top" style="font-size:10px; padding:1px 7px;">TOP PRIORITY (32 Marks)</span>
+        </div>
+        <div class="drill-detail">Wks 1-2: ×20/day &nbsp;·&nbsp; Wks 3-5: ×25/day &nbsp;·&nbsp; Wk 6: ×10/day. Focus on spelling accuracy.</div>
       </div>
-      <div class="drill-time">15<span class="drill-min">m</span></div>
+      <div class="drill-time">20<span class="drill-min"> min</span></div>
     </div>
+    
     <div class="drill-card">
       <div class="drill-icon" style="background:rgba(167,139,250,0.1);">🗣️</div>
       <div class="drill-info">
         <div class="drill-name">Repeat Sentence (RS)</div>
-        <div class="drill-skills"><span class="skill-badge badge-sp">Speaking</span><span class="skill-badge badge-li">Listening</span></div>
-        <div class="drill-detail">Wks 1-5: ×20/day &nbsp;·&nbsp; Wk 6: ×10/day (29 Marks)</div>
+        <div class="drill-skills">
+          <span class="skill-badge badge-sp">Speaking</span>
+          <span class="skill-badge badge-li">Listening</span>
+          <span class="p-tag p-top" style="font-size:10px; padding:1px 7px;">TOP PRIORITY (29 Marks)</span>
+        </div>
+        <div class="drill-detail">Wks 1-2: ×20/day &nbsp;·&nbsp; Wks 3-5: ×25/day &nbsp;·&nbsp; Wk 6: ×10/day. Keep fluency even if you drop words.</div>
       </div>
-      <div class="drill-time">10<span class="drill-min">m</span></div>
+      <div class="drill-time">15<span class="drill-min"> min</span></div>
     </div>
+    
     <div class="drill-card">
       <div class="drill-icon" style="background:rgba(108,140,255,0.1);">📄</div>
       <div class="drill-info">
         <div class="drill-name">Summarize Written Text (SWT)</div>
-        <div class="drill-skills"><span class="skill-badge badge-wr">Writing</span><span class="skill-badge badge-rd">Reading</span></div>
-        <div class="drill-detail">1-2 per day. One perfect sentence. (45 Marks)</div>
+        <div class="drill-skills">
+          <span class="skill-badge badge-wr">Writing</span>
+          <span class="skill-badge badge-rd">Reading</span>
+          <span class="p-tag p-high" style="font-size:10px; padding:1px 7px;">HIGH (45 Marks)</span>
+        </div>
+        <div class="drill-detail">1-2 per day. One perfect sentence. Easiest grammar/spelling marks on the test.</div>
       </div>
-      <div class="drill-time">10<span class="drill-min">m</span></div>
+      <div class="drill-time">10<span class="drill-min"> min</span></div>
     </div>
+    
     <div class="drill-card">
       <div class="drill-icon" style="background:rgba(245,200,66,0.1);">📖</div>
       <div class="drill-info">
-        <div class="drill-name">RWFIB (Dropdown Blanks)</div>
-        <div class="drill-skills"><span class="skill-badge badge-rd">Reading</span><span class="skill-badge badge-wr">Writing</span></div>
-        <div class="drill-detail">3-5 paragraphs per day. Build vocab. (25 Marks)</div>
+        <div class="drill-name">R&W Fill in the Blanks (Dropdown)</div>
+        <div class="drill-skills">
+          <span class="skill-badge badge-rd">Reading</span>
+          <span class="skill-badge badge-wr">Writing</span>
+          <span class="p-tag p-high" style="font-size:10px; padding:1px 7px;">HIGH (25 Marks)</span>
+        </div>
+        <div class="drill-detail">3-5 paragraphs per day. Build vocabulary and collocation recognition.</div>
       </div>
-      <div class="drill-time">10<span class="drill-min">m</span></div>
+      <div class="drill-time">10<span class="drill-min"> min</span></div>
     </div>
   </div>
 
   <div class="divider"></div>
-  <div class="section-title">6-Week Drill Tracker — Tap to check off</div>
-  <div style="overflow-x: auto; padding-bottom: 20px;">
-    <div id="checklist-container" style="min-width: 600px;"></div>
-  </div>
-</div>
-
-<!-- ══════════════════════════════════════════ PAGE 4: MOCKS ══ -->
-<div class="page" id="page-mocks">
-  <div class="section-title">Mock Test Schedule & Review</div>
-
-  <div class="grid-2 mb-24" style="align-items:start;">
-    <div>
-      <div class="mock-timeline">
-        <div class="mock-row">
-          <div class="mock-dot baseline">B</div>
-          <div class="mock-content">
-            <div class="mock-purpose">Baseline Mock</div>
-            <div class="text-sm text-muted">First real scores. Log everything.</div>
-            <div class="mock-score-row" style="margin-top:10px;">
-              <div class="mock-score-cell"><div class="skill-name">Speak</div><input class="mock-score-input" type="number" onchange="updateMockInput(this, 88)"><div class="target-line">Tgt: 88</div></div>
-              <div class="mock-score-cell"><div class="skill-name">Write</div><input class="mock-score-input" type="number" onchange="updateMockInput(this, 85)"><div class="target-line">Tgt: 85</div></div>
+  <div class="section-title">Weekly Volume Targets</div>
               <div class="mock-score-cell"><div class="skill-name">Read</div><input class="mock-score-input" type="number" onchange="updateMockInput(this, 70)"><div class="target-line">Tgt: 70</div></div>
               <div class="mock-score-cell"><div class="skill-name">Listen</div><input class="mock-score-input" type="number" onchange="updateMockInput(this, 69)"><div class="target-line">Tgt: 69</div></div>
             </div>
@@ -739,75 +739,75 @@
 // ── DATA ──
 const weeks = [
   {
-    num:1, label:"Week 1", dates:"Foundation", phase:"Foundation", phaseClass:"phase-foundation", note:"Build technique & templates",
+    num:1, label:"Week 1", dates:"Jun 8 – Jun 14", phase:"Foundation", phaseClass:"phase-foundation", note:"Build technique & templates",
     days:[
-      {date:"Day 1", day:"Mon", focus:"Write + Speak", tasks:"Daily Core + Learn Essay Template & DI/RL formats.", time:"90m"},
-      {date:"Day 2", day:"Tue", focus:"Listen + Read", tasks:"Daily Core + Learn SST Template + RA practice.", time:"90m"},
-      {date:"Day 3", day:"Wed", focus:"Sectional", tasks:"Daily Core + SPEAKING Sectional Test (untimed).", time:"110m"},
-      {date:"Day 4", day:"Thu", focus:"Read + Listen", tasks:"Daily Core + HIW ×10, Drag-Drop FIB ×5.", time:"90m"},
-      {date:"Day 5", day:"Fri", focus:"Low-Yield", tasks:"Daily Core + 15 mins ONLY on MCQs, ASQ, SMW, Re-order.", time:"75m"},
-      {date:"Day 6", day:"Sat", focus:"Practice", tasks:"Heavy Core Practice: WFD ×30, RS ×30, SWT ×3.", time:"120m"},
-      {date:"Day 7", day:"Sun", focus:"Review", tasks:"Review Week 1 mistakes. Re-do missed WFD/RS.", time:"60m"},
+      {date:"Jun 8", day:"Mon", focus:"Write + Speak", tasks:"Daily Core + Learn Essay Template & DI/RL formats.", time:"60m", mock:""},
+      {date:"Jun 9", day:"Tue", focus:"Listen + Read", tasks:"Daily Core + Learn SST Template + RA practice.", time:"60m", mock:""},
+      {date:"Jun 10", day:"Wed", focus:"Sectional", tasks:"Daily Core + SPEAKING Sectional Test (untimed).", time:"75m", mock:"Sectional"},
+      {date:"Jun 11", day:"Thu", focus:"Read + Listen", tasks:"Daily Core + HIW ×10, Drag-Drop FIB ×5.", time:"60m", mock:""},
+      {date:"Jun 12", day:"Fri", focus:"Low-Yield", tasks:"Daily Core + 15 mins ONLY on MCQs, ASQ, SMW, Re-order.", time:"45m", mock:""},
+      {date:"Jun 13", day:"Sat", focus:"Practice", tasks:"Heavy Core Practice: WFD ×30, RS ×30, SWT ×3.", time:"90m", mock:""},
+      {date:"Jun 14", day:"Sun", focus:"Review", tasks:"Review Week 1 mistakes. Re-do missed WFD/RS.", time:"45m", mock:""},
     ]
   },
   {
-    num:2, label:"Week 2", dates:"Foundation", phase:"Foundation", phaseClass:"phase-foundation", note:"Baseline mock",
+    num:2, label:"Week 2", dates:"Jun 15 – Jun 21", phase:"Foundation", phaseClass:"phase-foundation", note:"Baseline mock",
     days:[
-      {date:"Day 1", day:"Mon", focus:"Writing", tasks:"Daily Core + Essay Bank #2 timed. Fix grammar.", time:"90m"},
-      {date:"Day 2", day:"Tue", focus:"Speaking", tasks:"Daily Core + DI ×5, RL ×3, RA ×10.", time:"90m"},
-      {date:"Day 3", day:"Wed", focus:"Sectional", tasks:"Daily Core + READING Sectional Test (timed).", time:"110m"},
-      {date:"Day 4", day:"Thu", focus:"Listening", tasks:"Daily Core + SST ×3, HIW ×10, L-FIB ×5.", time:"90m"},
-      {date:"Day 5", day:"Fri", focus:"Low-Yield", tasks:"Daily Core + 15 mins ONLY on MCQs, ASQ, SMW, Re-order.", time:"75m"},
-      {date:"Day 6", day:"Sat 🎯", focus:"MOCK", tasks:"BASELINE Full Scored Mock Exam.", time:"180m"},
-      {date:"Day 7", day:"Sun", focus:"Review", tasks:"Deep-review baseline mock gaps.", time:"90m"},
+      {date:"Jun 15", day:"Mon", focus:"Writing", tasks:"Daily Core + Essay Bank #2 timed. Fix grammar.", time:"75m", mock:""},
+      {date:"Jun 16", day:"Tue", focus:"Speaking", tasks:"Daily Core + DI ×5, RL ×3, RA ×10.", time:"60m", mock:""},
+      {date:"Jun 17", day:"Wed", focus:"Sectional", tasks:"Daily Core + READING Sectional Test (timed).", time:"75m", mock:"Sectional"},
+      {date:"Jun 18", day:"Thu", focus:"Listening", tasks:"Daily Core + SST ×3, HIW ×10, L-FIB ×5.", time:"60m", mock:""},
+      {date:"Jun 19", day:"Fri", focus:"Low-Yield", tasks:"Daily Core + 15 mins ONLY on MCQs, ASQ, SMW, Re-order.", time:"45m", mock:""},
+      {date:"Jun 20", day:"Sat 🎯", focus:"MOCK", tasks:"BASELINE Full Scored Mock Exam.", time:"150m", mock:"Baseline"},
+      {date:"Jun 21", day:"Sun", focus:"Review", tasks:"Deep-review baseline mock gaps.", time:"60m", mock:""},
     ]
   },
   {
-    num:3, label:"Week 3", dates:"Volume", phase:"Volume", phaseClass:"phase-volume", note:"Ramp up reps & Sectionals",
+    num:3, label:"Week 3", dates:"Jun 22 – Jun 28", phase:"Volume", phaseClass:"phase-volume", note:"Ramp up reps & Sectionals",
     days:[
-      {date:"Day 1", day:"Mon", focus:"Writing", tasks:"Daily Core + Essay Bank #3 timed. Send to mentor.", time:"90m"},
-      {date:"Day 2", day:"Tue", focus:"Speaking", tasks:"Daily Core + DI ×5, RL ×3, RA ×10.", time:"90m"},
-      {date:"Day 3", day:"Wed", focus:"Sectional", tasks:"Daily Core + LISTENING Sectional Test (timed).", time:"110m"},
-      {date:"Day 4", day:"Thu", focus:"Read + Listen", tasks:"Daily Core + HIW ×10, Drag-Drop FIB ×5.", time:"90m"},
-      {date:"Day 5", day:"Fri", focus:"Low-Yield", tasks:"Daily Core + 15 mins ONLY on MCQs, ASQ, SMW, Re-order.", time:"75m"},
-      {date:"Day 6", day:"Sat 🎯", focus:"MOCK", tasks:"Full Scored Mock #2.", time:"180m"},
-      {date:"Day 7", day:"Sun", focus:"Review", tasks:"Review Mock #2. Focus on weak cross-scored tasks.", time:"90m"},
+      {date:"Jun 22", day:"Mon", focus:"Writing", tasks:"Daily Core + Essay Bank #3 timed. Send to mentor.", time:"75m", mock:""},
+      {date:"Jun 23", day:"Tue", focus:"Speaking", tasks:"Daily Core + DI ×5, RL ×3, RA ×10.", time:"60m", mock:""},
+      {date:"Jun 24", day:"Wed", focus:"Sectional", tasks:"Daily Core + LISTENING Sectional Test (timed).", time:"75m", mock:"Sectional"},
+      {date:"Jun 25", day:"Thu", focus:"Read + Listen", tasks:"Daily Core + HIW ×10, Drag-Drop FIB ×5.", time:"60m", mock:""},
+      {date:"Jun 26", day:"Fri", focus:"Low-Yield", tasks:"Daily Core + 15 mins ONLY on MCQs, ASQ, SMW, Re-order.", time:"45m", mock:""},
+      {date:"Jun 27", day:"Sat 🎯", focus:"MOCK", tasks:"Full Scored Mock #2.", time:"150m", mock:"Mock #2"},
+      {date:"Jun 28", day:"Sun", focus:"Review", tasks:"Review Mock #2. Focus on weak cross-scored tasks.", time:"60m", mock:""},
     ]
   },
   {
-    num:4, label:"Week 4", dates:"Volume", phase:"Volume", phaseClass:"phase-volume", note:"Sustain reps & Sectionals",
+    num:4, label:"Week 4", dates:"Jun 29 – Jul 5", phase:"Volume", phaseClass:"phase-volume", note:"Sustain reps & Sectionals",
     days:[
-      {date:"Day 1", day:"Mon", focus:"Writing", tasks:"Daily Core + Essay Bank #4 timed. Send to mentor.", time:"90m"},
-      {date:"Day 2", day:"Tue", focus:"Speaking", tasks:"Daily Core + DI ×5, RL ×3, RA ×10.", time:"90m"},
-      {date:"Day 3", day:"Wed", focus:"Sectional", tasks:"Daily Core + WRITING Sectional Test (timed).", time:"110m"},
-      {date:"Day 4", day:"Thu", focus:"Listening", tasks:"Daily Core + SST ×3, HIW ×10, L-FIB ×5.", time:"90m"},
-      {date:"Day 5", day:"Fri", focus:"Low-Yield", tasks:"Daily Core + 15 mins ONLY on MCQs, ASQ, SMW, Re-order.", time:"75m"},
-      {date:"Day 6", day:"Sat 🎯", focus:"MOCK", tasks:"Full Scored Mock #3.", time:"180m"},
-      {date:"Day 7", day:"Sun", focus:"Review", tasks:"Review Mock #3. Turn weak tasks into templates.", time:"90m"},
+      {date:"Jun 29", day:"Mon", focus:"Writing", tasks:"Daily Core + Essay Bank #4 timed. Send to mentor.", time:"75m", mock:""},
+      {date:"Jun 30", day:"Tue", focus:"Speaking", tasks:"Daily Core + DI ×5, RL ×3, RA ×10.", time:"60m", mock:""},
+      {date:"Jul 1", day:"Wed", focus:"Sectional", tasks:"Daily Core + WRITING Sectional Test (timed).", time:"75m", mock:"Sectional"},
+      {date:"Jul 2", day:"Thu", focus:"Listening", tasks:"Daily Core + SST ×3, HIW ×10, L-FIB ×5.", time:"60m", mock:""},
+      {date:"Jul 3", day:"Fri", focus:"Low-Yield", tasks:"Daily Core + 15 mins ONLY on MCQs, ASQ, SMW, Re-order.", time:"45m", mock:""},
+      {date:"Jul 4", day:"Sat 🎯", focus:"MOCK", tasks:"Full Scored Mock #3.", time:"150m", mock:"Mock #3"},
+      {date:"Jul 5", day:"Sun", focus:"Review", tasks:"Review Mock #3. Turn weak tasks into templates.", time:"60m", mock:""},
     ]
   },
   {
-    num:5, label:"Week 5", dates:"Simulation", phase:"Simulation", phaseClass:"phase-simulation", note:"Multiple Sectionals",
+    num:5, label:"Week 5", dates:"Jul 6 – Jul 12", phase:"Simulation", phaseClass:"phase-simulation", note:"Multiple Sectionals",
     days:[
-      {date:"Day 1", day:"Mon", focus:"Sectional", tasks:"Daily Core + SPEAKING Sectional Test (strict timing).", time:"110m"},
-      {date:"Day 2", day:"Tue", focus:"Sectional", tasks:"Daily Core + READING Sectional Test (strict timing).", time:"110m"},
-      {date:"Day 3", day:"Wed", focus:"Writing", tasks:"Daily Core + Essay Bank #5 timed.", time:"90m"},
-      {date:"Day 4", day:"Thu", focus:"Sectional", tasks:"Daily Core + LISTENING Sectional Test (strict timing).", time:"110m"},
-      {date:"Day 5", day:"Fri", focus:"Low-Yield", tasks:"Daily Core + 15 mins ONLY on MCQs, ASQ, SMW, Re-order.", time:"75m"},
-      {date:"Day 6", day:"Sat 🎯", focus:"MOCK", tasks:"Full Mock #4 — Strict exam conditions.", time:"180m"},
-      {date:"Day 7", day:"Sun", focus:"Review", tasks:"Final major review. Lock exam strategy.", time:"90m"},
+      {date:"Jul 6", day:"Mon", focus:"Sectional", tasks:"Daily Core + SPEAKING Sectional Test (strict timing).", time:"75m", mock:"Sectional"},
+      {date:"Jul 7", day:"Tue", focus:"Sectional", tasks:"Daily Core + READING Sectional Test (strict timing).", time:"75m", mock:"Sectional"},
+      {date:"Jul 8", day:"Wed", focus:"Writing", tasks:"Daily Core + Essay Bank #5 timed.", time:"75m", mock:""},
+      {date:"Jul 9", day:"Thu", focus:"Sectional", tasks:"Daily Core + LISTENING Sectional Test (strict timing).", time:"75m", mock:"Sectional"},
+      {date:"Jul 10", day:"Fri", focus:"Low-Yield", tasks:"Daily Core + 15 mins ONLY on MCQs, ASQ, SMW, Re-order.", time:"45m", mock:""},
+      {date:"Jul 11", day:"Sat 🎯", focus:"MOCK", tasks:"Full Mock #4 — Strict exam conditions.", time:"150m", mock:"Mock #4"},
+      {date:"Jul 12", day:"Sun", focus:"Review", tasks:"Final major review. Lock exam strategy.", time:"60m", mock:""},
     ]
   },
   {
-    num:6, label:"Week 6", dates:"Taper", phase:"Taper", phaseClass:"phase-taper", note:"Final Polish",
+    num:6, label:"Week 6", dates:"Jul 13 – Jul 19", phase:"Taper", phaseClass:"phase-taper", note:"Final Polish",
     days:[
-      {date:"Day 1", day:"Mon", focus:"Light Core", tasks:"WFD ×10, RS ×10, SWT ×1. Review all templates.", time:"60m"},
-      {date:"Day 2", day:"Tue 🎯", focus:"MOCK", tasks:"Final Mock #5 (At least 3 days out from real exam).", time:"150m"},
-      {date:"Day 3", day:"Wed", focus:"Review", tasks:"Review Mock #5. Fix only fast wins.", time:"60m"},
-      {date:"Day 4", day:"Thu", focus:"Light Core", tasks:"WFD ×10, RS ×10. Rest voice.", time:"45m"},
-      {date:"Day 5", day:"Fri", focus:"Pre-exam", tasks:"5 RA warmup. Re-read templates. Sleep.", time:"30m"},
-      {date:"Day 6", day:"Sat", focus:"EXAM", tasks:"Arrive early; test mic thoroughly.", time:"—"},
-      {date:"Day 7", day:"Sun", focus:"Buffer", tasks:"Rest.", time:"—"},
+      {date:"Jul 13", day:"Mon", focus:"Light Core", tasks:"WFD ×10, RS ×10, SWT ×1. Review all templates.", time:"45m", mock:""},
+      {date:"Jul 14", day:"Tue 🎯", focus:"MOCK", tasks:"Final Mock #5 (At least 3 days out from real exam).", time:"150m", mock:"Final Mock"},
+      {date:"Jul 15", day:"Wed", focus:"Review", tasks:"Review Mock #5. Fix only fast wins.", time:"45m", mock:""},
+      {date:"Jul 16", day:"Thu", focus:"Light Core", tasks:"WFD ×10, RS ×10. Rest voice.", time:"30m", mock:""},
+      {date:"Jul 17", day:"Fri", focus:"Pre-exam", tasks:"5 RA warmup. Re-read templates. Sleep.", time:"20m", mock:""},
+      {date:"Jul 18", day:"Sat", focus:"EXAM", tasks:"Arrive early; test mic thoroughly.", time:"—", mock:"EXAM DAY"},
+      {date:"Jul 19", day:"Sun", focus:"Buffer", tasks:"Rest.", time:"—", mock:""},
     ]
   },
 ];
@@ -923,19 +923,21 @@ buildWeeks();
 
 // ── CHECKLIST ──
 const checklistData = [
-  { week: "Week 1", drills: ["WFD ×20","RS ×20","SWT ×1","RWFIB ×3"] },
-  { week: "Week 2", drills: ["WFD ×20","RS ×20","SWT ×1","RWFIB ×3"] },
-  { week: "Week 3", drills: ["WFD ×20","RS ×20","SWT ×2","RWFIB ×5"] },
-  { week: "Week 4", drills: ["WFD ×20","RS ×20","SWT ×2","RWFIB ×5"] },
-  { week: "Week 5", drills: ["WFD ×20","RS ×20","SWT ×2","RWFIB ×5"] },
-  { week: "Week 6", drills: ["WFD ×10","RS ×10","SWT ×1","RWFIB ×2"] },
+  { week: "Week 1  (Jun 8–14)", days: ["Mon Jun 8","Tue Jun 9","Wed Jun 10","Thu Jun 11","Fri Jun 12","Sat Jun 13","Sun Jun 14"], drills: ["WFD ×20","RS ×20","SWT ×1","RWFIB ×3"] },
+  { week: "Week 2  (Jun 15–21)", days: ["Mon Jun 15","Tue Jun 16","Wed Jun 17","Thu Jun 18","Fri Jun 19","Sat Jun 20","Sun Jun 21"], drills: ["WFD ×20","RS ×20","SWT ×1","RWFIB ×3"] },
+  { week: "Week 3  (Jun 22–28)", days: ["Mon Jun 22","Tue Jun 23","Wed Jun 24","Thu Jun 25","Fri Jun 26","Sat Jun 27","Sun Jun 28"], drills: ["WFD ×25","RS ×25","SWT ×2","RWFIB ×5"] },
+  { week: "Week 4  (Jun 29–Jul 5)", days: ["Mon Jun 29","Tue Jun 30","Wed Jul 1","Thu Jul 2","Fri Jul 3","Sat Jul 4","Sun Jul 5"], drills: ["WFD ×25","RS ×25","SWT ×2","RWFIB ×5"] },
+  { week: "Week 5  (Jul 6–12)", days: ["Mon Jul 6","Tue Jul 7","Wed Jul 8","Thu Jul 9","Fri Jul 10","Sat Jul 11","Sun Jul 12"], drills: ["WFD ×25","RS ×25","SWT ×2","RWFIB ×5"] },
+  { week: "Week 6  (Jul 13–19)  · taper", days: ["Mon Jul 13","Tue Jul 14","Wed Jul 15","Thu Jul 16","Fri Jul 17","Sat Jul 18","Sun Jul 19"], drills: ["WFD ×10","RS ×10","SWT ×1","RWFIB ×2"] },
 ];
-const drillColors = { 
-  "WFD ×20":"var(--listening-col)","WFD ×10":"var(--listening-col)", 
-  "RS ×20":"var(--speaking-col)","RS ×10":"var(--speaking-col)", 
-  "SWT ×1":"var(--writing-col)","SWT ×2":"var(--writing-col)", 
-  "RWFIB ×3":"var(--reading-col)", "RWFIB ×5":"var(--reading-col)", "RWFIB ×2":"var(--reading-col)" 
+
+const drillColors = {
+  "WFD ×20":"var(--listening-col)","WFD ×25":"var(--listening-col)","WFD ×10":"var(--listening-col)",
+  "RS ×20":"var(--speaking-col)","RS ×25":"var(--speaking-col)","RS ×10":"var(--speaking-col)",
+  "SWT ×1":"var(--writing-col)","SWT ×2":"var(--writing-col)",
+  "RWFIB ×3":"var(--reading-col)","RWFIB ×5":"var(--reading-col)","RWFIB ×2":"var(--reading-col)"
 };
+
 const checkState = {};
 
 function buildChecklist() {
