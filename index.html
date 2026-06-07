@@ -2,7 +2,6 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<!-- Viewport setting for mobile & PWA -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
 <title>PTE Academic — 6-Week Targeted Study Plan</title>
 
@@ -10,7 +9,6 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="PTE Plan">
-<!-- Generic high-res icon for iPhone Home Screen -->
 <link rel="apple-touch-icon" href="https://ui-avatars.com/api/?name=PTE&background=6c8cff&color=fff&size=512&font-size=0.4&bold=true">
 
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@300;400;500&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
@@ -27,7 +25,6 @@
     --accent: #6c8cff;
     --accent2: #4066f5;
     --gold: #f5c842;
-    --gold2: #e0a800;
     --green: #3dd68c;
     --red: #ff6b6b;
     --orange: #ff9f43;
@@ -51,18 +48,15 @@
     color: var(--text);
     min-height: 100vh;
     line-height: 1.6;
-    /* Account for iOS safe area (notches) at bottom if needed */
     padding-bottom: env(safe-area-inset-bottom);
   }
 
-  /* ── NAV ── */
   nav {
     position: sticky; top: 0; z-index: 100;
     background: rgba(13,15,20,0.92);
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
     border-bottom: 1px solid var(--border);
-    /* Account for iOS notch at top */
     padding: env(safe-area-inset-top) 32px 0 32px;
     display: flex; align-items: center; gap: 0; 
     height: calc(56px + env(safe-area-inset-top));
@@ -92,12 +86,10 @@
   }
   .countdown-badge:hover { background: var(--border); border-color: var(--accent); }
 
-  /* ── PAGES ── */
   .page { display: none; padding: 32px; max-width: 1200px; margin: 0 auto; }
   .page.active { display: block; animation: fadeIn 0.3s ease; }
   @keyframes fadeIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
 
-  /* ── SECTION HEADER ── */
   .section-title {
     font-family: 'Syne', sans-serif; font-weight: 800;
     font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase;
@@ -107,29 +99,20 @@
   h2 { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 22px; color: var(--text); margin-bottom: 6px; }
   h3 { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 14px; color: var(--text); margin-bottom: 10px; }
 
-  /* ── GRID LAYOUTS ── */
   .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
   .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
-  .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+  .card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 20px; }
 
-  /* ── CARD ── */
-  .card {
-    background: var(--surface); border: 1px solid var(--border);
-    border-radius: 12px; padding: 20px;
-  }
-
-  /* ── TARGET SCORE CARDS ── */
   .target-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 12px; margin-bottom: 24px; }
   .target-card {
     border-radius: 12px; padding: 18px 16px;
-    border: 1px solid var(--border); position: relative; overflow: hidden;
+    border: 1px solid var(--border); position: relative; overflow: hidden; background: var(--surface);
   }
   .target-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; }
   .target-card.speaking::before { background: var(--speaking-col); }
   .target-card.writing::before { background: var(--writing-col); }
   .target-card.reading::before { background: var(--reading-col); }
   .target-card.listening::before { background: var(--listening-col); }
-  .target-card { background: var(--surface); }
   .target-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text3); font-weight: 600; margin-bottom: 4px; }
   .target-score { font-family: 'Syne', sans-serif; font-size: 42px; font-weight: 800; line-height: 1; }
   .target-card.speaking .target-score { color: var(--speaking-col); }
@@ -137,41 +120,28 @@
   .target-card.reading .target-score { color: var(--reading-col); }
   .target-card.listening .target-score { color: var(--listening-col); }
   .target-desc { font-size: 12px; color: var(--text3); margin-top: 4px; }
-  .target-bar-bg { height: 4px; background: var(--border); border-radius: 2px; margin-top: 10px; }
-  .target-bar { height: 4px; border-radius: 2px; }
-  .target-card.speaking .target-bar { background: var(--speaking-col); }
-  .target-card.writing .target-bar { background: var(--writing-col); }
-  .target-card.reading .target-bar { background: var(--reading-col); }
-  .target-card.listening .target-bar { background: var(--listening-col); }
 
-  /* ── CROSS SCORING TABLE ── */
   .cross-table { width: 100%; border-collapse: collapse; }
   .cross-table th {
-    text-align: left; font-size: 11px; text-transform: uppercase;
-    letter-spacing: 0.08em; color: var(--text3); font-weight: 600;
-    padding: 8px 10px; border-bottom: 1px solid var(--border);
+    text-align: left; font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em;
+    color: var(--text3); font-weight: 600; padding: 8px 10px; border-bottom: 1px solid var(--border);
   }
   .cross-table td { padding: 10px 10px; font-size: 13px; border-bottom: 1px solid var(--border); vertical-align: middle; }
   .cross-table tr:hover td { background: var(--surface2); }
   .skill-badge {
-    display: inline-block; padding: 2px 8px; border-radius: 4px;
-    font-size: 11px; font-weight: 600; margin: 1px;
+    display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 600; margin: 1px;
   }
   .badge-sp { background: rgba(167,139,250,0.15); color: var(--speaking-col); border: 1px solid rgba(167,139,250,0.3); }
   .badge-wr { background: rgba(108,140,255,0.15); color: var(--writing-col); border: 1px solid rgba(108,140,255,0.3); }
   .badge-rd { background: rgba(61,214,140,0.15); color: var(--reading-col); border: 1px solid rgba(61,214,140,0.3); }
   .badge-li { background: rgba(45,212,191,0.15); color: var(--listening-col); border: 1px solid rgba(45,212,191,0.3); }
-  .p-tag {
-    display: inline-flex; align-items: center; font-size: 11px;
-    font-weight: 700; padding: 2px 10px; border-radius: 20px; white-space: nowrap;
-  }
+  .p-tag { display: inline-flex; align-items: center; font-size: 11px; font-weight: 700; padding: 2px 10px; border-radius: 20px; white-space: nowrap; }
   .p-top { background: rgba(255,107,107,0.15); color: var(--top); border: 1px solid rgba(255,107,107,0.3); }
   .p-high { background: rgba(255,159,67,0.15); color: var(--high); border: 1px solid rgba(255,159,67,0.3); }
   .p-medhigh { background: rgba(245,200,66,0.15); color: var(--medhigh); border: 1px solid rgba(245,200,66,0.3); }
   .p-med { background: rgba(61,214,140,0.15); color: var(--med); border: 1px solid rgba(61,214,140,0.3); }
   .p-low { background: rgba(144,153,181,0.15); color: var(--low); border: 1px solid rgba(144,153,181,0.3); }
 
-  /* ── WEEKLY PLAN ── */
   .week-phase-bar { display: grid; grid-template-columns: repeat(6,1fr); gap: 4px; margin-bottom: 20px; }
   .phase-block { border-radius: 8px; padding: 10px 12px; font-size: 11px; font-weight: 600; text-align: center; }
   .phase-foundation { background: rgba(108,140,255,0.12); color: var(--accent); border: 1px solid rgba(108,140,255,0.25); }
@@ -205,20 +175,13 @@
   .day-tasks { font-size: 12px; color: var(--text3); line-height: 1.6; }
   .day-time { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--text3); }
   .mock-badge {
-    display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 11px;
-    font-weight: 700; background: rgba(245,200,66,0.15); color: var(--gold);
-    border: 1px solid rgba(245,200,66,0.3);
-  }
-  .exam-badge {
-    display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 11px;
-    font-weight: 700; background: rgba(255,107,107,0.15); color: var(--red);
-    border: 1px solid rgba(255,107,107,0.3);
+    display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 700;
+    background: rgba(245,200,66,0.15); color: var(--gold); border: 1px solid rgba(245,200,66,0.3);
   }
 
-  /* ── DAILY DRILLS ── */
   .drill-card {
-    background: var(--surface); border: 1px solid var(--border);
-    border-radius: 12px; padding: 16px 20px; display: flex; align-items: center; gap: 16px; margin-bottom: 10px;
+    background: var(--surface); border: 1px solid var(--border); border-radius: 12px;
+    padding: 16px 20px; display: flex; align-items: center; gap: 16px; margin-bottom: 10px;
   }
   .drill-icon { width: 44px; height: 44px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 20px; flex-shrink: 0; }
   .drill-info { flex: 1; }
@@ -227,13 +190,24 @@
   .drill-detail { font-size: 12px; color: var(--text3); }
   .drill-time { font-family: 'DM Mono', monospace; font-size: 20px; font-weight: 500; color: var(--text); text-align: right; }
   .drill-min { font-size: 11px; color: var(--text3); }
-
   .volume-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 20px; }
   .vol-card { background: var(--surface2); border: 1px solid var(--border); border-radius: 10px; padding: 14px; text-align: center; }
   .vol-num { font-family: 'Syne', sans-serif; font-size: 24px; font-weight: 800; color: var(--accent); }
   .vol-label { font-size: 11px; color: var(--text3); margin-top: 2px; }
 
-  /* ── MOCK LOG ── */
+  .checklist-week { margin-bottom: 20px; }
+  .checklist-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; }
+  .checklist-week-label { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 13px; }
+  .checklist-progress { font-size: 11px; color: var(--text3); font-family: 'DM Mono', monospace; }
+  .checklist-grid { display: grid; grid-template-columns: 160px repeat(7, 1fr); gap: 4px; }
+  .checklist-day-header { text-align: center; font-size: 10px; color: var(--text3); font-family: 'DM Mono', monospace; padding: 4px; font-weight: 600; }
+  .checklist-row-label { font-size: 12px; color: var(--text2); display: flex; align-items: center; gap: 6px; padding: 4px 0; }
+  .check-cell {
+    width: 100%; aspect-ratio: 1; border-radius: 6px; display: flex; align-items: center; justify-content: center;
+    cursor: pointer; background: var(--surface2); border: 1px solid var(--border); transition: all 0.15s; font-size: 14px; user-select: none;
+  }
+  .check-cell.checked { background: rgba(61,214,140,0.15); border-color: var(--green); color: var(--green); }
+
   .mock-timeline { display: flex; flex-direction: column; gap: 0; position: relative; }
   .mock-timeline::before { content: ''; position: absolute; left: 20px; top: 0; bottom: 0; width: 2px; background: var(--border); }
   .mock-row { display: grid; grid-template-columns: 44px 1fr; gap: 16px; align-items: start; padding: 12px 0; position: relative; }
@@ -250,6 +224,7 @@
   .mock-score-row { display: grid; grid-template-columns: repeat(4,1fr); gap: 8px; }
   .mock-score-cell { text-align: center; }
   .mock-score-cell .skill-name { font-size: 10px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text3); margin-bottom: 2px; }
+  
   .mock-score-input {
     width: 100%; padding: 6px 8px; background: var(--surface2); border: 1px solid var(--border2); border-radius: 6px;
     color: var(--text); font-family: 'DM Mono', monospace; font-size: 16px; text-align: center; outline: none; transition: border 0.2s;
@@ -258,38 +233,24 @@
   .mock-score-input.filled { border-color: var(--green); color: var(--green); }
   .target-line { font-size: 10px; color: var(--text3); margin-top: 3px; }
 
-  /* ── TEMPLATES ── */
   .template-nav { display: flex; gap: 6px; margin-bottom: 20px; flex-wrap: wrap; }
   .template-btn {
-    padding: 7px 14px; border-radius: 20px; font-size: 13px; font-weight: 500;
-    cursor: pointer; border: 1px solid var(--border2); background: var(--surface);
-    color: var(--text2); transition: all 0.2s; font-family: inherit;
+    padding: 7px 14px; border-radius: 20px; font-size: 13px; font-weight: 500; cursor: pointer;
+    border: 1px solid var(--border2); background: var(--surface); color: var(--text2); transition: all 0.2s; font-family: inherit;
   }
   .template-btn:hover { background: var(--surface2); color: var(--text); }
   .template-btn.active { background: var(--accent2); color: #fff; border-color: var(--accent); }
   .template-pane { display: none; }
   .template-pane.active { display: block; animation: fadeIn 0.3s; }
   .template-box {
-    background: var(--surface2); border: 1px solid var(--border2);
-    border-radius: 10px; padding: 18px 20px; font-size: 13px; line-height: 1.8; color: var(--text2); position: relative;
+    background: var(--surface2); border: 1px solid var(--border2); border-radius: 10px;
+    padding: 18px 20px; font-size: 13px; line-height: 1.8; color: var(--text2);
   }
   .template-box .placeholder { color: var(--accent); font-weight: 600; }
   .template-box .option { color: var(--gold); font-style: italic; }
   .template-section { margin-bottom: 16px; }
   .template-section-label { font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text3); font-weight: 600; margin-bottom: 6px; font-family: 'DM Mono', monospace; }
-  .tip-box { background: rgba(108,140,255,0.07); border: 1px solid rgba(108,140,255,0.2); border-radius: 8px; padding: 10px 14px; font-size: 12px; color: var(--text2); margin-top: 10px; display: flex; gap: 8px; align-items: flex-start; }
-  .tip-icon { color: var(--accent); flex-shrink: 0; }
-  .warning-box { background: rgba(255,159,67,0.07); border: 1px solid rgba(255,159,67,0.2); border-radius: 8px; padding: 10px 14px; font-size: 12px; color: var(--orange); margin-bottom: 14px; display: flex; gap: 8px; align-items: flex-start; }
 
-  /* ── ESSAY BANK ── */
-  .essay-row { display: grid; grid-template-columns: 32px 1fr 120px 130px; gap: 12px; padding: 12px 16px; border-bottom: 1px solid var(--border); align-items: center; font-size: 13px; transition: background 0.15s; }
-  .essay-row:last-child { border-bottom: none; }
-  .essay-num { font-family: 'DM Mono', monospace; font-size: 12px; color: var(--text3); }
-  .essay-star { color: var(--gold); }
-  .essay-type-badge { display: inline-block; padding: 3px 8px; border-radius: 4px; font-size: 11px; font-weight: 600; background: var(--surface2); color: var(--text3); border: 1px solid var(--border); }
-  .essay-date { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--text3); }
-
-  /* ── STRATEGY OVERVIEW ── */
   .strategy-intro { background: linear-gradient(135deg, rgba(108,140,255,0.08) 0%, rgba(167,139,250,0.06) 100%); border: 1px solid rgba(108,140,255,0.2); border-radius: 14px; padding: 24px; margin-bottom: 24px; }
   .strategy-intro p { font-size: 14px; color: var(--text2); line-height: 1.8; }
   .time-allocation { display: flex; height: 28px; border-radius: 6px; overflow: hidden; margin: 16px 0 8px; border: 1px solid var(--border); }
@@ -300,32 +261,15 @@
   .time-low { background: rgba(144,153,181,0.25); color: var(--text3); flex: 1; font-size: 10px; }
   .allocation-label { font-size: 11px; color: var(--text3); }
 
-  /* ── CHECKLIST TRACKER ── */
-  .checklist-week { margin-bottom: 20px; }
-  .checklist-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; }
-  .checklist-week-label { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 13px; }
-  .checklist-progress { font-size: 11px; color: var(--text3); font-family: 'DM Mono', monospace; }
-  .checklist-grid { display: grid; grid-template-columns: 160px repeat(7, 1fr); gap: 4px; }
-  .checklist-day-header { text-align: center; font-size: 10px; color: var(--text3); font-family: 'DM Mono', monospace; padding: 4px; font-weight: 600; }
-  .checklist-row-label { font-size: 12px; color: var(--text2); display: flex; align-items: center; gap: 6px; padding: 4px 0; }
-  .check-cell {
-    width: 100%; aspect-ratio: 1; border-radius: 6px; display: flex; align-items: center; justify-content: center;
-    cursor: pointer; background: var(--surface2); border: 1px solid var(--border); transition: all 0.15s; font-size: 14px; user-select: none;
-  }
-  .check-cell.checked { background: rgba(61,214,140,0.15); border-color: var(--green); color: var(--green); }
-
-  /* ── AUTO-ADJUST RULES ── */
   .rule-card { background: var(--surface2); border-left: 3px solid var(--border2); border-radius: 0 8px 8px 0; padding: 10px 14px; margin-bottom: 8px; font-size: 13px; color: var(--text2); line-height: 1.6; }
   .rule-card.red { border-left-color: var(--red); }
   .rule-card.green { border-left-color: var(--green); }
   .rule-card.orange { border-left-color: var(--orange); }
 
-  /* ── DATE MODAL ── */
   .modal-overlay {
     display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
     background: rgba(0,0,0,0.8); backdrop-filter: blur(5px); -webkit-backdrop-filter: blur(5px);
-    z-index: 1000; align-items: center; justify-content: center; padding: 20px;
-    opacity: 0; transition: opacity 0.3s ease;
+    z-index: 1000; align-items: center; justify-content: center; padding: 20px; opacity: 0; transition: opacity 0.3s ease;
   }
   .modal-overlay.active { display: flex; opacity: 1; }
   .date-picker-input {
@@ -334,7 +278,13 @@
   }
   .date-picker-input:focus { border-color: var(--accent); outline: none; }
 
-  /* ── MISC ── */
+  .essay-row { display: grid; grid-template-columns: 32px 1fr 120px 130px; gap: 12px; padding: 12px 16px; border-bottom: 1px solid var(--border); align-items: center; font-size: 13px; transition: background 0.15s; }
+  .essay-row:last-child { border-bottom: none; }
+  .essay-num { font-family: 'DM Mono', monospace; font-size: 12px; color: var(--text3); }
+  .essay-star { color: var(--gold); }
+  .essay-type-badge { display: inline-block; padding: 3px 8px; border-radius: 4px; font-size: 11px; font-weight: 600; background: var(--surface2); color: var(--text3); border: 1px solid var(--border); }
+  .essay-date { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--text3); }
+
   .divider { height: 1px; background: var(--border); margin: 24px 0; }
   .mb-16 { margin-bottom: 16px; }
   .mb-24 { margin-bottom: 24px; }
@@ -344,18 +294,17 @@
   .text-muted { color: var(--text3); }
   .font-mono { font-family: 'DM Mono', monospace; }
 
-  /* ── RESPONSIVE MOBILE ── */
   @media (max-width: 768px) {
     nav { padding: env(safe-area-inset-top) 12px 0; overflow-x: auto; -webkit-overflow-scrolling: touch; }
-    .nav-logo { display: none; /* hide logo on small screens to fit tabs */ }
+    .nav-logo { display: none; }
     .page { padding: 16px; }
     .target-grid { grid-template-columns: repeat(2,1fr); }
-    .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
+    .grid-2, .grid-3 { grid-template-columns: 1fr; }
     .day-row { grid-template-columns: 80px 1fr; }
     .day-tasks, .day-time { display: none; }
     .essay-row { grid-template-columns: 32px 1fr; }
     .essay-type-badge, .essay-date { display: none; }
-    .checklist-grid { grid-template-columns: 80px repeat(7, 1fr); gap: 2px; }
+    .checklist-grid { grid-template-columns: 90px repeat(7, 1fr); gap: 2px; }
     .checklist-row-label { font-size: 10px; }
   }
 </style>
@@ -373,7 +322,6 @@
     <button class="nav-tab" onclick="showPage('essays')">Essay Bank</button>
   </div>
   <div class="nav-right">
-    <!-- Clickable Countdown Badge -->
     <div class="countdown-badge" id="countdown-badge" onclick="openDateModal()">
       <span id="countdown-text">⏳ Loading…</span>
       <span style="font-size:12px; opacity:0.8;">✏️</span>
@@ -381,7 +329,6 @@
   </div>
 </nav>
 
-<!-- DATE MODAL -->
 <div class="modal-overlay" id="dateModal">
   <div class="card" style="width: 100%; max-width: 360px;">
     <h3>Set Your Exam Date</h3>
@@ -394,7 +341,6 @@
   </div>
 </div>
 
-<!-- ══════════════════════════════════════════ PAGE 1: STRATEGY ══ -->
 <div class="page active" id="page-strategy">
   <div style="margin-bottom:28px;">
     <div class="section-title">Targets · Strategy Overview</div>
@@ -427,7 +373,7 @@
   </div>
 
   <div class="strategy-intro mb-24">
-    <div class="section-title">Core Strategy</div>
+    <div class="section-title">Core Strategy (GrowSkills Scoring)</div>
     <p>PTE uses <strong>integrated (cross) scoring</strong> — one spoken or typed answer earns marks in two skills at once. Your two highest targets (Speaking 88 and Writing 85) are driven by tasks that <strong>also feed</strong> Reading and Listening. Over-invest in a handful of cross-scored "super-tasks" and the lower targets rise almost for free.</p>
     <div style="margin-top:16px;">
       <div class="allocation-label" style="margin-bottom:6px;">Where the study time goes (approximate)</div>
@@ -504,9 +450,8 @@
   </div>
 </div>
 
-<!-- ══════════════════════════════════════════ PAGE 2: 6-WEEK PLAN ══ -->
 <div class="page" id="page-plan">
-  <div class="section-title">6-Week Study Overview</div>
+  <div class="section-title">6-Week Realistic Study Overview</div>
   <div class="week-phase-bar" style="overflow-x:auto; white-space:nowrap; display:flex;">
     <div class="phase-block phase-foundation" style="flex:1; min-width:80px;"><div class="phase-label">Week 1</div><div class="phase-name">Foundation</div></div>
     <div class="phase-block phase-foundation" style="flex:1; min-width:80px;"><div class="phase-label">Week 2</div><div class="phase-name">Foundation</div></div>
@@ -515,25 +460,19 @@
     <div class="phase-block phase-simulation" style="flex:1; min-width:80px;"><div class="phase-label">Week 5</div><div class="phase-name">Simulation</div></div>
     <div class="phase-block phase-taper" style="flex:1; min-width:80px;"><div class="phase-label">Week 6</div><div class="phase-name">Taper</div></div>
   </div>
-
   <div id="weeks-container"></div>
 </div>
 
-<!-- ══════════════════════════════════════════ PAGE 3: DAILY DRILLS ══ -->
 <div class="page" id="page-drills">
-  <div class="section-title">The Daily Core — do these EVERY day first, even on mock days</div>
+  <div class="section-title">The Daily Core — Do these EVERY day without fail</div>
 
   <div class="mb-24">
     <div class="drill-card">
       <div class="drill-icon" style="background:rgba(45,212,191,0.1);">✍️</div>
       <div class="drill-info">
         <div class="drill-name">Write from Dictation (WFD)</div>
-        <div class="drill-skills">
-          <span class="skill-badge badge-li">Listening</span>
-          <span class="skill-badge badge-wr">Writing</span>
-          <span class="p-tag p-top" style="font-size:10px; padding:1px 7px;">TOP PRIORITY (32 Marks)</span>
-        </div>
-        <div class="drill-detail">Wks 1-2: ×20/day &nbsp;·&nbsp; Wks 3-5: ×25/day &nbsp;·&nbsp; Wk 6: ×10/day. Focus on spelling accuracy.</div>
+        <div class="drill-skills"><span class="skill-badge badge-li">Listening</span><span class="skill-badge badge-wr">Writing</span><span class="p-tag p-top" style="font-size:10px; padding:1px 7px;">32 Marks</span></div>
+        <div class="drill-detail">Wks 1-2: ×20/day &nbsp;·&nbsp; Wks 3-5: ×25/day &nbsp;·&nbsp; Wk 6: ×15/day. Focus on spelling and plurals.</div>
       </div>
       <div class="drill-time">20<span class="drill-min"> min</span></div>
     </div>
@@ -542,12 +481,8 @@
       <div class="drill-icon" style="background:rgba(167,139,250,0.1);">🗣️</div>
       <div class="drill-info">
         <div class="drill-name">Repeat Sentence (RS)</div>
-        <div class="drill-skills">
-          <span class="skill-badge badge-sp">Speaking</span>
-          <span class="skill-badge badge-li">Listening</span>
-          <span class="p-tag p-top" style="font-size:10px; padding:1px 7px;">TOP PRIORITY (29 Marks)</span>
-        </div>
-        <div class="drill-detail">Wks 1-2: ×20/day &nbsp;·&nbsp; Wks 3-5: ×25/day &nbsp;·&nbsp; Wk 6: ×10/day. Keep fluency even if you drop words.</div>
+        <div class="drill-skills"><span class="skill-badge badge-sp">Speaking</span><span class="skill-badge badge-li">Listening</span><span class="p-tag p-top" style="font-size:10px; padding:1px 7px;">29 Marks</span></div>
+        <div class="drill-detail">Wks 1-2: ×20/day &nbsp;·&nbsp; Wks 3-5: ×25/day &nbsp;·&nbsp; Wk 6: ×15/day. Maintain fluency over perfect words.</div>
       </div>
       <div class="drill-time">15<span class="drill-min"> min</span></div>
     </div>
@@ -556,11 +491,7 @@
       <div class="drill-icon" style="background:rgba(108,140,255,0.1);">📄</div>
       <div class="drill-info">
         <div class="drill-name">Summarize Written Text (SWT)</div>
-        <div class="drill-skills">
-          <span class="skill-badge badge-wr">Writing</span>
-          <span class="skill-badge badge-rd">Reading</span>
-          <span class="p-tag p-high" style="font-size:10px; padding:1px 7px;">HIGH (45 Marks)</span>
-        </div>
+        <div class="drill-skills"><span class="skill-badge badge-wr">Writing</span><span class="skill-badge badge-rd">Reading</span><span class="p-tag p-top" style="font-size:10px; padding:1px 7px;">45 Marks</span></div>
         <div class="drill-detail">1-2 per day. One perfect sentence. Easiest grammar/spelling marks on the test.</div>
       </div>
       <div class="drill-time">10<span class="drill-min"> min</span></div>
@@ -570,25 +501,49 @@
       <div class="drill-icon" style="background:rgba(245,200,66,0.1);">📖</div>
       <div class="drill-info">
         <div class="drill-name">R&W Fill in the Blanks (Dropdown)</div>
-        <div class="drill-skills">
-          <span class="skill-badge badge-rd">Reading</span>
-          <span class="skill-badge badge-wr">Writing</span>
-          <span class="p-tag p-high" style="font-size:10px; padding:1px 7px;">HIGH (25 Marks)</span>
-        </div>
+        <div class="drill-skills"><span class="skill-badge badge-rd">Reading</span><span class="skill-badge badge-wr">Writing</span><span class="p-tag p-high" style="font-size:10px; padding:1px 7px;">25 Marks</span></div>
         <div class="drill-detail">3-5 paragraphs per day. Build vocabulary and collocation recognition.</div>
       </div>
-      <div class="drill-time">10<span class="drill-min"> min</span></div>
+      <div class="drill-time">15<span class="drill-min"> min</span></div>
     </div>
   </div>
 
   <div class="divider"></div>
-  <div class="section-title">Weekly Volume Targets</div>
+  <div class="section-title">6-Week Complete Drill Tracker — Tap to check off daily</div>
+  <div class="text-sm text-muted mb-16">First, do your 4 daily core tasks. Then look at the <strong>6-Week Plan</strong> tab to see your Rotating Focus for today (e.g., Essays, Mocks, DI/RL). Check off "Daily Focus" when you finish it all!</div>
+  <div style="overflow-x: auto; padding-bottom: 20px;">
+    <div id="checklist-container" style="min-width: 600px;"></div>
+  </div>
+</div>
+
+<div class="page" id="page-mocks">
+  <div class="section-title">Mock Test Schedule & Review System</div>
+
+  <div class="grid-2 mb-24" style="align-items:start;">
+    <div>
+      <div class="mock-timeline">
+        <div class="mock-row">
+          <div class="mock-dot" style="background:rgba(144,153,181,0.15); color:var(--text3); border:2px solid var(--border2);">—</div>
+          <div class="mock-content">
+            <div class="mock-date-label">Week 1</div>
+            <div class="mock-purpose">No scored mock — practice only</div>
+            <div class="text-sm text-muted">Build technique on your weak tasks first before testing pressure.</div>
+          </div>
+        </div>
+        <div class="mock-row">
+          <div class="mock-dot baseline">B</div>
+          <div class="mock-content">
+            <div class="mock-date-label">End of Week 2</div>
+            <div class="mock-purpose">Baseline Full Scored Mock</div>
+            <div class="text-sm text-muted">Your first real scores and biggest gaps.</div>
+            <div class="mock-score-row" style="margin-top:10px;">
+              <div class="mock-score-cell"><div class="skill-name">Speak</div><input class="mock-score-input" type="number" onchange="updateMockInput(this, 88)"><div class="target-line">Tgt: 88</div></div>
+              <div class="mock-score-cell"><div class="skill-name">Write</div><input class="mock-score-input" type="number" onchange="updateMockInput(this, 85)"><div class="target-line">Tgt: 85</div></div>
               <div class="mock-score-cell"><div class="skill-name">Read</div><input class="mock-score-input" type="number" onchange="updateMockInput(this, 70)"><div class="target-line">Tgt: 70</div></div>
               <div class="mock-score-cell"><div class="skill-name">Listen</div><input class="mock-score-input" type="number" onchange="updateMockInput(this, 69)"><div class="target-line">Tgt: 69</div></div>
             </div>
           </div>
         </div>
-        
         <div class="mock-row">
           <div class="mock-dot progress">#2</div>
           <div class="mock-content">
@@ -601,7 +556,6 @@
             </div>
           </div>
         </div>
-
         <div class="mock-row">
           <div class="mock-dot progress">#3</div>
           <div class="mock-content">
@@ -614,7 +568,6 @@
             </div>
           </div>
         </div>
-
         <div class="mock-row">
           <div class="mock-dot final">✓</div>
           <div class="mock-content" style="border-color:rgba(255,107,107,0.3);">
@@ -633,6 +586,45 @@
     
     <div>
       <div class="card mb-16">
+        <h3 style="margin-bottom:12px;">Sectional Test Tracker</h3>
+        <div class="text-sm text-muted" style="margin-bottom:16px;">Track your section-specific practice tests (scheduled in Weeks 1-5).</div>
+        <div style="display:flex; flex-direction:column; gap:12px;">
+          <!-- Speaking -->
+          <div style="display:flex; justify-content:space-between; align-items:center; padding-bottom:10px; border-bottom:1px solid var(--border);">
+            <div><div style="font-weight:600; font-size:13px;">Speaking</div><div class="text-xs text-muted">Target: 88</div></div>
+            <div style="display:flex; gap:8px;">
+              <input class="mock-score-input" type="number" placeholder="Wk 1" onchange="updateMockInput(this, 88)" style="width:60px; padding:4px; font-size:13px;">
+              <input class="mock-score-input" type="number" placeholder="Wk 5" onchange="updateMockInput(this, 88)" style="width:60px; padding:4px; font-size:13px;">
+            </div>
+          </div>
+          <!-- Writing -->
+          <div style="display:flex; justify-content:space-between; align-items:center; padding-bottom:10px; border-bottom:1px solid var(--border);">
+            <div><div style="font-weight:600; font-size:13px;">Writing</div><div class="text-xs text-muted">Target: 85</div></div>
+            <div style="display:flex; gap:8px;">
+              <input class="mock-score-input" type="number" placeholder="Wk 4" onchange="updateMockInput(this, 85)" style="width:60px; padding:4px; font-size:13px;">
+              <input class="mock-score-input" type="number" placeholder="" disabled style="width:60px; padding:4px; font-size:13px; opacity:0;">
+            </div>
+          </div>
+          <!-- Reading -->
+          <div style="display:flex; justify-content:space-between; align-items:center; padding-bottom:10px; border-bottom:1px solid var(--border);">
+            <div><div style="font-weight:600; font-size:13px;">Reading</div><div class="text-xs text-muted">Target: 70</div></div>
+            <div style="display:flex; gap:8px;">
+              <input class="mock-score-input" type="number" placeholder="Wk 2" onchange="updateMockInput(this, 70)" style="width:60px; padding:4px; font-size:13px;">
+              <input class="mock-score-input" type="number" placeholder="Wk 5" onchange="updateMockInput(this, 70)" style="width:60px; padding:4px; font-size:13px;">
+            </div>
+          </div>
+          <!-- Listening -->
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <div><div style="font-weight:600; font-size:13px;">Listening</div><div class="text-xs text-muted">Target: 69</div></div>
+            <div style="display:flex; gap:8px;">
+              <input class="mock-score-input" type="number" placeholder="Wk 3" onchange="updateMockInput(this, 69)" style="width:60px; padding:4px; font-size:13px;">
+              <input class="mock-score-input" type="number" placeholder="Wk 5" onchange="updateMockInput(this, 69)" style="width:60px; padding:4px; font-size:13px;">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card mb-16">
         <h3 style="margin-bottom:12px;">Auto-Adjust Decision Rules</h3>
         <div class="rule-card red">📉 Section <strong>6+ pts below target</strong> → +50% volume on its top 2 cross-scored tasks next week.</div>
         <div class="rule-card green">✅ Section <strong>within 3 pts of target</strong> → maintenance only; bank that time for weaker sections.</div>
@@ -642,7 +634,6 @@
   </div>
 </div>
 
-<!-- ══════════════════════════════════════════ PAGE 5: TEMPLATES ══ -->
 <div class="page" id="page-templates">
   <div class="section-title">Task Templates</div>
   <div class="template-nav">
@@ -721,7 +712,6 @@
   </div>
 </div>
 
-<!-- ══════════════════════════════════════════ PAGE 6: ESSAY BANK ══ -->
 <div class="page" id="page-essays">
   <div class="section-title">Essay Bank Practice</div>
   <div class="card" style="padding:0; overflow:hidden;">
@@ -736,97 +726,94 @@
 </div>
 
 <script>
-// ── DATA ──
 const weeks = [
   {
-    num:1, label:"Week 1", dates:"Jun 8 – Jun 14", phase:"Foundation", phaseClass:"phase-foundation", note:"Build technique & templates",
+    num:1, label:"Week 1", dates:"Foundation", phase:"Foundation", phaseClass:"phase-foundation", note:"Build technique & templates",
     days:[
-      {date:"Jun 8", day:"Mon", focus:"Write + Speak", tasks:"Daily Core + Learn Essay Template & DI/RL formats.", time:"60m", mock:""},
-      {date:"Jun 9", day:"Tue", focus:"Listen + Read", tasks:"Daily Core + Learn SST Template + RA practice.", time:"60m", mock:""},
-      {date:"Jun 10", day:"Wed", focus:"Sectional", tasks:"Daily Core + SPEAKING Sectional Test (untimed).", time:"75m", mock:"Sectional"},
-      {date:"Jun 11", day:"Thu", focus:"Read + Listen", tasks:"Daily Core + HIW ×10, Drag-Drop FIB ×5.", time:"60m", mock:""},
-      {date:"Jun 12", day:"Fri", focus:"Low-Yield", tasks:"Daily Core + 15 mins ONLY on MCQs, ASQ, SMW, Re-order.", time:"45m", mock:""},
-      {date:"Jun 13", day:"Sat", focus:"Practice", tasks:"Heavy Core Practice: WFD ×30, RS ×30, SWT ×3.", time:"90m", mock:""},
-      {date:"Jun 14", day:"Sun", focus:"Review", tasks:"Review Week 1 mistakes. Re-do missed WFD/RS.", time:"45m", mock:""},
+      {date:"Day 1", day:"Mon", focus:"Speak & Write", tasks:"Daily Core + Learn Essay Template & DI/RL formats.", time:"~80m", mock:""},
+      {date:"Day 2", day:"Tue", focus:"Listen", tasks:"Daily Core + Learn SST Template + RA practice.", time:"~80m", mock:""},
+      {date:"Day 3", day:"Wed", focus:"Sectional", tasks:"Daily Core + SPEAKING Sectional Test (untimed).", time:"~90m", mock:"Sectional"},
+      {date:"Day 4", day:"Thu", focus:"Read & Listen", tasks:"Daily Core + HIW ×10, Drag-Drop FIB ×5.", time:"~80m", mock:""},
+      {date:"Day 5", day:"Fri", focus:"Low-Yield", tasks:"Daily Core + 15 mins ONLY on MCQs, ASQ, SMW, Re-order.", time:"~60m", mock:""},
+      {date:"Day 6", day:"Sat", focus:"Practice", tasks:"Heavy Core Practice: WFD ×30, RS ×30, SWT ×3.", time:"~100m", mock:""},
+      {date:"Day 7", day:"Sun", focus:"Review", tasks:"Review mistakes. Re-do missed WFD/RS.", time:"~45m", mock:""},
     ]
   },
   {
-    num:2, label:"Week 2", dates:"Jun 15 – Jun 21", phase:"Foundation", phaseClass:"phase-foundation", note:"Baseline mock",
+    num:2, label:"Week 2", dates:"Foundation", phase:"Foundation", phaseClass:"phase-foundation", note:"Baseline mock",
     days:[
-      {date:"Jun 15", day:"Mon", focus:"Writing", tasks:"Daily Core + Essay Bank #2 timed. Fix grammar.", time:"75m", mock:""},
-      {date:"Jun 16", day:"Tue", focus:"Speaking", tasks:"Daily Core + DI ×5, RL ×3, RA ×10.", time:"60m", mock:""},
-      {date:"Jun 17", day:"Wed", focus:"Sectional", tasks:"Daily Core + READING Sectional Test (timed).", time:"75m", mock:"Sectional"},
-      {date:"Jun 18", day:"Thu", focus:"Listening", tasks:"Daily Core + SST ×3, HIW ×10, L-FIB ×5.", time:"60m", mock:""},
-      {date:"Jun 19", day:"Fri", focus:"Low-Yield", tasks:"Daily Core + 15 mins ONLY on MCQs, ASQ, SMW, Re-order.", time:"45m", mock:""},
-      {date:"Jun 20", day:"Sat 🎯", focus:"MOCK", tasks:"BASELINE Full Scored Mock Exam.", time:"150m", mock:"Baseline"},
-      {date:"Jun 21", day:"Sun", focus:"Review", tasks:"Deep-review baseline mock gaps.", time:"60m", mock:""},
+      {date:"Day 8", day:"Mon", focus:"Speak & Write", tasks:"Daily Core + Essay Bank #2 timed. Fix grammar.", time:"~80m", mock:""},
+      {date:"Day 9", day:"Tue", focus:"Listen", tasks:"Daily Core + DI ×5, RL ×3, RA ×10.", time:"~80m", mock:""},
+      {date:"Day 10", day:"Wed", focus:"Sectional", tasks:"Daily Core + READING Sectional Test (timed).", time:"~90m", mock:"Sectional"},
+      {date:"Day 11", day:"Thu", focus:"Read & Listen", tasks:"Daily Core + SST ×3, HIW ×10.", time:"~80m", mock:""},
+      {date:"Day 12", day:"Fri", focus:"Low-Yield", tasks:"Daily Core + 15 mins ONLY on MCQs, ASQ, SMW, Re-order.", time:"~60m", mock:""},
+      {date:"Day 13", day:"Sat 🎯", focus:"MOCK", tasks:"BASELINE Full Scored Mock Exam.", time:"~150m", mock:"Baseline"},
+      {date:"Day 14", day:"Sun", focus:"Review", tasks:"Deep-review baseline mock gaps.", time:"~60m", mock:""},
     ]
   },
   {
-    num:3, label:"Week 3", dates:"Jun 22 – Jun 28", phase:"Volume", phaseClass:"phase-volume", note:"Ramp up reps & Sectionals",
+    num:3, label:"Week 3", dates:"Volume", phase:"Volume", phaseClass:"phase-volume", note:"Ramp up reps & Sectionals",
     days:[
-      {date:"Jun 22", day:"Mon", focus:"Writing", tasks:"Daily Core + Essay Bank #3 timed. Send to mentor.", time:"75m", mock:""},
-      {date:"Jun 23", day:"Tue", focus:"Speaking", tasks:"Daily Core + DI ×5, RL ×3, RA ×10.", time:"60m", mock:""},
-      {date:"Jun 24", day:"Wed", focus:"Sectional", tasks:"Daily Core + LISTENING Sectional Test (timed).", time:"75m", mock:"Sectional"},
-      {date:"Jun 25", day:"Thu", focus:"Read + Listen", tasks:"Daily Core + HIW ×10, Drag-Drop FIB ×5.", time:"60m", mock:""},
-      {date:"Jun 26", day:"Fri", focus:"Low-Yield", tasks:"Daily Core + 15 mins ONLY on MCQs, ASQ, SMW, Re-order.", time:"45m", mock:""},
-      {date:"Jun 27", day:"Sat 🎯", focus:"MOCK", tasks:"Full Scored Mock #2.", time:"150m", mock:"Mock #2"},
-      {date:"Jun 28", day:"Sun", focus:"Review", tasks:"Review Mock #2. Focus on weak cross-scored tasks.", time:"60m", mock:""},
+      {date:"Day 15", day:"Mon", focus:"Speak & Write", tasks:"Daily Core + Essay Bank #3 timed. Send to mentor.", time:"~80m", mock:""},
+      {date:"Day 16", day:"Tue", focus:"Listen", tasks:"Daily Core + DI ×5, RL ×3, RA ×10.", time:"~80m", mock:""},
+      {date:"Day 17", day:"Wed", focus:"Sectional", tasks:"Daily Core + LISTENING Sectional Test (timed).", time:"~90m", mock:"Sectional"},
+      {date:"Day 18", day:"Thu", focus:"Read & Listen", tasks:"Daily Core + HIW ×10, Drag-Drop FIB ×5.", time:"~80m", mock:""},
+      {date:"Day 19", day:"Fri", focus:"Low-Yield", tasks:"Daily Core + 15 mins ONLY on MCQs, ASQ, SMW, Re-order.", time:"~60m", mock:""},
+      {date:"Day 20", day:"Sat 🎯", focus:"MOCK", tasks:"Full Scored Mock #2.", time:"~150m", mock:"Mock #2"},
+      {date:"Day 21", day:"Sun", focus:"Review", tasks:"Review Mock #2. Focus on weak cross-scored tasks.", time:"~60m", mock:""},
     ]
   },
   {
-    num:4, label:"Week 4", dates:"Jun 29 – Jul 5", phase:"Volume", phaseClass:"phase-volume", note:"Sustain reps & Sectionals",
+    num:4, label:"Week 4", dates:"Volume", phase:"Volume", phaseClass:"phase-volume", note:"Sustain reps & Sectionals",
     days:[
-      {date:"Jun 29", day:"Mon", focus:"Writing", tasks:"Daily Core + Essay Bank #4 timed. Send to mentor.", time:"75m", mock:""},
-      {date:"Jun 30", day:"Tue", focus:"Speaking", tasks:"Daily Core + DI ×5, RL ×3, RA ×10.", time:"60m", mock:""},
-      {date:"Jul 1", day:"Wed", focus:"Sectional", tasks:"Daily Core + WRITING Sectional Test (timed).", time:"75m", mock:"Sectional"},
-      {date:"Jul 2", day:"Thu", focus:"Listening", tasks:"Daily Core + SST ×3, HIW ×10, L-FIB ×5.", time:"60m", mock:""},
-      {date:"Jul 3", day:"Fri", focus:"Low-Yield", tasks:"Daily Core + 15 mins ONLY on MCQs, ASQ, SMW, Re-order.", time:"45m", mock:""},
-      {date:"Jul 4", day:"Sat 🎯", focus:"MOCK", tasks:"Full Scored Mock #3.", time:"150m", mock:"Mock #3"},
-      {date:"Jul 5", day:"Sun", focus:"Review", tasks:"Review Mock #3. Turn weak tasks into templates.", time:"60m", mock:""},
+      {date:"Day 22", day:"Mon", focus:"Speak & Write", tasks:"Daily Core + Essay Bank #4 timed. Send to mentor.", time:"~80m", mock:""},
+      {date:"Day 23", day:"Tue", focus:"Listen", tasks:"Daily Core + DI ×5, RL ×3, RA ×10.", time:"~80m", mock:""},
+      {date:"Day 24", day:"Wed", focus:"Sectional", tasks:"Daily Core + WRITING Sectional Test (timed).", time:"~90m", mock:"Sectional"},
+      {date:"Day 25", day:"Thu", focus:"Read & Listen", tasks:"Daily Core + SST ×3, HIW ×10.", time:"~80m", mock:""},
+      {date:"Day 26", day:"Fri", focus:"Low-Yield", tasks:"Daily Core + 15 mins ONLY on MCQs, ASQ, SMW, Re-order.", time:"~60m", mock:""},
+      {date:"Day 27", day:"Sat 🎯", focus:"MOCK", tasks:"Full Scored Mock #3.", time:"~150m", mock:"Mock #3"},
+      {date:"Day 28", day:"Sun", focus:"Review", tasks:"Review Mock #3. Turn weak tasks into templates.", time:"~60m", mock:""},
     ]
   },
   {
-    num:5, label:"Week 5", dates:"Jul 6 – Jul 12", phase:"Simulation", phaseClass:"phase-simulation", note:"Multiple Sectionals",
+    num:5, label:"Week 5", dates:"Simulation", phase:"Simulation", phaseClass:"phase-simulation", note:"Multiple Sectionals",
     days:[
-      {date:"Jul 6", day:"Mon", focus:"Sectional", tasks:"Daily Core + SPEAKING Sectional Test (strict timing).", time:"75m", mock:"Sectional"},
-      {date:"Jul 7", day:"Tue", focus:"Sectional", tasks:"Daily Core + READING Sectional Test (strict timing).", time:"75m", mock:"Sectional"},
-      {date:"Jul 8", day:"Wed", focus:"Writing", tasks:"Daily Core + Essay Bank #5 timed.", time:"75m", mock:""},
-      {date:"Jul 9", day:"Thu", focus:"Sectional", tasks:"Daily Core + LISTENING Sectional Test (strict timing).", time:"75m", mock:"Sectional"},
-      {date:"Jul 10", day:"Fri", focus:"Low-Yield", tasks:"Daily Core + 15 mins ONLY on MCQs, ASQ, SMW, Re-order.", time:"45m", mock:""},
-      {date:"Jul 11", day:"Sat 🎯", focus:"MOCK", tasks:"Full Mock #4 — Strict exam conditions.", time:"150m", mock:"Mock #4"},
-      {date:"Jul 12", day:"Sun", focus:"Review", tasks:"Final major review. Lock exam strategy.", time:"60m", mock:""},
+      {date:"Day 29", day:"Mon", focus:"Sectional", tasks:"Daily Core + SPEAKING Sectional Test (strict timing).", time:"~90m", mock:"Sectional"},
+      {date:"Day 30", day:"Tue", focus:"Sectional", tasks:"Daily Core + READING Sectional Test (strict timing).", time:"~90m", mock:"Sectional"},
+      {date:"Day 31", day:"Wed", focus:"Speak & Write", tasks:"Daily Core + Essay Bank #5 timed.", time:"~80m", mock:""},
+      {date:"Day 32", day:"Thu", focus:"Sectional", tasks:"Daily Core + LISTENING Sectional Test (strict timing).", time:"~90m", mock:"Sectional"},
+      {date:"Day 33", day:"Fri", focus:"Low-Yield", tasks:"Daily Core + 15 mins ONLY on MCQs, ASQ, SMW, Re-order.", time:"~60m", mock:""},
+      {date:"Day 34", day:"Sat 🎯", focus:"MOCK", tasks:"Full Mock #4 — Strict exam conditions.", time:"~150m", mock:"Mock #4"},
+      {date:"Day 35", day:"Sun", focus:"Review", tasks:"Final major review. Lock exam strategy.", time:"~60m", mock:""},
     ]
   },
   {
-    num:6, label:"Week 6", dates:"Jul 13 – Jul 19", phase:"Taper", phaseClass:"phase-taper", note:"Final Polish",
+    num:6, label:"Week 6", dates:"Taper", phase:"Taper", phaseClass:"phase-taper", note:"Final Polish",
     days:[
-      {date:"Jul 13", day:"Mon", focus:"Light Core", tasks:"WFD ×10, RS ×10, SWT ×1. Review all templates.", time:"45m", mock:""},
-      {date:"Jul 14", day:"Tue 🎯", focus:"MOCK", tasks:"Final Mock #5 (At least 3 days out from real exam).", time:"150m", mock:"Final Mock"},
-      {date:"Jul 15", day:"Wed", focus:"Review", tasks:"Review Mock #5. Fix only fast wins.", time:"45m", mock:""},
-      {date:"Jul 16", day:"Thu", focus:"Light Core", tasks:"WFD ×10, RS ×10. Rest voice.", time:"30m", mock:""},
-      {date:"Jul 17", day:"Fri", focus:"Pre-exam", tasks:"5 RA warmup. Re-read templates. Sleep.", time:"20m", mock:""},
-      {date:"Jul 18", day:"Sat", focus:"EXAM", tasks:"Arrive early; test mic thoroughly.", time:"—", mock:"EXAM DAY"},
-      {date:"Jul 19", day:"Sun", focus:"Buffer", tasks:"Rest.", time:"—", mock:""},
+      {date:"Day 36", day:"Mon", focus:"Light Core", tasks:"WFD ×15, RS ×15, SWT ×1. Review all templates.", time:"~45m", mock:""},
+      {date:"Day 37", day:"Tue 🎯", focus:"MOCK", tasks:"Final Mock #5 (At least 3 days out).", time:"~150m", mock:"Final Mock"},
+      {date:"Day 38", day:"Wed", focus:"Review", tasks:"Review Mock #5. Fix only fast wins.", time:"~45m", mock:""},
+      {date:"Day 39", day:"Thu", focus:"Light Core", tasks:"WFD ×10, RS ×10. Rest voice.", time:"~30m", mock:""},
+      {date:"Day 40", day:"Fri", focus:"Pre-exam", tasks:"5 RA warmup. Re-read templates. Sleep.", time:"~20m", mock:""},
+      {date:"Day 41", day:"Sat", focus:"EXAM", tasks:"Arrive early; test mic thoroughly.", time:"—", mock:"EXAM DAY"},
+      {date:"Day 42", day:"Sun", focus:"Buffer", tasks:"Rest.", time:"—", mock:""},
     ]
   },
 ];
 
 const essays = [
-  {num:"★1", topic:"Many people take part in dangerous sports despite the risks. Why do people take part, and how can these dangers be reduced?", type:"Causes & Solutions", day:"Mon Jun 8"},
-  {num:"★2", topic:"\"The only thing that interferes with my learning is education.\" (Einstein) — What did he mean, and do you agree?", type:"Agree / Disagree", day:"Mon Jun 15"},
-  {num:"3", topic:"Online learning is becoming far more common. Do its advantages outweigh its disadvantages?", type:"Adv vs Disadv", day:"Wed Jun 17"},
-  {num:"4", topic:"Some believe the world would be better with a single global language. Do the advantages outweigh the disadvantages?", type:"Adv vs Disadv", day:"Mon Jun 22"},
-  {num:"5", topic:"Some think children should start formal schooling very early. Discuss both views.", type:"Discuss both views", day:"Wed Jun 24"}
+  {num:"★1", topic:"Many people take part in dangerous sports despite the risks. Why do people take part, and how can these dangers be reduced?", type:"Causes & Solutions", day:"Mon"},
+  {num:"★2", topic:"\"The only thing that interferes with my learning is education.\" (Einstein) — What did he mean, and do you agree?", type:"Agree / Disagree", day:"Mon"},
+  {num:"3", topic:"Online learning is becoming far more common. Do its advantages outweigh its disadvantages?", type:"Adv vs Disadv", day:"Wed"},
+  {num:"4", topic:"Some believe the world would be better with a single global language. Do the advantages outweigh the disadvantages?", type:"Adv vs Disadv", day:"Mon"},
+  {num:"5", topic:"Some think children should start formal schooling very early. Discuss both views.", type:"Discuss both views", day:"Wed"}
 ];
 
-// ── ADJUSTABLE COUNTDOWN DATE ──
 function getExamDate() {
-  // Default to +6 weeks from now if not set
   let savedDate = localStorage.getItem('pte_exam_date');
   if (!savedDate) {
     let d = new Date();
-    d.setDate(d.getDate() + 42); // +6 weeks
+    d.setDate(d.getDate() + 42); 
     savedDate = d.toISOString().split('T')[0];
     localStorage.setItem('pte_exam_date', savedDate);
   }
@@ -855,7 +842,6 @@ function updateCountdown() {
   }
 }
 
-// Modal controls
 function openDateModal() {
   const modal = document.getElementById('dateModal');
   const input = document.getElementById('examDateInput');
@@ -875,10 +861,8 @@ function saveDate() {
     closeDateModal();
   }
 }
+updateCountdown();
 
-updateCountdown(); // Initial run
-
-// ── NAV ──
 function showPage(id) {
   document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
   document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
@@ -887,7 +871,6 @@ function showPage(id) {
   window.scrollTo(0,0);
 }
 
-// ── WEEKS ──
 function buildWeeks() {
   const container = document.getElementById('weeks-container');
   weeks.forEach((w, wi) => {
@@ -921,21 +904,21 @@ function buildWeeks() {
 function toggleWeek(header) { header.parentElement.classList.toggle('open'); }
 buildWeeks();
 
-// ── CHECKLIST ──
 const checklistData = [
-  { week: "Week 1  (Jun 8–14)", days: ["Mon Jun 8","Tue Jun 9","Wed Jun 10","Thu Jun 11","Fri Jun 12","Sat Jun 13","Sun Jun 14"], drills: ["WFD ×20","RS ×20","SWT ×1","RWFIB ×3"] },
-  { week: "Week 2  (Jun 15–21)", days: ["Mon Jun 15","Tue Jun 16","Wed Jun 17","Thu Jun 18","Fri Jun 19","Sat Jun 20","Sun Jun 21"], drills: ["WFD ×20","RS ×20","SWT ×1","RWFIB ×3"] },
-  { week: "Week 3  (Jun 22–28)", days: ["Mon Jun 22","Tue Jun 23","Wed Jun 24","Thu Jun 25","Fri Jun 26","Sat Jun 27","Sun Jun 28"], drills: ["WFD ×25","RS ×25","SWT ×2","RWFIB ×5"] },
-  { week: "Week 4  (Jun 29–Jul 5)", days: ["Mon Jun 29","Tue Jun 30","Wed Jul 1","Thu Jul 2","Fri Jul 3","Sat Jul 4","Sun Jul 5"], drills: ["WFD ×25","RS ×25","SWT ×2","RWFIB ×5"] },
-  { week: "Week 5  (Jul 6–12)", days: ["Mon Jul 6","Tue Jul 7","Wed Jul 8","Thu Jul 9","Fri Jul 10","Sat Jul 11","Sun Jul 12"], drills: ["WFD ×25","RS ×25","SWT ×2","RWFIB ×5"] },
-  { week: "Week 6  (Jul 13–19)  · taper", days: ["Mon Jul 13","Tue Jul 14","Wed Jul 15","Thu Jul 16","Fri Jul 17","Sat Jul 18","Sun Jul 19"], drills: ["WFD ×10","RS ×10","SWT ×1","RWFIB ×2"] },
+  { week: "Week 1", drills: ["WFD ×20","RS ×20","SWT ×1","RWFIB ×3","Daily Focus"] },
+  { week: "Week 2", drills: ["WFD ×20","RS ×20","SWT ×1","RWFIB ×3","Daily Focus"] },
+  { week: "Week 3", drills: ["WFD ×25","RS ×25","SWT ×2","RWFIB ×5","Daily Focus"] },
+  { week: "Week 4", drills: ["WFD ×25","RS ×25","SWT ×2","RWFIB ×5","Daily Focus"] },
+  { week: "Week 5", drills: ["WFD ×25","RS ×25","SWT ×2","RWFIB ×5","Daily Focus"] },
+  { week: "Week 6 (Taper)", drills: ["WFD ×15","RS ×15","SWT ×1","RWFIB ×2","Daily Focus"] },
 ];
 
 const drillColors = {
-  "WFD ×20":"var(--listening-col)","WFD ×25":"var(--listening-col)","WFD ×10":"var(--listening-col)",
-  "RS ×20":"var(--speaking-col)","RS ×25":"var(--speaking-col)","RS ×10":"var(--speaking-col)",
+  "WFD ×20":"var(--listening-col)","WFD ×25":"var(--listening-col)","WFD ×15":"var(--listening-col)",
+  "RS ×20":"var(--speaking-col)","RS ×25":"var(--speaking-col)","RS ×15":"var(--speaking-col)",
   "SWT ×1":"var(--writing-col)","SWT ×2":"var(--writing-col)",
-  "RWFIB ×3":"var(--reading-col)","RWFIB ×5":"var(--reading-col)","RWFIB ×2":"var(--reading-col)"
+  "RWFIB ×3":"var(--reading-col)","RWFIB ×5":"var(--reading-col)","RWFIB ×2":"var(--reading-col)",
+  "Daily Focus":"var(--accent)"
 };
 
 const checkState = {};
@@ -1011,7 +994,6 @@ function updateProgress() {
 }
 buildChecklist();
 
-// ── ESSAYS ──
 function buildEssays() {
   const container = document.getElementById('essay-list');
   essays.forEach(e => {
@@ -1023,7 +1005,6 @@ function buildEssays() {
 }
 buildEssays();
 
-// ── TEMPLATES ──
 function showTemplate(id) {
   document.querySelectorAll('.template-pane').forEach(p => p.classList.remove('active'));
   document.querySelectorAll('.template-btn').forEach(b => b.classList.remove('active'));
@@ -1031,7 +1012,6 @@ function showTemplate(id) {
   event.target.classList.add('active');
 }
 
-// ── MOCK SCORE INPUTS ──
 function updateMockInput(input, target) {
   const val = parseInt(input.value);
   if (!isNaN(val) && val > 0) {
