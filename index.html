@@ -1,0 +1,1018 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<!-- Viewport setting for mobile & PWA -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+<title>PTE Academic — 6-Week Targeted Study Plan</title>
+
+<!-- iOS Web App Meta Tags -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="PTE Plan">
+<!-- Generic high-res icon for iPhone Home Screen -->
+<link rel="apple-touch-icon" href="https://ui-avatars.com/api/?name=PTE&background=6c8cff&color=fff&size=512&font-size=0.4&bold=true">
+
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@300;400;500&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0d0f14;
+    --surface: #13161e;
+    --surface2: #1a1e29;
+    --border: #252a38;
+    --border2: #2f3547;
+    --text: #e8eaf2;
+    --text2: #9099b5;
+    --text3: #5c6482;
+    --accent: #6c8cff;
+    --accent2: #4066f5;
+    --gold: #f5c842;
+    --gold2: #e0a800;
+    --green: #3dd68c;
+    --red: #ff6b6b;
+    --orange: #ff9f43;
+    --purple: #a78bfa;
+    --teal: #2dd4bf;
+    --top: #ff6b6b;
+    --high: #ff9f43;
+    --medhigh: #f5c842;
+    --med: #3dd68c;
+    --low: #9099b5;
+    --speaking-col: #a78bfa;
+    --writing-col: #6c8cff;
+    --reading-col: #3dd68c;
+    --listening-col: #2dd4bf;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    line-height: 1.6;
+    /* Account for iOS safe area (notches) at bottom if needed */
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(13,15,20,0.92);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--border);
+    /* Account for iOS notch at top */
+    padding: env(safe-area-inset-top) 32px 0 32px;
+    display: flex; align-items: center; gap: 0; 
+    height: calc(56px + env(safe-area-inset-top));
+  }
+  .nav-logo {
+    font-family: 'Syne', sans-serif; font-weight: 800; font-size: 15px;
+    color: var(--accent); letter-spacing: -0.02em;
+    margin-right: 32px; white-space: nowrap;
+  }
+  .nav-tabs { display: flex; gap: 2px; }
+  .nav-tab {
+    padding: 6px 14px; border-radius: 6px; cursor: pointer;
+    font-size: 13px; font-weight: 500; color: var(--text3);
+    transition: all 0.2s; border: none; background: none; font-family: inherit;
+    white-space: nowrap;
+  }
+  .nav-tab:hover { color: var(--text2); background: var(--surface); }
+  .nav-tab.active { color: var(--text); background: var(--surface2); }
+  .nav-right { margin-left: auto; display: flex; align-items: center; gap: 12px; }
+  
+  .countdown-badge {
+    font-family: 'DM Mono', monospace; font-size: 12px;
+    background: var(--surface2); border: 1px solid var(--border2);
+    border-radius: 20px; padding: 4px 14px; color: var(--gold);
+    display: flex; align-items: center; gap: 6px; cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  .countdown-badge:hover { background: var(--border); border-color: var(--accent); }
+
+  /* ── PAGES ── */
+  .page { display: none; padding: 32px; max-width: 1200px; margin: 0 auto; }
+  .page.active { display: block; animation: fadeIn 0.3s ease; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
+
+  /* ── SECTION HEADER ── */
+  .section-title {
+    font-family: 'Syne', sans-serif; font-weight: 800;
+    font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--text3); margin-bottom: 16px; padding-bottom: 8px;
+    border-bottom: 1px solid var(--border);
+  }
+  h2 { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 22px; color: var(--text); margin-bottom: 6px; }
+  h3 { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 14px; color: var(--text); margin-bottom: 10px; }
+
+  /* ── GRID LAYOUTS ── */
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
+  .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+
+  /* ── CARD ── */
+  .card {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 12px; padding: 20px;
+  }
+
+  /* ── TARGET SCORE CARDS ── */
+  .target-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 12px; margin-bottom: 24px; }
+  .target-card {
+    border-radius: 12px; padding: 18px 16px;
+    border: 1px solid var(--border); position: relative; overflow: hidden;
+  }
+  .target-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; }
+  .target-card.speaking::before { background: var(--speaking-col); }
+  .target-card.writing::before { background: var(--writing-col); }
+  .target-card.reading::before { background: var(--reading-col); }
+  .target-card.listening::before { background: var(--listening-col); }
+  .target-card { background: var(--surface); }
+  .target-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text3); font-weight: 600; margin-bottom: 4px; }
+  .target-score { font-family: 'Syne', sans-serif; font-size: 42px; font-weight: 800; line-height: 1; }
+  .target-card.speaking .target-score { color: var(--speaking-col); }
+  .target-card.writing .target-score { color: var(--writing-col); }
+  .target-card.reading .target-score { color: var(--reading-col); }
+  .target-card.listening .target-score { color: var(--listening-col); }
+  .target-desc { font-size: 12px; color: var(--text3); margin-top: 4px; }
+  .target-bar-bg { height: 4px; background: var(--border); border-radius: 2px; margin-top: 10px; }
+  .target-bar { height: 4px; border-radius: 2px; }
+  .target-card.speaking .target-bar { background: var(--speaking-col); }
+  .target-card.writing .target-bar { background: var(--writing-col); }
+  .target-card.reading .target-bar { background: var(--reading-col); }
+  .target-card.listening .target-bar { background: var(--listening-col); }
+
+  /* ── CROSS SCORING TABLE ── */
+  .cross-table { width: 100%; border-collapse: collapse; }
+  .cross-table th {
+    text-align: left; font-size: 11px; text-transform: uppercase;
+    letter-spacing: 0.08em; color: var(--text3); font-weight: 600;
+    padding: 8px 10px; border-bottom: 1px solid var(--border);
+  }
+  .cross-table td { padding: 10px 10px; font-size: 13px; border-bottom: 1px solid var(--border); vertical-align: middle; }
+  .cross-table tr:hover td { background: var(--surface2); }
+  .skill-badge {
+    display: inline-block; padding: 2px 8px; border-radius: 4px;
+    font-size: 11px; font-weight: 600; margin: 1px;
+  }
+  .badge-sp { background: rgba(167,139,250,0.15); color: var(--speaking-col); border: 1px solid rgba(167,139,250,0.3); }
+  .badge-wr { background: rgba(108,140,255,0.15); color: var(--writing-col); border: 1px solid rgba(108,140,255,0.3); }
+  .badge-rd { background: rgba(61,214,140,0.15); color: var(--reading-col); border: 1px solid rgba(61,214,140,0.3); }
+  .badge-li { background: rgba(45,212,191,0.15); color: var(--listening-col); border: 1px solid rgba(45,212,191,0.3); }
+  .p-tag {
+    display: inline-flex; align-items: center; font-size: 11px;
+    font-weight: 700; padding: 2px 10px; border-radius: 20px; white-space: nowrap;
+  }
+  .p-top { background: rgba(255,107,107,0.15); color: var(--top); border: 1px solid rgba(255,107,107,0.3); }
+  .p-high { background: rgba(255,159,67,0.15); color: var(--high); border: 1px solid rgba(255,159,67,0.3); }
+  .p-medhigh { background: rgba(245,200,66,0.15); color: var(--medhigh); border: 1px solid rgba(245,200,66,0.3); }
+  .p-med { background: rgba(61,214,140,0.15); color: var(--med); border: 1px solid rgba(61,214,140,0.3); }
+  .p-low { background: rgba(144,153,181,0.15); color: var(--low); border: 1px solid rgba(144,153,181,0.3); }
+
+  /* ── WEEKLY PLAN ── */
+  .week-phase-bar { display: grid; grid-template-columns: repeat(6,1fr); gap: 4px; margin-bottom: 20px; }
+  .phase-block { border-radius: 8px; padding: 10px 12px; font-size: 11px; font-weight: 600; text-align: center; }
+  .phase-foundation { background: rgba(108,140,255,0.12); color: var(--accent); border: 1px solid rgba(108,140,255,0.25); }
+  .phase-volume { background: rgba(245,200,66,0.12); color: var(--gold); border: 1px solid rgba(245,200,66,0.25); }
+  .phase-simulation { background: rgba(255,107,107,0.12); color: var(--red); border: 1px solid rgba(255,107,107,0.25); }
+  .phase-taper { background: rgba(61,214,140,0.12); color: var(--green); border: 1px solid rgba(61,214,140,0.25); }
+  .phase-label { font-family: 'DM Mono', monospace; font-size: 10px; margin-bottom: 2px; opacity: 0.7; }
+  .phase-name { font-weight: 700; font-size: 12px; }
+
+  .week-block { margin-bottom: 12px; border-radius: 10px; overflow: hidden; border: 1px solid var(--border); }
+  .week-header {
+    display: flex; align-items: center; padding: 10px 16px; cursor: pointer;
+    background: var(--surface2); gap: 12px; justify-content: space-between;
+  }
+  .week-title { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 14px; }
+  .week-meta { font-size: 12px; color: var(--text3); display: flex; gap: 12px; }
+  .week-chevron { color: var(--text3); transition: transform 0.2s; font-size: 12px; }
+  .week-block.open .week-chevron { transform: rotate(180deg); }
+  .week-days { display: none; }
+  .week-block.open .week-days { display: block; }
+  .day-row {
+    display: grid; grid-template-columns: 90px 110px 1fr 160px 160px;
+    gap: 0; border-top: 1px solid var(--border); padding: 12px 16px;
+    font-size: 13px; align-items: start;
+  }
+  .day-date { font-family: 'DM Mono', monospace; font-size: 12px; color: var(--text3); }
+  .day-name { font-weight: 600; }
+  .day-name.mock-day { color: var(--gold); }
+  .day-focus { color: var(--text2); line-height: 1.5; }
+  .day-focus strong { color: var(--text); display: block; margin-bottom: 2px; font-size: 13px; }
+  .day-tasks { font-size: 12px; color: var(--text3); line-height: 1.6; }
+  .day-time { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--text3); }
+  .mock-badge {
+    display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 11px;
+    font-weight: 700; background: rgba(245,200,66,0.15); color: var(--gold);
+    border: 1px solid rgba(245,200,66,0.3);
+  }
+  .exam-badge {
+    display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 11px;
+    font-weight: 700; background: rgba(255,107,107,0.15); color: var(--red);
+    border: 1px solid rgba(255,107,107,0.3);
+  }
+
+  /* ── DAILY DRILLS ── */
+  .drill-card {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 12px; padding: 16px 20px; display: flex; align-items: center; gap: 16px; margin-bottom: 10px;
+  }
+  .drill-icon { width: 44px; height: 44px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 20px; flex-shrink: 0; }
+  .drill-info { flex: 1; }
+  .drill-name { font-weight: 600; font-size: 14px; margin-bottom: 2px; }
+  .drill-skills { display: flex; gap: 4px; margin-bottom: 4px; }
+  .drill-detail { font-size: 12px; color: var(--text3); }
+  .drill-time { font-family: 'DM Mono', monospace; font-size: 20px; font-weight: 500; color: var(--text); text-align: right; }
+  .drill-min { font-size: 11px; color: var(--text3); }
+
+  .volume-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 20px; }
+  .vol-card { background: var(--surface2); border: 1px solid var(--border); border-radius: 10px; padding: 14px; text-align: center; }
+  .vol-num { font-family: 'Syne', sans-serif; font-size: 24px; font-weight: 800; color: var(--accent); }
+  .vol-label { font-size: 11px; color: var(--text3); margin-top: 2px; }
+
+  /* ── MOCK LOG ── */
+  .mock-timeline { display: flex; flex-direction: column; gap: 0; position: relative; }
+  .mock-timeline::before { content: ''; position: absolute; left: 20px; top: 0; bottom: 0; width: 2px; background: var(--border); }
+  .mock-row { display: grid; grid-template-columns: 44px 1fr; gap: 16px; align-items: start; padding: 12px 0; position: relative; }
+  .mock-dot {
+    width: 44px; height: 44px; border-radius: 50%; display: flex; align-items: center; justify-content: center;
+    font-family: 'Syne', sans-serif; font-weight: 800; font-size: 13px; flex-shrink: 0; position: relative; z-index: 1;
+  }
+  .mock-dot.baseline { background: rgba(108,140,255,0.2); color: var(--accent); border: 2px solid var(--accent); }
+  .mock-dot.progress { background: rgba(245,200,66,0.2); color: var(--gold); border: 2px solid var(--gold); }
+  .mock-dot.final { background: rgba(255,107,107,0.2); color: var(--red); border: 2px solid var(--red); }
+  .mock-content { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 14px 16px; }
+  .mock-date-label { font-size: 12px; color: var(--text3); margin-bottom: 6px; font-family: 'DM Mono', monospace; }
+  .mock-purpose { font-weight: 600; font-size: 14px; margin-bottom: 10px; }
+  .mock-score-row { display: grid; grid-template-columns: repeat(4,1fr); gap: 8px; }
+  .mock-score-cell { text-align: center; }
+  .mock-score-cell .skill-name { font-size: 10px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text3); margin-bottom: 2px; }
+  .mock-score-input {
+    width: 100%; padding: 6px 8px; background: var(--surface2); border: 1px solid var(--border2); border-radius: 6px;
+    color: var(--text); font-family: 'DM Mono', monospace; font-size: 16px; text-align: center; outline: none; transition: border 0.2s;
+  }
+  .mock-score-input:focus { border-color: var(--accent); }
+  .mock-score-input.filled { border-color: var(--green); color: var(--green); }
+  .target-line { font-size: 10px; color: var(--text3); margin-top: 3px; }
+
+  /* ── TEMPLATES ── */
+  .template-nav { display: flex; gap: 6px; margin-bottom: 20px; flex-wrap: wrap; }
+  .template-btn {
+    padding: 7px 14px; border-radius: 20px; font-size: 13px; font-weight: 500;
+    cursor: pointer; border: 1px solid var(--border2); background: var(--surface);
+    color: var(--text2); transition: all 0.2s; font-family: inherit;
+  }
+  .template-btn:hover { background: var(--surface2); color: var(--text); }
+  .template-btn.active { background: var(--accent2); color: #fff; border-color: var(--accent); }
+  .template-pane { display: none; }
+  .template-pane.active { display: block; animation: fadeIn 0.3s; }
+  .template-box {
+    background: var(--surface2); border: 1px solid var(--border2);
+    border-radius: 10px; padding: 18px 20px; font-size: 13px; line-height: 1.8; color: var(--text2); position: relative;
+  }
+  .template-box .placeholder { color: var(--accent); font-weight: 600; }
+  .template-box .option { color: var(--gold); font-style: italic; }
+  .template-section { margin-bottom: 16px; }
+  .template-section-label { font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text3); font-weight: 600; margin-bottom: 6px; font-family: 'DM Mono', monospace; }
+  .tip-box { background: rgba(108,140,255,0.07); border: 1px solid rgba(108,140,255,0.2); border-radius: 8px; padding: 10px 14px; font-size: 12px; color: var(--text2); margin-top: 10px; display: flex; gap: 8px; align-items: flex-start; }
+  .tip-icon { color: var(--accent); flex-shrink: 0; }
+  .warning-box { background: rgba(255,159,67,0.07); border: 1px solid rgba(255,159,67,0.2); border-radius: 8px; padding: 10px 14px; font-size: 12px; color: var(--orange); margin-bottom: 14px; display: flex; gap: 8px; align-items: flex-start; }
+
+  /* ── ESSAY BANK ── */
+  .essay-row { display: grid; grid-template-columns: 32px 1fr 120px 130px; gap: 12px; padding: 12px 16px; border-bottom: 1px solid var(--border); align-items: center; font-size: 13px; transition: background 0.15s; }
+  .essay-row:last-child { border-bottom: none; }
+  .essay-num { font-family: 'DM Mono', monospace; font-size: 12px; color: var(--text3); }
+  .essay-star { color: var(--gold); }
+  .essay-type-badge { display: inline-block; padding: 3px 8px; border-radius: 4px; font-size: 11px; font-weight: 600; background: var(--surface2); color: var(--text3); border: 1px solid var(--border); }
+  .essay-date { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--text3); }
+
+  /* ── STRATEGY OVERVIEW ── */
+  .strategy-intro { background: linear-gradient(135deg, rgba(108,140,255,0.08) 0%, rgba(167,139,250,0.06) 100%); border: 1px solid rgba(108,140,255,0.2); border-radius: 14px; padding: 24px; margin-bottom: 24px; }
+  .strategy-intro p { font-size: 14px; color: var(--text2); line-height: 1.8; }
+  .time-allocation { display: flex; height: 28px; border-radius: 6px; overflow: hidden; margin: 16px 0 8px; border: 1px solid var(--border); }
+  .time-seg { display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; }
+  .time-top { background: rgba(255,107,107,0.7); color: #fff; flex: 3; }
+  .time-high { background: rgba(255,159,67,0.7); color: #fff; flex: 2.5; }
+  .time-medhigh { background: rgba(245,200,66,0.7); color: #000; flex: 1.5; }
+  .time-low { background: rgba(144,153,181,0.25); color: var(--text3); flex: 1; font-size: 10px; }
+  .allocation-label { font-size: 11px; color: var(--text3); }
+
+  /* ── CHECKLIST TRACKER ── */
+  .checklist-week { margin-bottom: 20px; }
+  .checklist-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; }
+  .checklist-week-label { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 13px; }
+  .checklist-progress { font-size: 11px; color: var(--text3); font-family: 'DM Mono', monospace; }
+  .checklist-grid { display: grid; grid-template-columns: 160px repeat(7, 1fr); gap: 4px; }
+  .checklist-day-header { text-align: center; font-size: 10px; color: var(--text3); font-family: 'DM Mono', monospace; padding: 4px; font-weight: 600; }
+  .checklist-row-label { font-size: 12px; color: var(--text2); display: flex; align-items: center; gap: 6px; padding: 4px 0; }
+  .check-cell {
+    width: 100%; aspect-ratio: 1; border-radius: 6px; display: flex; align-items: center; justify-content: center;
+    cursor: pointer; background: var(--surface2); border: 1px solid var(--border); transition: all 0.15s; font-size: 14px; user-select: none;
+  }
+  .check-cell.checked { background: rgba(61,214,140,0.15); border-color: var(--green); color: var(--green); }
+
+  /* ── AUTO-ADJUST RULES ── */
+  .rule-card { background: var(--surface2); border-left: 3px solid var(--border2); border-radius: 0 8px 8px 0; padding: 10px 14px; margin-bottom: 8px; font-size: 13px; color: var(--text2); line-height: 1.6; }
+  .rule-card.red { border-left-color: var(--red); }
+  .rule-card.green { border-left-color: var(--green); }
+  .rule-card.orange { border-left-color: var(--orange); }
+
+  /* ── DATE MODAL ── */
+  .modal-overlay {
+    display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.8); backdrop-filter: blur(5px); -webkit-backdrop-filter: blur(5px);
+    z-index: 1000; align-items: center; justify-content: center; padding: 20px;
+    opacity: 0; transition: opacity 0.3s ease;
+  }
+  .modal-overlay.active { display: flex; opacity: 1; }
+  .date-picker-input {
+    width: 100%; padding: 12px; margin: 15px 0; background: var(--surface2); color: white;
+    border: 1px solid var(--border2); border-radius: 8px; font-family: 'DM Mono', monospace; font-size: 16px;
+  }
+  .date-picker-input:focus { border-color: var(--accent); outline: none; }
+
+  /* ── MISC ── */
+  .divider { height: 1px; background: var(--border); margin: 24px 0; }
+  .mb-16 { margin-bottom: 16px; }
+  .mb-24 { margin-bottom: 24px; }
+  .mt-16 { margin-top: 16px; }
+  .text-sm { font-size: 12px; }
+  .text-xs { font-size: 11px; }
+  .text-muted { color: var(--text3); }
+  .font-mono { font-family: 'DM Mono', monospace; }
+
+  /* ── RESPONSIVE MOBILE ── */
+  @media (max-width: 768px) {
+    nav { padding: env(safe-area-inset-top) 12px 0; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    .nav-logo { display: none; /* hide logo on small screens to fit tabs */ }
+    .page { padding: 16px; }
+    .target-grid { grid-template-columns: repeat(2,1fr); }
+    .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
+    .day-row { grid-template-columns: 80px 1fr; }
+    .day-tasks, .day-time { display: none; }
+    .essay-row { grid-template-columns: 32px 1fr; }
+    .essay-type-badge, .essay-date { display: none; }
+    .checklist-grid { grid-template-columns: 80px repeat(7, 1fr); gap: 2px; }
+    .checklist-row-label { font-size: 10px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">PTE Plan</div>
+  <div class="nav-tabs">
+    <button class="nav-tab active" onclick="showPage('strategy')">Strategy</button>
+    <button class="nav-tab" onclick="showPage('plan')">6-Week Plan</button>
+    <button class="nav-tab" onclick="showPage('drills')">Daily Drills</button>
+    <button class="nav-tab" onclick="showPage('mocks')">Mocks</button>
+    <button class="nav-tab" onclick="showPage('templates')">Templates</button>
+    <button class="nav-tab" onclick="showPage('essays')">Essay Bank</button>
+  </div>
+  <div class="nav-right">
+    <!-- Clickable Countdown Badge -->
+    <div class="countdown-badge" id="countdown-badge" onclick="openDateModal()">
+      <span id="countdown-text">⏳ Loading…</span>
+      <span style="font-size:12px; opacity:0.8;">✏️</span>
+    </div>
+  </div>
+</nav>
+
+<!-- DATE MODAL -->
+<div class="modal-overlay" id="dateModal">
+  <div class="card" style="width: 100%; max-width: 360px;">
+    <h3>Set Your Exam Date</h3>
+    <p class="text-sm text-muted">Adjust the date to calculate your countdown accurately. It will be saved on your device.</p>
+    <input type="date" id="examDateInput" class="date-picker-input">
+    <div style="display: flex; gap: 10px; justify-content: flex-end;">
+      <button onclick="closeDateModal()" class="template-btn">Cancel</button>
+      <button onclick="saveDate()" class="template-btn active">Save Date</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════ PAGE 1: STRATEGY ══ -->
+<div class="page active" id="page-strategy">
+  <div style="margin-bottom:28px;">
+    <div class="section-title">Targets · Strategy Overview</div>
+    <div class="target-grid">
+      <div class="target-card speaking">
+        <div class="target-label">Speaking</div>
+        <div class="target-score">88</div>
+        <div class="target-desc">Highest target · RS + RA drive this</div>
+        <div class="target-bar-bg"><div class="target-bar" style="width:88%"></div></div>
+      </div>
+      <div class="target-card writing">
+        <div class="target-label">Writing</div>
+        <div class="target-score">85</div>
+        <div class="target-desc">Hardest target · WFD + Essay + SWT</div>
+        <div class="target-bar-bg"><div class="target-bar" style="width:85%"></div></div>
+      </div>
+      <div class="target-card reading">
+        <div class="target-label">Reading</div>
+        <div class="target-score">70</div>
+        <div class="target-desc">Rises via RA, SWT, RWFIB</div>
+        <div class="target-bar-bg"><div class="target-bar" style="width:70%"></div></div>
+      </div>
+      <div class="target-card listening">
+        <div class="target-label">Listening</div>
+        <div class="target-score">69</div>
+        <div class="target-desc">Rises via WFD, RS, SST</div>
+        <div class="target-bar-bg"><div class="target-bar" style="width:69%"></div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="strategy-intro mb-24">
+    <div class="section-title">Core Strategy</div>
+    <p>PTE uses <strong>integrated (cross) scoring</strong> — one spoken or typed answer earns marks in two skills at once. Your two highest targets (Speaking 88 and Writing 85) are driven by tasks that <strong>also feed</strong> Reading and Listening. Over-invest in a handful of cross-scored "super-tasks" and the lower targets rise almost for free.</p>
+    <div style="margin-top:16px;">
+      <div class="allocation-label" style="margin-bottom:6px;">Where the study time goes (approximate)</div>
+      <div class="time-allocation">
+        <div class="time-seg time-top">TOP ×3</div>
+        <div class="time-seg time-high">HIGH ×3</div>
+        <div class="time-seg time-medhigh">MED-HIGH</div>
+        <div class="time-seg time-low">LOW</div>
+      </div>
+      <div class="allocation-label">~75% on TOP + HIGH tasks &nbsp;·&nbsp; 25% on everything else</div>
+    </div>
+  </div>
+
+  <div class="mb-24">
+    <div class="section-title">Cross-Scoring Map — what each task actually scores</div>
+    <div class="card" style="padding:0; overflow:hidden;">
+      <div style="overflow-x: auto;">
+        <table class="cross-table" style="min-width: 600px;">
+          <thead>
+            <tr>
+              <th style="width:180px;">Task</th>
+              <th>Skills Scored</th>
+              <th>Priority</th>
+              <th>Why it matters</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Write from Dictation</strong></td>
+              <td><span class="skill-badge badge-li">Listening</span><span class="skill-badge badge-wr">Writing</span></td>
+              <td><span class="p-tag p-top">TOP</span></td>
+              <td class="text-sm text-muted">23% of Writing + 13% of Listening. Your #1 lever.</td>
+            </tr>
+            <tr>
+              <td><strong>Repeat Sentence</strong></td>
+              <td><span class="skill-badge badge-sp">Speaking</span><span class="skill-badge badge-li">Listening</span></td>
+              <td><span class="p-tag p-top">TOP</span></td>
+              <td class="text-sm text-muted">Drives Speaking 88 and pulls Listening to 69.</td>
+            </tr>
+            <tr>
+              <td><strong>Read Aloud</strong></td>
+              <td><span class="skill-badge badge-sp">Speaking</span><span class="skill-badge badge-rd">Reading</span></td>
+              <td><span class="p-tag p-top">TOP</span></td>
+              <td class="text-sm text-muted">Feeds Speaking 88 AND drags Reading toward 70.</td>
+            </tr>
+            <tr>
+              <td><strong>Summarize Written Text</strong></td>
+              <td><span class="skill-badge badge-wr">Writing</span><span class="skill-badge badge-rd">Reading</span></td>
+              <td><span class="p-tag p-high">HIGH</span></td>
+              <td class="text-sm text-muted">One perfect sentence scores Writing + Reading.</td>
+            </tr>
+            <tr>
+              <td><strong>Summarize Spoken Text</strong></td>
+              <td><span class="skill-badge badge-li">Listening</span><span class="skill-badge badge-wr">Writing</span></td>
+              <td><span class="p-tag p-high">HIGH</span></td>
+              <td class="text-sm text-muted">50-70 words scores Listening + Writing. Fully template-able.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════ PAGE 2: 6-WEEK PLAN ══ -->
+<div class="page" id="page-plan">
+  <div class="section-title">6-Week Study Overview</div>
+  <div class="week-phase-bar" style="overflow-x:auto; white-space:nowrap; display:flex;">
+    <div class="phase-block phase-foundation" style="flex:1; min-width:80px;"><div class="phase-label">Week 1</div><div class="phase-name">Foundation</div></div>
+    <div class="phase-block phase-foundation" style="flex:1; min-width:80px;"><div class="phase-label">Week 2</div><div class="phase-name">Foundation</div></div>
+    <div class="phase-block phase-volume" style="flex:1; min-width:80px;"><div class="phase-label">Week 3</div><div class="phase-name">Volume</div></div>
+    <div class="phase-block phase-volume" style="flex:1; min-width:80px;"><div class="phase-label">Week 4</div><div class="phase-name">Volume</div></div>
+    <div class="phase-block phase-simulation" style="flex:1; min-width:80px;"><div class="phase-label">Week 5</div><div class="phase-name">Simulation</div></div>
+    <div class="phase-block phase-taper" style="flex:1; min-width:80px;"><div class="phase-label">Week 6</div><div class="phase-name">Taper</div></div>
+  </div>
+
+  <div id="weeks-container"></div>
+</div>
+
+<!-- ══════════════════════════════════════════ PAGE 3: DAILY DRILLS ══ -->
+<div class="page" id="page-drills">
+  <div class="section-title">The Daily Core — Do these EVERY day</div>
+  <div class="mb-24">
+    <div class="drill-card">
+      <div class="drill-icon" style="background:rgba(45,212,191,0.1);">✍️</div>
+      <div class="drill-info">
+        <div class="drill-name">Write from Dictation (WFD)</div>
+        <div class="drill-skills"><span class="skill-badge badge-li">Listening</span><span class="skill-badge badge-wr">Writing</span></div>
+        <div class="drill-detail">Wks 1-2: ×20 &nbsp;·&nbsp; Wks 3-5: ×25 &nbsp;·&nbsp; Wk 6: ×15</div>
+      </div>
+      <div class="drill-time">25<span class="drill-min">m</span></div>
+    </div>
+    <div class="drill-card">
+      <div class="drill-icon" style="background:rgba(167,139,250,0.1);">🗣️</div>
+      <div class="drill-info">
+        <div class="drill-name">Repeat Sentence (RS)</div>
+        <div class="drill-skills"><span class="skill-badge badge-sp">Speaking</span><span class="skill-badge badge-li">Listening</span></div>
+        <div class="drill-detail">Wks 1-2: ×20 &nbsp;·&nbsp; Wks 3-5: ×25 &nbsp;·&nbsp; Wk 6: ×15</div>
+      </div>
+      <div class="drill-time">20<span class="drill-min">m</span></div>
+    </div>
+    <div class="drill-card">
+      <div class="drill-icon" style="background:rgba(108,140,255,0.1);">📖</div>
+      <div class="drill-info">
+        <div class="drill-name">Read Aloud (RA)</div>
+        <div class="drill-skills"><span class="skill-badge badge-sp">Speaking</span><span class="skill-badge badge-rd">Reading</span></div>
+        <div class="drill-detail">Wks 1-2: ×10 &nbsp;·&nbsp; Wks 3-5: ×12 &nbsp;·&nbsp; Wk 6: ×8</div>
+      </div>
+      <div class="drill-time">20<span class="drill-min">m</span></div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+  <div class="section-title">6-Week Drill Tracker — Tap to check off</div>
+  <div style="overflow-x: auto; padding-bottom: 20px;">
+    <div id="checklist-container" style="min-width: 600px;"></div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════ PAGE 4: MOCKS ══ -->
+<div class="page" id="page-mocks">
+  <div class="section-title">Mock Test Schedule & Review</div>
+
+  <div class="grid-2 mb-24" style="align-items:start;">
+    <div>
+      <div class="mock-timeline">
+        <div class="mock-row">
+          <div class="mock-dot baseline">B</div>
+          <div class="mock-content">
+            <div class="mock-purpose">Baseline Mock</div>
+            <div class="text-sm text-muted">First real scores. Log everything.</div>
+            <div class="mock-score-row" style="margin-top:10px;">
+              <div class="mock-score-cell"><div class="skill-name">Speak</div><input class="mock-score-input" type="number" onchange="updateMockInput(this, 88)"><div class="target-line">Tgt: 88</div></div>
+              <div class="mock-score-cell"><div class="skill-name">Write</div><input class="mock-score-input" type="number" onchange="updateMockInput(this, 85)"><div class="target-line">Tgt: 85</div></div>
+              <div class="mock-score-cell"><div class="skill-name">Read</div><input class="mock-score-input" type="number" onchange="updateMockInput(this, 70)"><div class="target-line">Tgt: 70</div></div>
+              <div class="mock-score-cell"><div class="skill-name">Listen</div><input class="mock-score-input" type="number" onchange="updateMockInput(this, 69)"><div class="target-line">Tgt: 69</div></div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="mock-row">
+          <div class="mock-dot progress">#2</div>
+          <div class="mock-content">
+            <div class="mock-purpose">Progress Mock 2</div>
+            <div class="mock-score-row" style="margin-top:10px;">
+              <div class="mock-score-cell"><div class="skill-name">Speak</div><input class="mock-score-input" type="number" onchange="updateMockInput(this, 88)"></div>
+              <div class="mock-score-cell"><div class="skill-name">Write</div><input class="mock-score-input" type="number" onchange="updateMockInput(this, 85)"></div>
+              <div class="mock-score-cell"><div class="skill-name">Read</div><input class="mock-score-input" type="number" onchange="updateMockInput(this, 70)"></div>
+              <div class="mock-score-cell"><div class="skill-name">Listen</div><input class="mock-score-input" type="number" onchange="updateMockInput(this, 69)"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="mock-row">
+          <div class="mock-dot progress">#3</div>
+          <div class="mock-content">
+            <div class="mock-purpose">Progress Mock 3</div>
+            <div class="mock-score-row" style="margin-top:10px;">
+              <div class="mock-score-cell"><div class="skill-name">Speak</div><input class="mock-score-input" type="number" onchange="updateMockInput(this, 88)"></div>
+              <div class="mock-score-cell"><div class="skill-name">Write</div><input class="mock-score-input" type="number" onchange="updateMockInput(this, 85)"></div>
+              <div class="mock-score-cell"><div class="skill-name">Read</div><input class="mock-score-input" type="number" onchange="updateMockInput(this, 70)"></div>
+              <div class="mock-score-cell"><div class="skill-name">Listen</div><input class="mock-score-input" type="number" onchange="updateMockInput(this, 69)"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="mock-row">
+          <div class="mock-dot final">✓</div>
+          <div class="mock-content" style="border-color:rgba(255,107,107,0.3);">
+            <div class="mock-purpose" style="color:var(--red);">Final Mock</div>
+            <div class="text-sm text-muted">Confirm readiness, then taper.</div>
+            <div class="mock-score-row" style="margin-top:10px;">
+              <div class="mock-score-cell"><div class="skill-name">Speak</div><input class="mock-score-input" type="number" onchange="updateMockInput(this, 88)"></div>
+              <div class="mock-score-cell"><div class="skill-name">Write</div><input class="mock-score-input" type="number" onchange="updateMockInput(this, 85)"></div>
+              <div class="mock-score-cell"><div class="skill-name">Read</div><input class="mock-score-input" type="number" onchange="updateMockInput(this, 70)"></div>
+              <div class="mock-score-cell"><div class="skill-name">Listen</div><input class="mock-score-input" type="number" onchange="updateMockInput(this, 69)"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div>
+      <div class="card mb-16">
+        <h3 style="margin-bottom:12px;">Auto-Adjust Decision Rules</h3>
+        <div class="rule-card red">📉 Section <strong>6+ pts below target</strong> → +50% volume on its top 2 cross-scored tasks next week.</div>
+        <div class="rule-card green">✅ Section <strong>within 3 pts of target</strong> → maintenance only; bank that time for weaker sections.</div>
+        <div class="rule-card orange">🔁 <strong>Same WFD/RS errors repeat</strong> → daily re-do of those exact missed items until clean.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════ PAGE 5: TEMPLATES ══ -->
+<div class="page" id="page-templates">
+  <div class="section-title">Task Templates</div>
+  <div class="template-nav">
+    <button class="template-btn active" onclick="showTemplate('essay')">✍️ Essay</button>
+    <button class="template-btn" onclick="showTemplate('swt')">📄 SWT</button>
+    <button class="template-btn" onclick="showTemplate('sst')">🎧 SST</button>
+    <button class="template-btn" onclick="showTemplate('di')">🖼 DI</button>
+    <button class="template-btn" onclick="showTemplate('rl')">🎙 RL</button>
+  </div>
+
+  <div class="template-pane active" id="tpl-essay">
+    <div class="card" style="margin-bottom:12px;">
+      <h3 style="margin-bottom:4px;">Essay — Universal Template (~20 min)</h3>
+      <div class="template-section mt-16">
+        <div class="template-section-label">1 · Introduction</div>
+        <div class="template-box">The increasing influence of <span class="placeholder">&lt;topic&gt;</span> in our daily lives has led to various discussions and debates. This issue is crucial because of its influence on <span class="placeholder">&lt;impact area&gt;</span>, affecting both individuals and society. In this essay, I will examine <span class="placeholder">&lt;topic&gt;</span> by considering <span class="option">(advantages and disadvantages / causes and effects)</span>, and provide my perspective on the matter.</div>
+      </div>
+      <div class="template-section">
+        <div class="template-section-label">2 · Body Paragraph 1</div>
+        <div class="template-box">One of the main <span class="option">(advantages / causes)</span> related to <span class="placeholder">&lt;topic&gt;</span> is <span class="placeholder">&lt;point 1&gt;</span>. Studies indicate that <span class="placeholder">&lt;topic&gt;</span> <span class="option">(promotes / leads to)</span> <span class="placeholder">&lt;outcome&gt;</span>. Moreover, another significant <span class="option">(advantage / cause)</span> is <span class="placeholder">&lt;point 2&gt;</span>, which strongly affects people's lives.</div>
+      </div>
+      <div class="template-section">
+        <div class="template-section-label">3 · Body Paragraph 2</div>
+        <div class="template-box">On the other hand, there are also <span class="option">(disadvantages / consequences)</span> associated with <span class="placeholder">&lt;topic&gt;</span>. A major <span class="option">(drawback / effect)</span> is <span class="placeholder">&lt;point 3&gt;</span>, which becomes more obvious in situations such as <span class="placeholder">&lt;example&gt;</span>. Furthermore, <span class="placeholder">&lt;point 4&gt;</span> <span class="option">(creates obstacles / causes further impact)</span>, influencing both individuals and society.</div>
+      </div>
+      <div class="template-section">
+        <div class="template-section-label">4 · Conclusion</div>
+        <div class="template-box">In conclusion, <span class="placeholder">&lt;topic&gt;</span> has <span class="option">(both advantages and disadvantages / significant causes and effects)</span> that must be considered carefully. Looking ahead, it is essential to focus on maximizing the benefits while reducing the drawbacks.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="template-pane" id="tpl-swt">
+    <div class="card">
+      <h3>Summarize Written Text (SWT)</h3>
+      <div class="text-sm text-muted" style="margin-bottom:16px;">One sentence only — never put a full stop in the middle.</div>
+      <div class="template-box" style="font-size:14px; line-height:2;">
+        <span class="placeholder">(Noun 1)</span> can be a major aspect that relates to modern society these days, so people must pay close attention to it; therefore, the importance of <span class="placeholder">(Noun 2)</span> must not be overlooked because <span class="placeholder">(Noun 3)</span> may affect <span class="placeholder">(Noun 4)</span>, and the text explains that <span class="placeholder">(Noun 5)</span> and <span class="placeholder">(Noun 6)</span> are very important.
+      </div>
+    </div>
+  </div>
+
+  <div class="template-pane" id="tpl-sst">
+    <div class="card">
+      <h3>Summarize Spoken Text (SST)</h3>
+      <div class="template-box" style="font-size:13.5px; line-height:2.2;">
+        The lecture was mainly about <span class="placeholder">[Main Topic]</span>. The speaker first discussed <span class="placeholder">[Noun 1]</span> and <span class="placeholder">[Noun 2]</span>, emphasizing their importance. In addition, <span class="placeholder">[Noun 3]</span> and <span class="placeholder">[Noun 4]</span> were highlighted as significant aspects. Moreover, the lecture mentioned <span class="placeholder">[Noun 5]</span>, along with <span class="placeholder">[Noun 6]</span> and <span class="placeholder">[Noun 7]</span>. Finally, it was concluded that <span class="placeholder">[Noun 8]</span> and <span class="placeholder">[Noun 9]</span> will have a positive influence.
+      </div>
+    </div>
+  </div>
+
+  <div class="template-pane" id="tpl-di">
+    <div class="card mb-16">
+      <h3>Describe Image (DI)</h3>
+      <div class="template-box" style="font-size:13.5px; line-height:2.4;">
+        1. The given image gives important information about <span class="placeholder">(topic)</span>.<br>
+        2. It points out key details and shows how different aspects are connected.<br>
+        3. The highest value is <span class="placeholder">(X)</span> and the lowest value is <span class="placeholder">(Y)</span>.<br>
+        4. There are different colours, such as <span class="placeholder">(—, — and —)</span>.<br>
+        5. In conclusion, this image was very informative.
+      </div>
+    </div>
+  </div>
+
+  <div class="template-pane" id="tpl-rl">
+    <div class="card">
+      <h3>Re-tell Lecture (RL)</h3>
+      <div class="template-box" style="font-size:13.5px; line-height:2.4;">
+        1. At the beginning of this lecture, the speaker was talking about <span class="placeholder">(_, _, and _)</span>.<br>
+        2. After that, the speaker mentioned that <span class="placeholder">(_ and _)</span> are very important.<br>
+        3. Then, the speaker gave an example of <span class="placeholder">(_ and _)</span>.<br>
+        4. From this lecture, I can hear <span class="placeholder">(_ and _)</span>.<br>
+        5. Overall, the lecture was very informative.
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════ PAGE 6: ESSAY BANK ══ -->
+<div class="page" id="page-essays">
+  <div class="section-title">Essay Bank Practice</div>
+  <div class="card" style="padding:0; overflow:hidden;">
+    <div class="essay-row" style="background:var(--surface2);">
+      <div class="text-xs text-muted font-mono">#</div>
+      <div class="section-title" style="margin:0; border:none;">Topic</div>
+      <div class="section-title" style="margin:0; border:none; display:none;">Type</div>
+      <div class="section-title" style="margin:0; border:none; display:none;">Day</div>
+    </div>
+    <div id="essay-list"></div>
+  </div>
+</div>
+
+<script>
+// ── DATA ──
+const weeks = [
+  {
+    num:1, label:"Week 1", dates:"Foundation", phase:"Foundation", phaseClass:"phase-foundation", note:"Build technique",
+    days:[
+      {date:"Day 1", day:"Mon", focus:"Writing", tasks:"Learn essay template; write Essay #1", time:"120m"},
+      {date:"Day 2", day:"Tue", focus:"Speaking", tasks:"Learn DI & RL templates; record & review", time:"120m"},
+      {date:"Day 3", day:"Wed", focus:"Write + Listen", tasks:"SWT technique; SST template", time:"120m"},
+      {date:"Day 4", day:"Thu", focus:"Listening", tasks:"WFD deep-dive (30); HIW; L-FIB", time:"120m"},
+      {date:"Day 5", day:"Fri", focus:"Reading", tasks:"RWFIB; R-FIB; Re-order", time:"120m"},
+      {date:"Day 6", day:"Sat", focus:"Practice", tasks:"Heavy practice: WFD, RS, RA, SWT", time:"240m"},
+      {date:"Day 7", day:"Sun", focus:"Review", tasks:"Self-review; re-do missed WFD/RS", time:"180m"},
+    ]
+  },
+  {
+    num:2, label:"Week 2", dates:"Foundation", phase:"Foundation", phaseClass:"phase-foundation", note:"Baseline mock",
+    days:[
+      {date:"Day 1", day:"Mon", focus:"Writing", tasks:"Essay #2; SWT; fix grammar", time:"120m"},
+      {date:"Day 2", day:"Tue", focus:"Speaking", tasks:"DI; RL; record & score fluency", time:"120m"},
+      {date:"Day 3", day:"Wed", focus:"Write + Listen", tasks:"Essay #3; SST; L-FIB", time:"120m"},
+      {date:"Day 4", day:"Thu", focus:"Listening", tasks:"WFD; HIW; HCS", time:"120m"},
+      {date:"Day 5", day:"Fri", focus:"Reading", tasks:"RWFIB; R-FIB; Re-order", time:"120m"},
+      {date:"Day 6", day:"Sat 🎯", focus:"MOCK", tasks:"BASELINE full scored mock", time:"240m"},
+      {date:"Day 7", day:"Sun", focus:"Review", tasks:"Deep-review baseline gaps", time:"180m"},
+    ]
+  },
+  {
+    num:3, label:"Week 3", dates:"Volume", phase:"Volume", phaseClass:"phase-volume", note:"Ramp up reps",
+    days:[
+      {date:"Day 1", day:"Mon", focus:"Writing", tasks:"Essay #4; SWT", time:"120m"},
+      {date:"Day 2", day:"Tue", focus:"Speaking", tasks:"DI; RL; RS accuracy drills", time:"120m"},
+      {date:"Day 3", day:"Wed", focus:"Write + Listen", tasks:"Essay #5; SST; L-FIB", time:"120m"},
+      {date:"Day 4", day:"Thu", focus:"Listening", tasks:"WFD +15; HIW; SST", time:"120m"},
+      {date:"Day 5", day:"Fri", focus:"Reading", tasks:"RWFIB; R-FIB; Re-order", time:"120m"},
+      {date:"Day 6", day:"Sat 🎯", focus:"MOCK", tasks:"Full scored mock #2", time:"240m"},
+      {date:"Day 7", day:"Sun", focus:"Review", tasks:"Review #2; fix weak tasks", time:"180m"},
+    ]
+  },
+  {
+    num:4, label:"Week 4", dates:"Volume", phase:"Volume", phaseClass:"phase-volume", note:"Sustain reps",
+    days:[
+      {date:"Day 1", day:"Mon", focus:"Writing", tasks:"Essay #6; SWT", time:"120m"},
+      {date:"Day 2", day:"Tue", focus:"Speaking", tasks:"Full Speaking section timed", time:"120m"},
+      {date:"Day 3", day:"Wed", focus:"Write + Listen", tasks:"Essay #7; SST; L-FIB", time:"120m"},
+      {date:"Day 4", day:"Thu", focus:"Listening", tasks:"WFD; HIW; HCS", time:"120m"},
+      {date:"Day 5", day:"Fri", focus:"Reading", tasks:"RWFIB; R-FIB; Re-order", time:"120m"},
+      {date:"Day 6", day:"Sat 🎯", focus:"MOCK", tasks:"Full scored mock #3", time:"240m"},
+      {date:"Day 7", day:"Sun", focus:"Review", tasks:"Turn weak tasks to templates", time:"180m"},
+    ]
+  },
+  {
+    num:5, label:"Week 5", dates:"Simulation", phase:"Simulation", phaseClass:"phase-simulation", note:"Timed sections",
+    days:[
+      {date:"Day 1", day:"Mon", focus:"Writing", tasks:"Essay #8 timed; SWT timed", time:"120m"},
+      {date:"Day 2", day:"Tue", focus:"Speaking", tasks:"Full Speaking under exam timing", time:"120m"},
+      {date:"Day 3", day:"Wed", focus:"Write + Listen", tasks:"Essay #9 timed; SST; WFD spelling", time:"120m"},
+      {date:"Day 4", day:"Thu", focus:"Listening", tasks:"Full Listening under exam timing", time:"120m"},
+      {date:"Day 5", day:"Fri", focus:"Reading", tasks:"Full Reading under exam timing", time:"120m"},
+      {date:"Day 6", day:"Sat 🎯", focus:"MOCK", tasks:"Full mock #4 — strict conditions", time:"240m"},
+      {date:"Day 7", day:"Sun", focus:"Review", tasks:"Lock routine; prep taper", time:"180m"},
+    ]
+  },
+  {
+    num:6, label:"Week 6", dates:"Taper", phase:"Taper", phaseClass:"phase-taper", note:"Final Polish",
+    days:[
+      {date:"Day 1", day:"Mon", focus:"Light", tasks:"Essay #10; Core LIGHT", time:"90m"},
+      {date:"Day 2", day:"Tue 🎯", focus:"MOCK", tasks:"Final Mock #5 (3+ days out)", time:"180m"},
+      {date:"Day 3", day:"Wed", focus:"Review", tasks:"Fix only fast wins; WFD/RS", time:"75m"},
+      {date:"Day 4", day:"Thu", focus:"Light", tasks:"WFD ×10; RS ×10; rest voice", time:"60m"},
+      {date:"Day 5", day:"Fri", focus:"Pre-exam", tasks:"Light WFD; 5 RA warmup; rest", time:"45m"},
+      {date:"Day 6", day:"Sat", focus:"EXAM", tasks:"Arrive early; test mic", time:"—"},
+      {date:"Day 7", day:"Sun", focus:"Buffer", tasks:"Rest", time:"—"},
+    ]
+  },
+];
+
+const essays = [
+  {num:"★1", topic:"Many people take part in dangerous sports despite the risks. Why do people take part, and how can these dangers be reduced?", type:"Causes & Solutions", day:"Mon Jun 8"},
+  {num:"★2", topic:"\"The only thing that interferes with my learning is education.\" (Einstein) — What did he mean, and do you agree?", type:"Agree / Disagree", day:"Mon Jun 15"},
+  {num:"3", topic:"Online learning is becoming far more common. Do its advantages outweigh its disadvantages?", type:"Adv vs Disadv", day:"Wed Jun 17"},
+  {num:"4", topic:"Some believe the world would be better with a single global language. Do the advantages outweigh the disadvantages?", type:"Adv vs Disadv", day:"Mon Jun 22"},
+  {num:"5", topic:"Some think children should start formal schooling very early. Discuss both views.", type:"Discuss both views", day:"Wed Jun 24"}
+];
+
+// ── ADJUSTABLE COUNTDOWN DATE ──
+function getExamDate() {
+  // Default to +6 weeks from now if not set
+  let savedDate = localStorage.getItem('pte_exam_date');
+  if (!savedDate) {
+    let d = new Date();
+    d.setDate(d.getDate() + 42); // +6 weeks
+    savedDate = d.toISOString().split('T')[0];
+    localStorage.setItem('pte_exam_date', savedDate);
+  }
+  return savedDate;
+}
+
+function updateCountdown() {
+  const dateStr = getExamDate();
+  const examDate = new Date(dateStr);
+  const today = new Date();
+  today.setHours(0,0,0,0);
+  examDate.setHours(0,0,0,0);
+  
+  const diff = Math.ceil((examDate - today) / (1000*60*60*24));
+  const textEl = document.getElementById('countdown-text');
+  
+  if (diff < 0) { 
+    textEl.textContent = '🎉 Exam passed!'; 
+    textEl.style.color = 'var(--green)'; 
+  } else if (diff === 0) { 
+    textEl.textContent = '🔥 EXAM TODAY'; 
+    textEl.style.color = 'var(--red)'; 
+  } else { 
+    textEl.textContent = `⏳ ${diff} days left`; 
+    textEl.style.color = 'var(--gold)';
+  }
+}
+
+// Modal controls
+function openDateModal() {
+  const modal = document.getElementById('dateModal');
+  const input = document.getElementById('examDateInput');
+  input.value = getExamDate();
+  modal.classList.add('active');
+}
+
+function closeDateModal() {
+  document.getElementById('dateModal').classList.remove('active');
+}
+
+function saveDate() {
+  const input = document.getElementById('examDateInput');
+  if (input.value) {
+    localStorage.setItem('pte_exam_date', input.value);
+    updateCountdown();
+    closeDateModal();
+  }
+}
+
+updateCountdown(); // Initial run
+
+// ── NAV ──
+function showPage(id) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+  document.getElementById('page-'+id).classList.add('active');
+  event.target.classList.add('active');
+  window.scrollTo(0,0);
+}
+
+// ── WEEKS ──
+function buildWeeks() {
+  const container = document.getElementById('weeks-container');
+  weeks.forEach((w, wi) => {
+    const div = document.createElement('div');
+    div.className = 'week-block' + (wi === 0 ? ' open' : '');
+    div.innerHTML = `
+      <div class="week-header" onclick="toggleWeek(this)">
+        <div style="display:flex; align-items:center; gap:10px;">
+          <span class="week-title">${w.label}</span>
+          <span class="phase-block ${w.phaseClass}" style="padding:4px 10px; font-size:11px;">${w.phase}</span>
+        </div>
+        <div class="week-meta">
+          <span class="text-xs text-muted">${w.note}</span>
+        </div>
+        <div class="week-chevron">▼</div>
+      </div>
+      <div class="week-days">
+        ${w.days.map(d => {
+          return `<div class="day-row">
+            <div class="day-date font-mono">${d.date}</div>
+            <div class="day-name">${d.day}</div>
+            <div class="day-focus"><strong>${d.focus}</strong></div>
+            <div class="day-tasks">${d.tasks}</div>
+            <div class="day-time">${d.time}</div>
+          </div>`;
+        }).join('')}
+      </div>`;
+    container.appendChild(div);
+  });
+}
+function toggleWeek(header) { header.parentElement.classList.toggle('open'); }
+buildWeeks();
+
+// ── CHECKLIST ──
+const checklistData = [
+  { week: "Week 1", drills: ["WFD ×20","RS ×20","RA ×10","Spell check"] },
+  { week: "Week 2", drills: ["WFD ×20","RS ×20","RA ×10","Spell check"] },
+  { week: "Week 3", drills: ["WFD ×25","RS ×25","RA ×12","Spell check"] },
+  { week: "Week 4", drills: ["WFD ×25","RS ×25","RA ×12","Spell check"] },
+  { week: "Week 5", drills: ["WFD ×25","RS ×25","RA ×12","Spell check"] },
+  { week: "Week 6", drills: ["WFD ×15","RS ×15","RA ×8","Spell check"] },
+];
+const drillColors = { "WFD ×20":"var(--listening-col)","WFD ×25":"var(--listening-col)","WFD ×15":"var(--listening-col)", "RS ×20":"var(--speaking-col)","RS ×25":"var(--speaking-col)","RS ×15":"var(--speaking-col)", "RA ×10":"var(--reading-col)","RA ×12":"var(--reading-col)","RA ×8":"var(--reading-col)", "Spell check":"var(--gold)" };
+const checkState = {};
+
+function buildChecklist() {
+  const container = document.getElementById('checklist-container');
+  checklistData.forEach((wk, wi) => {
+    const wkDiv = document.createElement('div');
+    wkDiv.className = 'checklist-week';
+    const drillsGrid = wk.drills.map((drill, di) => {
+      const color = drillColors[drill] || 'var(--accent)';
+      const cells = Array.from({length:7}).map((_, dayI) => {
+        const key = `${wi}-${di}-${dayI}`;
+        return `<div class="check-cell" id="cell-${key}" onclick="toggleCheck('${key}')"></div>`;
+      }).join('');
+      return `
+        <div class="checklist-row-label" style="color:${color};">
+          <div style="width:8px;height:8px;border-radius:50%;background:${color};flex-shrink:0;"></div>
+          ${drill}
+        </div>
+        ${cells}`;
+    }).join('');
+
+    const dayHeaders = ['M','T','W','T','F','S','S'].map(d => `<div class="checklist-day-header">${d}</div>`).join('');
+
+    wkDiv.innerHTML = `
+      <div class="checklist-header">
+        <div class="checklist-week-label">${wk.week}</div>
+        <div class="checklist-progress" id="progress-${wi}">0 / ${wk.drills.length * 7}</div>
+      </div>
+      <div class="checklist-grid">
+        <div></div>${dayHeaders}
+        ${drillsGrid}
+      </div>`;
+    container.appendChild(wkDiv);
+  });
+  loadCheckState();
+}
+
+function toggleCheck(key) {
+  const el = document.getElementById('cell-' + key);
+  if (!el) return;
+  el.classList.toggle('checked');
+  el.textContent = el.classList.contains('checked') ? '✓' : '';
+  checkState[key] = el.classList.contains('checked');
+  try { localStorage.setItem('pte_checks', JSON.stringify(checkState)); } catch(e){}
+  updateProgress();
+}
+
+function loadCheckState() {
+  try {
+    const saved = JSON.parse(localStorage.getItem('pte_checks') || '{}');
+    Object.assign(checkState, saved);
+    Object.keys(checkState).forEach(key => {
+      if (checkState[key]) {
+        const el = document.getElementById('cell-' + key);
+        if (el) { el.classList.add('checked'); el.textContent = '✓'; }
+      }
+    });
+  } catch(e) {}
+  updateProgress();
+}
+
+function updateProgress() {
+  checklistData.forEach((wk, wi) => {
+    let count = 0; const total = wk.drills.length * 7;
+    for (let di = 0; di < wk.drills.length; di++) {
+      for (let dayI = 0; dayI < 7; dayI++) { if (checkState[`${wi}-${di}-${dayI}`]) count++; }
+    }
+    const el = document.getElementById('progress-' + wi);
+    if (el) el.textContent = `${count} / ${total}`;
+  });
+}
+buildChecklist();
+
+// ── ESSAYS ──
+function buildEssays() {
+  const container = document.getElementById('essay-list');
+  essays.forEach(e => {
+    const row = document.createElement('div');
+    row.className = 'essay-row';
+    row.innerHTML = `<div class="essay-num">${e.num.replace('★','<span class="essay-star">★</span>')}</div><div>${e.topic}</div>`;
+    container.appendChild(row);
+  });
+}
+buildEssays();
+
+// ── TEMPLATES ──
+function showTemplate(id) {
+  document.querySelectorAll('.template-pane').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.template-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('tpl-' + id).classList.add('active');
+  event.target.classList.add('active');
+}
+
+// ── MOCK SCORE INPUTS ──
+function updateMockInput(input, target) {
+  const val = parseInt(input.value);
+  if (!isNaN(val) && val > 0) {
+    input.classList.add('filled');
+    if (val >= target) { input.style.color = 'var(--green)'; input.style.borderColor = 'var(--green)'; }
+    else if (val >= target - 5) { input.style.color = 'var(--gold)'; input.style.borderColor = 'var(--gold)'; }
+    else { input.style.color = 'var(--red)'; input.style.borderColor = 'var(--red)'; }
+  }
+}
+</script>
+</body>
+</html>
