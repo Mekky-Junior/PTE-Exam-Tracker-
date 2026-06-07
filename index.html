@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<!-- Viewport setting for mobile & PWA -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
 <title>PTE Academic — 6-Week Targeted Study Plan</title>
 
@@ -9,6 +10,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="PTE Plan">
+<!-- Generic high-res icon for iPhone Home Screen -->
 <link rel="apple-touch-icon" href="https://ui-avatars.com/api/?name=PTE&background=6c8cff&color=fff&size=512&font-size=0.4&bold=true">
 
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@300;400;500&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
@@ -25,6 +27,7 @@
     --accent: #6c8cff;
     --accent2: #4066f5;
     --gold: #f5c842;
+    --gold2: #e0a800;
     --green: #3dd68c;
     --red: #ff6b6b;
     --orange: #ff9f43;
@@ -51,6 +54,7 @@
     padding-bottom: env(safe-area-inset-bottom);
   }
 
+  /* ── NAV ── */
   nav {
     position: sticky; top: 0; z-index: 100;
     background: rgba(13,15,20,0.92);
@@ -86,10 +90,12 @@
   }
   .countdown-badge:hover { background: var(--border); border-color: var(--accent); }
 
+  /* ── PAGES ── */
   .page { display: none; padding: 32px; max-width: 1200px; margin: 0 auto; }
   .page.active { display: block; animation: fadeIn 0.3s ease; }
   @keyframes fadeIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
 
+  /* ── SECTION HEADER ── */
   .section-title {
     font-family: 'Syne', sans-serif; font-weight: 800;
     font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase;
@@ -99,20 +105,29 @@
   h2 { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 22px; color: var(--text); margin-bottom: 6px; }
   h3 { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 14px; color: var(--text); margin-bottom: 10px; }
 
+  /* ── GRID LAYOUTS ── */
   .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
   .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
-  .card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 20px; }
+  .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
 
+  /* ── CARD ── */
+  .card {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 12px; padding: 20px;
+  }
+
+  /* ── TARGET SCORE CARDS ── */
   .target-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 12px; margin-bottom: 24px; }
   .target-card {
     border-radius: 12px; padding: 18px 16px;
-    border: 1px solid var(--border); position: relative; overflow: hidden; background: var(--surface);
+    border: 1px solid var(--border); position: relative; overflow: hidden;
   }
   .target-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; }
   .target-card.speaking::before { background: var(--speaking-col); }
   .target-card.writing::before { background: var(--writing-col); }
   .target-card.reading::before { background: var(--reading-col); }
   .target-card.listening::before { background: var(--listening-col); }
+  .target-card { background: var(--surface); }
   .target-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text3); font-weight: 600; margin-bottom: 4px; }
   .target-score { font-family: 'Syne', sans-serif; font-size: 42px; font-weight: 800; line-height: 1; }
   .target-card.speaking .target-score { color: var(--speaking-col); }
@@ -120,28 +135,41 @@
   .target-card.reading .target-score { color: var(--reading-col); }
   .target-card.listening .target-score { color: var(--listening-col); }
   .target-desc { font-size: 12px; color: var(--text3); margin-top: 4px; }
+  .target-bar-bg { height: 4px; background: var(--border); border-radius: 2px; margin-top: 10px; }
+  .target-bar { height: 4px; border-radius: 2px; }
+  .target-card.speaking .target-bar { background: var(--speaking-col); }
+  .target-card.writing .target-bar { background: var(--writing-col); }
+  .target-card.reading .target-bar { background: var(--reading-col); }
+  .target-card.listening .target-bar { background: var(--listening-col); }
 
+  /* ── CROSS SCORING TABLE ── */
   .cross-table { width: 100%; border-collapse: collapse; }
   .cross-table th {
-    text-align: left; font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em;
-    color: var(--text3); font-weight: 600; padding: 8px 10px; border-bottom: 1px solid var(--border);
+    text-align: left; font-size: 11px; text-transform: uppercase;
+    letter-spacing: 0.08em; color: var(--text3); font-weight: 600;
+    padding: 8px 10px; border-bottom: 1px solid var(--border);
   }
   .cross-table td { padding: 10px 10px; font-size: 13px; border-bottom: 1px solid var(--border); vertical-align: middle; }
   .cross-table tr:hover td { background: var(--surface2); }
   .skill-badge {
-    display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 600; margin: 1px;
+    display: inline-block; padding: 2px 8px; border-radius: 4px;
+    font-size: 11px; font-weight: 600; margin: 1px;
   }
   .badge-sp { background: rgba(167,139,250,0.15); color: var(--speaking-col); border: 1px solid rgba(167,139,250,0.3); }
   .badge-wr { background: rgba(108,140,255,0.15); color: var(--writing-col); border: 1px solid rgba(108,140,255,0.3); }
   .badge-rd { background: rgba(61,214,140,0.15); color: var(--reading-col); border: 1px solid rgba(61,214,140,0.3); }
   .badge-li { background: rgba(45,212,191,0.15); color: var(--listening-col); border: 1px solid rgba(45,212,191,0.3); }
-  .p-tag { display: inline-flex; align-items: center; font-size: 11px; font-weight: 700; padding: 2px 10px; border-radius: 20px; white-space: nowrap; }
+  .p-tag {
+    display: inline-flex; align-items: center; font-size: 11px;
+    font-weight: 700; padding: 2px 10px; border-radius: 20px; white-space: nowrap;
+  }
   .p-top { background: rgba(255,107,107,0.15); color: var(--top); border: 1px solid rgba(255,107,107,0.3); }
   .p-high { background: rgba(255,159,67,0.15); color: var(--high); border: 1px solid rgba(255,159,67,0.3); }
   .p-medhigh { background: rgba(245,200,66,0.15); color: var(--medhigh); border: 1px solid rgba(245,200,66,0.3); }
   .p-med { background: rgba(61,214,140,0.15); color: var(--med); border: 1px solid rgba(61,214,140,0.3); }
   .p-low { background: rgba(144,153,181,0.15); color: var(--low); border: 1px solid rgba(144,153,181,0.3); }
 
+  /* ── WEEKLY PLAN ── */
   .week-phase-bar { display: grid; grid-template-columns: repeat(6,1fr); gap: 4px; margin-bottom: 20px; }
   .phase-block { border-radius: 8px; padding: 10px 12px; font-size: 11px; font-weight: 600; text-align: center; }
   .phase-foundation { background: rgba(108,140,255,0.12); color: var(--accent); border: 1px solid rgba(108,140,255,0.25); }
@@ -175,13 +203,20 @@
   .day-tasks { font-size: 12px; color: var(--text3); line-height: 1.6; }
   .day-time { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--text3); }
   .mock-badge {
-    display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 700;
-    background: rgba(245,200,66,0.15); color: var(--gold); border: 1px solid rgba(245,200,66,0.3);
+    display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 11px;
+    font-weight: 700; background: rgba(245,200,66,0.15); color: var(--gold);
+    border: 1px solid rgba(245,200,66,0.3);
+  }
+  .exam-badge {
+    display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 11px;
+    font-weight: 700; background: rgba(255,107,107,0.15); color: var(--red);
+    border: 1px solid rgba(255,107,107,0.3);
   }
 
+  /* ── DAILY DRILLS ── */
   .drill-card {
-    background: var(--surface); border: 1px solid var(--border); border-radius: 12px;
-    padding: 16px 20px; display: flex; align-items: center; gap: 16px; margin-bottom: 10px;
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 12px; padding: 16px 20px; display: flex; align-items: center; gap: 16px; margin-bottom: 10px;
   }
   .drill-icon { width: 44px; height: 44px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 20px; flex-shrink: 0; }
   .drill-info { flex: 1; }
@@ -190,24 +225,13 @@
   .drill-detail { font-size: 12px; color: var(--text3); }
   .drill-time { font-family: 'DM Mono', monospace; font-size: 20px; font-weight: 500; color: var(--text); text-align: right; }
   .drill-min { font-size: 11px; color: var(--text3); }
+
   .volume-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 20px; }
   .vol-card { background: var(--surface2); border: 1px solid var(--border); border-radius: 10px; padding: 14px; text-align: center; }
   .vol-num { font-family: 'Syne', sans-serif; font-size: 24px; font-weight: 800; color: var(--accent); }
   .vol-label { font-size: 11px; color: var(--text3); margin-top: 2px; }
 
-  .checklist-week { margin-bottom: 20px; }
-  .checklist-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; }
-  .checklist-week-label { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 13px; }
-  .checklist-progress { font-size: 11px; color: var(--text3); font-family: 'DM Mono', monospace; }
-  .checklist-grid { display: grid; grid-template-columns: 160px repeat(7, 1fr); gap: 4px; }
-  .checklist-day-header { text-align: center; font-size: 10px; color: var(--text3); font-family: 'DM Mono', monospace; padding: 4px; font-weight: 600; }
-  .checklist-row-label { font-size: 12px; color: var(--text2); display: flex; align-items: center; gap: 6px; padding: 4px 0; }
-  .check-cell {
-    width: 100%; aspect-ratio: 1; border-radius: 6px; display: flex; align-items: center; justify-content: center;
-    cursor: pointer; background: var(--surface2); border: 1px solid var(--border); transition: all 0.15s; font-size: 14px; user-select: none;
-  }
-  .check-cell.checked { background: rgba(61,214,140,0.15); border-color: var(--green); color: var(--green); }
-
+  /* ── MOCK LOG ── */
   .mock-timeline { display: flex; flex-direction: column; gap: 0; position: relative; }
   .mock-timeline::before { content: ''; position: absolute; left: 20px; top: 0; bottom: 0; width: 2px; background: var(--border); }
   .mock-row { display: grid; grid-template-columns: 44px 1fr; gap: 16px; align-items: start; padding: 12px 0; position: relative; }
@@ -224,7 +248,6 @@
   .mock-score-row { display: grid; grid-template-columns: repeat(4,1fr); gap: 8px; }
   .mock-score-cell { text-align: center; }
   .mock-score-cell .skill-name { font-size: 10px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text3); margin-bottom: 2px; }
-  
   .mock-score-input {
     width: 100%; padding: 6px 8px; background: var(--surface2); border: 1px solid var(--border2); border-radius: 6px;
     color: var(--text); font-family: 'DM Mono', monospace; font-size: 16px; text-align: center; outline: none; transition: border 0.2s;
@@ -233,24 +256,47 @@
   .mock-score-input.filled { border-color: var(--green); color: var(--green); }
   .target-line { font-size: 10px; color: var(--text3); margin-top: 3px; }
 
+  /* ── TEMPLATES & TIPS ── */
   .template-nav { display: flex; gap: 6px; margin-bottom: 20px; flex-wrap: wrap; }
   .template-btn {
-    padding: 7px 14px; border-radius: 20px; font-size: 13px; font-weight: 500; cursor: pointer;
-    border: 1px solid var(--border2); background: var(--surface); color: var(--text2); transition: all 0.2s; font-family: inherit;
+    padding: 7px 14px; border-radius: 20px; font-size: 13px; font-weight: 500;
+    cursor: pointer; border: 1px solid var(--border2); background: var(--surface);
+    color: var(--text2); transition: all 0.2s; font-family: inherit;
   }
   .template-btn:hover { background: var(--surface2); color: var(--text); }
   .template-btn.active { background: var(--accent2); color: #fff; border-color: var(--accent); }
   .template-pane { display: none; }
   .template-pane.active { display: block; animation: fadeIn 0.3s; }
   .template-box {
-    background: var(--surface2); border: 1px solid var(--border2); border-radius: 10px;
-    padding: 18px 20px; font-size: 13px; line-height: 1.8; color: var(--text2);
+    background: var(--surface2); border: 1px solid var(--border2);
+    border-radius: 10px; padding: 18px 20px; font-size: 13px; line-height: 1.8; color: var(--text2); position: relative;
   }
   .template-box .placeholder { color: var(--accent); font-weight: 600; }
   .template-box .option { color: var(--gold); font-style: italic; }
   .template-section { margin-bottom: 16px; }
   .template-section-label { font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text3); font-weight: 600; margin-bottom: 6px; font-family: 'DM Mono', monospace; }
+  .tip-box { background: rgba(108,140,255,0.07); border: 1px solid rgba(108,140,255,0.2); border-radius: 8px; padding: 10px 14px; font-size: 12px; color: var(--text2); margin-top: 10px; display: flex; gap: 8px; align-items: flex-start; }
+  .tip-icon { color: var(--accent); flex-shrink: 0; }
+  .warning-box { background: rgba(255,159,67,0.07); border: 1px solid rgba(255,159,67,0.2); border-radius: 8px; padding: 10px 14px; font-size: 12px; color: var(--orange); margin-bottom: 14px; display: flex; gap: 8px; align-items: flex-start; }
+  
+  .tips-grid { display: grid; grid-template-columns: 1fr; gap: 16px; }
+  @media(min-width: 768px) { .tips-grid { grid-template-columns: 1fr 1fr; } }
+  .tip-card { background: var(--surface2); border: 1px solid var(--border2); border-radius: 10px; padding: 16px; }
+  .tip-card h4 { color: var(--text); font-size: 14px; margin-bottom: 10px; font-family: 'Syne', sans-serif; display:flex; align-items:center; gap:8px; }
+  .tip-list { list-style: none; }
+  .tip-list li { font-size: 13px; color: var(--text2); margin-bottom: 8px; padding-left: 20px; position: relative; line-height: 1.5; }
+  .tip-list li::before { content: '→'; position: absolute; left: 0; color: var(--accent); font-weight: bold; }
+  .highlight-rule { background: rgba(61,214,140,0.1); border: 1px solid rgba(61,214,140,0.3); border-radius: 6px; padding: 10px 14px; margin: 8px 0; color: var(--green); font-size: 13px; line-height:1.6; }
 
+  /* ── ESSAY BANK ── */
+  .essay-row { display: grid; grid-template-columns: 32px 1fr 120px 130px; gap: 12px; padding: 12px 16px; border-bottom: 1px solid var(--border); align-items: center; font-size: 13px; transition: background 0.15s; }
+  .essay-row:last-child { border-bottom: none; }
+  .essay-num { font-family: 'DM Mono', monospace; font-size: 12px; color: var(--text3); }
+  .essay-star { color: var(--gold); }
+  .essay-type-badge { display: inline-block; padding: 3px 8px; border-radius: 4px; font-size: 11px; font-weight: 600; background: var(--surface2); color: var(--text3); border: 1px solid var(--border); }
+  .essay-date { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--text3); }
+
+  /* ── STRATEGY OVERVIEW ── */
   .strategy-intro { background: linear-gradient(135deg, rgba(108,140,255,0.08) 0%, rgba(167,139,250,0.06) 100%); border: 1px solid rgba(108,140,255,0.2); border-radius: 14px; padding: 24px; margin-bottom: 24px; }
   .strategy-intro p { font-size: 14px; color: var(--text2); line-height: 1.8; }
   .time-allocation { display: flex; height: 28px; border-radius: 6px; overflow: hidden; margin: 16px 0 8px; border: 1px solid var(--border); }
@@ -261,15 +307,32 @@
   .time-low { background: rgba(144,153,181,0.25); color: var(--text3); flex: 1; font-size: 10px; }
   .allocation-label { font-size: 11px; color: var(--text3); }
 
+  /* ── CHECKLIST TRACKER ── */
+  .checklist-week { margin-bottom: 20px; }
+  .checklist-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; }
+  .checklist-week-label { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 13px; }
+  .checklist-progress { font-size: 11px; color: var(--text3); font-family: 'DM Mono', monospace; }
+  .checklist-grid { display: grid; grid-template-columns: 160px repeat(7, 1fr); gap: 4px; }
+  .checklist-day-header { text-align: center; font-size: 10px; color: var(--text3); font-family: 'DM Mono', monospace; padding: 4px; font-weight: 600; }
+  .checklist-row-label { font-size: 12px; color: var(--text2); display: flex; align-items: center; gap: 6px; padding: 4px 0; }
+  .check-cell {
+    width: 100%; aspect-ratio: 1; border-radius: 6px; display: flex; align-items: center; justify-content: center;
+    cursor: pointer; background: var(--surface2); border: 1px solid var(--border); transition: all 0.15s; font-size: 14px; user-select: none;
+  }
+  .check-cell.checked { background: rgba(61,214,140,0.15); border-color: var(--green); color: var(--green); }
+
+  /* ── AUTO-ADJUST RULES ── */
   .rule-card { background: var(--surface2); border-left: 3px solid var(--border2); border-radius: 0 8px 8px 0; padding: 10px 14px; margin-bottom: 8px; font-size: 13px; color: var(--text2); line-height: 1.6; }
   .rule-card.red { border-left-color: var(--red); }
   .rule-card.green { border-left-color: var(--green); }
   .rule-card.orange { border-left-color: var(--orange); }
 
+  /* ── DATE MODAL ── */
   .modal-overlay {
     display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
     background: rgba(0,0,0,0.8); backdrop-filter: blur(5px); -webkit-backdrop-filter: blur(5px);
-    z-index: 1000; align-items: center; justify-content: center; padding: 20px; opacity: 0; transition: opacity 0.3s ease;
+    z-index: 1000; align-items: center; justify-content: center; padding: 20px;
+    opacity: 0; transition: opacity 0.3s ease;
   }
   .modal-overlay.active { display: flex; opacity: 1; }
   .date-picker-input {
@@ -278,13 +341,7 @@
   }
   .date-picker-input:focus { border-color: var(--accent); outline: none; }
 
-  .essay-row { display: grid; grid-template-columns: 32px 1fr 120px 130px; gap: 12px; padding: 12px 16px; border-bottom: 1px solid var(--border); align-items: center; font-size: 13px; transition: background 0.15s; }
-  .essay-row:last-child { border-bottom: none; }
-  .essay-num { font-family: 'DM Mono', monospace; font-size: 12px; color: var(--text3); }
-  .essay-star { color: var(--gold); }
-  .essay-type-badge { display: inline-block; padding: 3px 8px; border-radius: 4px; font-size: 11px; font-weight: 600; background: var(--surface2); color: var(--text3); border: 1px solid var(--border); }
-  .essay-date { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--text3); }
-
+  /* ── MISC ── */
   .divider { height: 1px; background: var(--border); margin: 24px 0; }
   .mb-16 { margin-bottom: 16px; }
   .mb-24 { margin-bottom: 24px; }
@@ -294,17 +351,18 @@
   .text-muted { color: var(--text3); }
   .font-mono { font-family: 'DM Mono', monospace; }
 
+  /* ── RESPONSIVE MOBILE ── */
   @media (max-width: 768px) {
     nav { padding: env(safe-area-inset-top) 12px 0; overflow-x: auto; -webkit-overflow-scrolling: touch; }
     .nav-logo { display: none; }
     .page { padding: 16px; }
     .target-grid { grid-template-columns: repeat(2,1fr); }
-    .grid-2, .grid-3 { grid-template-columns: 1fr; }
+    .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
     .day-row { grid-template-columns: 80px 1fr; }
     .day-tasks, .day-time { display: none; }
     .essay-row { grid-template-columns: 32px 1fr; }
     .essay-type-badge, .essay-date { display: none; }
-    .checklist-grid { grid-template-columns: 90px repeat(7, 1fr); gap: 2px; }
+    .checklist-grid { grid-template-columns: 80px repeat(7, 1fr); gap: 2px; }
     .checklist-row-label { font-size: 10px; }
   }
 </style>
@@ -318,7 +376,7 @@
     <button class="nav-tab" onclick="showPage('plan')">6-Week Plan</button>
     <button class="nav-tab" onclick="showPage('drills')">Daily Drills</button>
     <button class="nav-tab" onclick="showPage('mocks')">Mocks</button>
-    <button class="nav-tab" onclick="showPage('templates')">Templates</button>
+    <button class="nav-tab" onclick="showPage('templates')">Templates & Tips</button>
     <button class="nav-tab" onclick="showPage('essays')">Essay Bank</button>
   </div>
   <div class="nav-right">
@@ -329,6 +387,7 @@
   </div>
 </nav>
 
+<!-- DATE MODAL -->
 <div class="modal-overlay" id="dateModal">
   <div class="card" style="width: 100%; max-width: 360px;">
     <h3>Set Your Exam Date</h3>
@@ -341,6 +400,7 @@
   </div>
 </div>
 
+<!-- ══════════════════════════════════════════ PAGE 1: STRATEGY ══ -->
 <div class="page active" id="page-strategy">
   <div style="margin-bottom:28px;">
     <div class="section-title">Targets · Strategy Overview</div>
@@ -373,7 +433,7 @@
   </div>
 
   <div class="strategy-intro mb-24">
-    <div class="section-title">Core Strategy (GrowSkills Scoring)</div>
+    <div class="section-title">Core Strategy</div>
     <p>PTE uses <strong>integrated (cross) scoring</strong> — one spoken or typed answer earns marks in two skills at once. Your two highest targets (Speaking 88 and Writing 85) are driven by tasks that <strong>also feed</strong> Reading and Listening. Over-invest in a handful of cross-scored "super-tasks" and the lower targets rise almost for free.</p>
     <div style="margin-top:16px;">
       <div class="allocation-label" style="margin-bottom:6px;">Where the study time goes (approximate)</div>
@@ -397,51 +457,45 @@
               <th style="width:180px;">Task</th>
               <th>Skills Scored</th>
               <th>Priority</th>
-              <th>Why it matters (GrowSkills Marks)</th>
+              <th>Why it matters</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td><strong>Summarize Written Text (SWT)</strong></td>
-              <td><span class="skill-badge badge-wr">Writing</span><span class="skill-badge badge-rd">Reading</span></td>
-              <td><span class="p-tag p-top">TOP</span></td>
-              <td class="text-sm text-muted"><strong>45 Marks.</strong> Highest value task on the test. 1-2 per day is mandatory.</td>
-            </tr>
-            <tr>
               <td><strong>Write from Dictation (WFD)</strong></td>
               <td><span class="skill-badge badge-li">Listening</span><span class="skill-badge badge-wr">Writing</span></td>
               <td><span class="p-tag p-top">TOP</span></td>
-              <td class="text-sm text-muted"><strong>32 Marks.</strong> Your biggest lever for Listening & Writing.</td>
+              <td class="text-sm text-muted">32 Marks. Your #1 lever. Most writing points lost here.</td>
             </tr>
             <tr>
               <td><strong>Repeat Sentence (RS)</strong></td>
               <td><span class="skill-badge badge-sp">Speaking</span><span class="skill-badge badge-li">Listening</span></td>
               <td><span class="p-tag p-top">TOP</span></td>
-              <td class="text-sm text-muted"><strong>29 Marks.</strong> Drives Speaking 88 and pulls Listening up.</td>
+              <td class="text-sm text-muted">29 Marks. Drives Speaking 88 and pulls Listening to 69.</td>
             </tr>
             <tr>
-              <td><strong>Describe Image (DI) & Essay</strong></td>
-              <td><span class="skill-badge badge-sp">Spk</span> / <span class="skill-badge badge-wr">Wrt</span></td>
+              <td><strong>Summarize Written Text (SWT)</strong></td>
+              <td><span class="skill-badge badge-wr">Writing</span><span class="skill-badge badge-rd">Reading</span></td>
+              <td><span class="p-tag p-top">TOP</span></td>
+              <td class="text-sm text-muted">45 Marks. One perfect sentence scores massive Writing + Reading.</td>
+            </tr>
+            <tr>
+              <td><strong>R&W Fill in Blanks (Dropdown)</strong></td>
+              <td><span class="skill-badge badge-rd">Reading</span><span class="skill-badge badge-wr">Writing</span></td>
               <td><span class="p-tag p-high">HIGH</span></td>
-              <td class="text-sm text-muted"><strong>28 Marks each.</strong> Completely template-driven. Easy points.</td>
+              <td class="text-sm text-muted">25 Marks. Huge boost for reading and writing through grammar.</td>
             </tr>
             <tr>
-              <td><strong>SST & RWFIB (Dropdown)</strong></td>
-              <td><span class="skill-badge badge-li">Lis</span> / <span class="skill-badge badge-rd">Read</span></td>
+              <td><strong>Summarize Spoken Text (SST)</strong></td>
+              <td><span class="skill-badge badge-li">Listening</span><span class="skill-badge badge-wr">Writing</span></td>
               <td><span class="p-tag p-high">HIGH</span></td>
-              <td class="text-sm text-muted"><strong>26 & 25 Marks.</strong> Core drivers for Reading and Listening.</td>
+              <td class="text-sm text-muted">26 Marks. 50-70 words. Fully template-able points.</td>
             </tr>
             <tr>
-              <td><strong>Re-tell Lecture (RL) & HIW</strong></td>
-              <td><span class="skill-badge badge-sp">Spk</span> / <span class="skill-badge badge-li">Lis</span></td>
-              <td><span class="p-tag p-medhigh">MED-HIGH</span></td>
-              <td class="text-sm text-muted"><strong>23 & 19 Marks.</strong> High value, requires focused practice days.</td>
-            </tr>
-            <tr>
-              <td><strong>All MCQs, ASQ, SMW, HCS</strong></td>
-              <td><span class="skill-badge badge-rd">Read</span> / <span class="skill-badge badge-li">Lis</span></td>
-              <td><span class="p-tag p-low">LOW</span></td>
-              <td class="text-sm text-muted"><strong>< 4 Marks each.</strong> 15 mins a week total. Do not waste time here.</td>
+              <td><strong>Describe Image & Re-tell Lecture</strong></td>
+              <td><span class="skill-badge badge-sp">Speaking</span><span class="skill-badge badge-li">Listening</span></td>
+              <td><span class="p-tag p-high">HIGH</span></td>
+              <td class="text-sm text-muted">28 & 23 Marks. Easy speaking points if you use templates and never pause.</td>
             </tr>
           </tbody>
         </table>
@@ -450,8 +504,9 @@
   </div>
 </div>
 
+<!-- ══════════════════════════════════════════ PAGE 2: 6-WEEK PLAN ══ -->
 <div class="page" id="page-plan">
-  <div class="section-title">6-Week Realistic Study Overview</div>
+  <div class="section-title">6-Week Study Overview</div>
   <div class="week-phase-bar" style="overflow-x:auto; white-space:nowrap; display:flex;">
     <div class="phase-block phase-foundation" style="flex:1; min-width:80px;"><div class="phase-label">Week 1</div><div class="phase-name">Foundation</div></div>
     <div class="phase-block phase-foundation" style="flex:1; min-width:80px;"><div class="phase-label">Week 2</div><div class="phase-name">Foundation</div></div>
@@ -460,82 +515,99 @@
     <div class="phase-block phase-simulation" style="flex:1; min-width:80px;"><div class="phase-label">Week 5</div><div class="phase-name">Simulation</div></div>
     <div class="phase-block phase-taper" style="flex:1; min-width:80px;"><div class="phase-label">Week 6</div><div class="phase-name">Taper</div></div>
   </div>
+
   <div id="weeks-container"></div>
 </div>
 
+<!-- ══════════════════════════════════════════ PAGE 3: DAILY DRILLS ══ -->
 <div class="page" id="page-drills">
-  <div class="section-title">The Daily Core — Do these EVERY day without fail</div>
-
+  <div class="section-title">The Daily Core — Do these EVERY day</div>
   <div class="mb-24">
     <div class="drill-card">
       <div class="drill-icon" style="background:rgba(45,212,191,0.1);">✍️</div>
       <div class="drill-info">
         <div class="drill-name">Write from Dictation (WFD)</div>
-        <div class="drill-skills"><span class="skill-badge badge-li">Listening</span><span class="skill-badge badge-wr">Writing</span><span class="p-tag p-top" style="font-size:10px; padding:1px 7px;">32 Marks</span></div>
-        <div class="drill-detail">Wks 1-2: ×20/day &nbsp;·&nbsp; Wks 3-5: ×25/day &nbsp;·&nbsp; Wk 6: ×15/day. Focus on spelling and plurals.</div>
+        <div class="drill-skills"><span class="skill-badge badge-li">Listening</span><span class="skill-badge badge-wr">Writing</span></div>
+        <div class="drill-detail">Wks 1-2: ×20 &nbsp;·&nbsp; Wks 3-5: ×25 &nbsp;·&nbsp; Wk 6: ×15. Initials method + check plurals/spelling.</div>
       </div>
-      <div class="drill-time">20<span class="drill-min"> min</span></div>
+      <div class="drill-time">25<span class="drill-min">m</span></div>
     </div>
-    
     <div class="drill-card">
       <div class="drill-icon" style="background:rgba(167,139,250,0.1);">🗣️</div>
       <div class="drill-info">
         <div class="drill-name">Repeat Sentence (RS)</div>
-        <div class="drill-skills"><span class="skill-badge badge-sp">Speaking</span><span class="skill-badge badge-li">Listening</span><span class="p-tag p-top" style="font-size:10px; padding:1px 7px;">29 Marks</span></div>
-        <div class="drill-detail">Wks 1-2: ×20/day &nbsp;·&nbsp; Wks 3-5: ×25/day &nbsp;·&nbsp; Wk 6: ×15/day. Maintain fluency over perfect words.</div>
+        <div class="drill-skills"><span class="skill-badge badge-sp">Speaking</span><span class="skill-badge badge-li">Listening</span></div>
+        <div class="drill-detail">Wks 1-2: ×20 &nbsp;·&nbsp; Wks 3-5: ×25 &nbsp;·&nbsp; Wk 6: ×15. Fluency over accuracy. Never pause.</div>
       </div>
-      <div class="drill-time">15<span class="drill-min"> min</span></div>
+      <div class="drill-time">20<span class="drill-min">m</span></div>
     </div>
-    
     <div class="drill-card">
       <div class="drill-icon" style="background:rgba(108,140,255,0.1);">📄</div>
       <div class="drill-info">
         <div class="drill-name">Summarize Written Text (SWT)</div>
-        <div class="drill-skills"><span class="skill-badge badge-wr">Writing</span><span class="skill-badge badge-rd">Reading</span><span class="p-tag p-top" style="font-size:10px; padding:1px 7px;">45 Marks</span></div>
-        <div class="drill-detail">1-2 per day. One perfect sentence. Easiest grammar/spelling marks on the test.</div>
+        <div class="drill-skills"><span class="skill-badge badge-wr">Writing</span><span class="skill-badge badge-rd">Reading</span></div>
+        <div class="drill-detail">Wks 1-6: ×2. ONE single sentence. Perfect grammar/spelling.</div>
       </div>
-      <div class="drill-time">10<span class="drill-min"> min</span></div>
+      <div class="drill-time">10<span class="drill-min">m</span></div>
     </div>
-    
     <div class="drill-card">
-      <div class="drill-icon" style="background:rgba(245,200,66,0.1);">📖</div>
+      <div class="drill-icon" style="background:rgba(61,214,140,0.1);">🖱️</div>
       <div class="drill-info">
         <div class="drill-name">R&W Fill in the Blanks (Dropdown)</div>
-        <div class="drill-skills"><span class="skill-badge badge-rd">Reading</span><span class="skill-badge badge-wr">Writing</span><span class="p-tag p-high" style="font-size:10px; padding:1px 7px;">25 Marks</span></div>
-        <div class="drill-detail">3-5 paragraphs per day. Build vocabulary and collocation recognition.</div>
+        <div class="drill-skills"><span class="skill-badge badge-rd">Reading</span><span class="skill-badge badge-wr">Writing</span></div>
+        <div class="drill-detail">Wks 1-6: ×5 paragraphs. Focus on grammar rules (prepositions, verb forms).</div>
       </div>
-      <div class="drill-time">15<span class="drill-min"> min</span></div>
+      <div class="drill-time">15<span class="drill-min">m</span></div>
     </div>
   </div>
 
   <div class="divider"></div>
-  <div class="section-title">6-Week Complete Drill Tracker — Tap to check off daily</div>
-  <div class="text-sm text-muted mb-16">First, do your 4 daily core tasks. Then look at the <strong>6-Week Plan</strong> tab to see your Rotating Focus for today (e.g., Essays, Mocks, DI/RL). Check off "Daily Focus" when you finish it all!</div>
+  <div class="section-title">6-Week Tracker — Core + Daily Focus</div>
+  <div class="tip-box mb-16"><span class="tip-icon">💡</span><span>Check off your Core tasks first. Then look at the "6-Week Plan" to see your specific focus task for the day. Check the bottom box when your whole day is done!</span></div>
   <div style="overflow-x: auto; padding-bottom: 20px;">
     <div id="checklist-container" style="min-width: 600px;"></div>
   </div>
 </div>
 
+<!-- ══════════════════════════════════════════ PAGE 4: MOCKS ══ -->
 <div class="page" id="page-mocks">
-  <div class="section-title">Mock Test Schedule & Review System</div>
+  <div class="section-title">Mock Test Schedule & Review</div>
+
+  <!-- SECTIONAL MOCKS -->
+  <div class="card mb-24" style="background:linear-gradient(135deg, var(--surface) 0%, var(--surface2) 100%);">
+    <h3 style="margin-bottom:16px;">Sectional Test Scores (Weeks 4-5)</h3>
+    <div class="grid-4">
+      <div>
+        <div class="text-xs text-muted mb-8" style="text-transform:uppercase; letter-spacing:0.1em; color:var(--speaking-col);">Speaking (Wk 4)</div>
+        <input class="mock-score-input" type="number" placeholder="—" onchange="updateMockInput(this, 88)">
+        <div class="target-line text-center">Target: 88</div>
+      </div>
+      <div>
+        <div class="text-xs text-muted mb-8" style="text-transform:uppercase; letter-spacing:0.1em; color:var(--writing-col);">Writing (Wk 5)</div>
+        <input class="mock-score-input" type="number" placeholder="—" onchange="updateMockInput(this, 85)">
+        <div class="target-line text-center">Target: 85</div>
+      </div>
+      <div>
+        <div class="text-xs text-muted mb-8" style="text-transform:uppercase; letter-spacing:0.1em; color:var(--reading-col);">Reading (Wk 5)</div>
+        <input class="mock-score-input" type="number" placeholder="—" onchange="updateMockInput(this, 70)">
+        <div class="target-line text-center">Target: 70</div>
+      </div>
+      <div>
+        <div class="text-xs text-muted mb-8" style="text-transform:uppercase; letter-spacing:0.1em; color:var(--listening-col);">Listening (Wk 5)</div>
+        <input class="mock-score-input" type="number" placeholder="—" onchange="updateMockInput(this, 69)">
+        <div class="target-line text-center">Target: 69</div>
+      </div>
+    </div>
+  </div>
 
   <div class="grid-2 mb-24" style="align-items:start;">
     <div>
       <div class="mock-timeline">
         <div class="mock-row">
-          <div class="mock-dot" style="background:rgba(144,153,181,0.15); color:var(--text3); border:2px solid var(--border2);">—</div>
-          <div class="mock-content">
-            <div class="mock-date-label">Week 1</div>
-            <div class="mock-purpose">No scored mock — practice only</div>
-            <div class="text-sm text-muted">Build technique on your weak tasks first before testing pressure.</div>
-          </div>
-        </div>
-        <div class="mock-row">
           <div class="mock-dot baseline">B</div>
           <div class="mock-content">
-            <div class="mock-date-label">End of Week 2</div>
-            <div class="mock-purpose">Baseline Full Scored Mock</div>
-            <div class="text-sm text-muted">Your first real scores and biggest gaps.</div>
+            <div class="mock-purpose">Baseline Mock (End Wk 2)</div>
+            <div class="text-sm text-muted">First real scores. Log everything.</div>
             <div class="mock-score-row" style="margin-top:10px;">
               <div class="mock-score-cell"><div class="skill-name">Speak</div><input class="mock-score-input" type="number" onchange="updateMockInput(this, 88)"><div class="target-line">Tgt: 88</div></div>
               <div class="mock-score-cell"><div class="skill-name">Write</div><input class="mock-score-input" type="number" onchange="updateMockInput(this, 85)"><div class="target-line">Tgt: 85</div></div>
@@ -544,10 +616,11 @@
             </div>
           </div>
         </div>
+        
         <div class="mock-row">
           <div class="mock-dot progress">#2</div>
           <div class="mock-content">
-            <div class="mock-purpose">Progress Mock 2</div>
+            <div class="mock-purpose">Progress Mock 2 (End Wk 3)</div>
             <div class="mock-score-row" style="margin-top:10px;">
               <div class="mock-score-cell"><div class="skill-name">Speak</div><input class="mock-score-input" type="number" onchange="updateMockInput(this, 88)"></div>
               <div class="mock-score-cell"><div class="skill-name">Write</div><input class="mock-score-input" type="number" onchange="updateMockInput(this, 85)"></div>
@@ -556,10 +629,11 @@
             </div>
           </div>
         </div>
+
         <div class="mock-row">
           <div class="mock-dot progress">#3</div>
           <div class="mock-content">
-            <div class="mock-purpose">Progress Mock 3</div>
+            <div class="mock-purpose">Progress Mock 3 (End Wk 4)</div>
             <div class="mock-score-row" style="margin-top:10px;">
               <div class="mock-score-cell"><div class="skill-name">Speak</div><input class="mock-score-input" type="number" onchange="updateMockInput(this, 88)"></div>
               <div class="mock-score-cell"><div class="skill-name">Write</div><input class="mock-score-input" type="number" onchange="updateMockInput(this, 85)"></div>
@@ -568,10 +642,11 @@
             </div>
           </div>
         </div>
+
         <div class="mock-row">
           <div class="mock-dot final">✓</div>
           <div class="mock-content" style="border-color:rgba(255,107,107,0.3);">
-            <div class="mock-purpose" style="color:var(--red);">Final Mock</div>
+            <div class="mock-purpose" style="color:var(--red);">Final Mock (Wk 6)</div>
             <div class="text-sm text-muted">Confirm readiness, then taper.</div>
             <div class="mock-score-row" style="margin-top:10px;">
               <div class="mock-score-cell"><div class="skill-name">Speak</div><input class="mock-score-input" type="number" onchange="updateMockInput(this, 88)"></div>
@@ -586,45 +661,6 @@
     
     <div>
       <div class="card mb-16">
-        <h3 style="margin-bottom:12px;">Sectional Test Tracker</h3>
-        <div class="text-sm text-muted" style="margin-bottom:16px;">Track your section-specific practice tests (scheduled in Weeks 1-5).</div>
-        <div style="display:flex; flex-direction:column; gap:12px;">
-          <!-- Speaking -->
-          <div style="display:flex; justify-content:space-between; align-items:center; padding-bottom:10px; border-bottom:1px solid var(--border);">
-            <div><div style="font-weight:600; font-size:13px;">Speaking</div><div class="text-xs text-muted">Target: 88</div></div>
-            <div style="display:flex; gap:8px;">
-              <input class="mock-score-input" type="number" placeholder="Wk 1" onchange="updateMockInput(this, 88)" style="width:60px; padding:4px; font-size:13px;">
-              <input class="mock-score-input" type="number" placeholder="Wk 5" onchange="updateMockInput(this, 88)" style="width:60px; padding:4px; font-size:13px;">
-            </div>
-          </div>
-          <!-- Writing -->
-          <div style="display:flex; justify-content:space-between; align-items:center; padding-bottom:10px; border-bottom:1px solid var(--border);">
-            <div><div style="font-weight:600; font-size:13px;">Writing</div><div class="text-xs text-muted">Target: 85</div></div>
-            <div style="display:flex; gap:8px;">
-              <input class="mock-score-input" type="number" placeholder="Wk 4" onchange="updateMockInput(this, 85)" style="width:60px; padding:4px; font-size:13px;">
-              <input class="mock-score-input" type="number" placeholder="" disabled style="width:60px; padding:4px; font-size:13px; opacity:0;">
-            </div>
-          </div>
-          <!-- Reading -->
-          <div style="display:flex; justify-content:space-between; align-items:center; padding-bottom:10px; border-bottom:1px solid var(--border);">
-            <div><div style="font-weight:600; font-size:13px;">Reading</div><div class="text-xs text-muted">Target: 70</div></div>
-            <div style="display:flex; gap:8px;">
-              <input class="mock-score-input" type="number" placeholder="Wk 2" onchange="updateMockInput(this, 70)" style="width:60px; padding:4px; font-size:13px;">
-              <input class="mock-score-input" type="number" placeholder="Wk 5" onchange="updateMockInput(this, 70)" style="width:60px; padding:4px; font-size:13px;">
-            </div>
-          </div>
-          <!-- Listening -->
-          <div style="display:flex; justify-content:space-between; align-items:center;">
-            <div><div style="font-weight:600; font-size:13px;">Listening</div><div class="text-xs text-muted">Target: 69</div></div>
-            <div style="display:flex; gap:8px;">
-              <input class="mock-score-input" type="number" placeholder="Wk 3" onchange="updateMockInput(this, 69)" style="width:60px; padding:4px; font-size:13px;">
-              <input class="mock-score-input" type="number" placeholder="Wk 5" onchange="updateMockInput(this, 69)" style="width:60px; padding:4px; font-size:13px;">
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="card mb-16">
         <h3 style="margin-bottom:12px;">Auto-Adjust Decision Rules</h3>
         <div class="rule-card red">📉 Section <strong>6+ pts below target</strong> → +50% volume on its top 2 cross-scored tasks next week.</div>
         <div class="rule-card green">✅ Section <strong>within 3 pts of target</strong> → maintenance only; bank that time for weaker sections.</div>
@@ -634,84 +670,263 @@
   </div>
 </div>
 
+<!-- ══════════════════════════════════════════ PAGE 5: TEMPLATES & TIPS ══ -->
 <div class="page" id="page-templates">
-  <div class="section-title">Task Templates</div>
+  <div class="section-title">Cheat-Sheet, Formulas & Strategies</div>
+  <p class="text-sm text-muted mb-16">Memorize these formulas. In the exam, grammar, spelling, fluency and "never stop talking" win the marks.</p>
+  
   <div class="template-nav">
+    <!-- Task Formulas -->
     <button class="template-btn active" onclick="showTemplate('essay')">✍️ Essay</button>
     <button class="template-btn" onclick="showTemplate('swt')">📄 SWT</button>
     <button class="template-btn" onclick="showTemplate('sst')">🎧 SST</button>
     <button class="template-btn" onclick="showTemplate('di')">🖼 DI</button>
     <button class="template-btn" onclick="showTemplate('rl')">🎙 RL</button>
+    <!-- Hacks & Strategies -->
+    <button class="template-btn" onclick="showTemplate('reading')" style="border-color:var(--green); color:var(--green);">📚 Read/Grammar</button>
+    <button class="template-btn" onclick="showTemplate('listening')" style="border-color:var(--listening-col); color:var(--listening-col);">👂 Listen Hacks</button>
+    <button class="template-btn" onclick="showTemplate('speaking')" style="border-color:var(--speaking-col); color:var(--speaking-col);">🗣 Speak Tips</button>
+    <button class="template-btn" onclick="showTemplate('examday')" style="border-color:var(--accent); color:var(--accent);">📋 Exam Day</button>
   </div>
 
+  <!-- ESSAY -->
   <div class="template-pane active" id="tpl-essay">
     <div class="card" style="margin-bottom:12px;">
-      <h3 style="margin-bottom:4px;">Essay — Universal Template (~20 min)</h3>
+      <h3 style="margin-bottom:4px;">Essay (200-300 words, ~20 min)</h3>
+      <div class="highlight-rule">
+        <strong>WIN CONDITION:</strong> Simple, 100% correct sentences beat ambitious broken ones. Spelling + grammar are heavily weighted. Connectors: <em>Firstly / Moreover / For instance / However / In contrast / Consequently / In conclusion</em>.
+      </div>
       <div class="template-section mt-16">
-        <div class="template-section-label">1 · Introduction</div>
+        <div class="template-section-label">1 · Intro (Paraphrase + Thesis + 2 Points)</div>
         <div class="template-box">The increasing influence of <span class="placeholder">&lt;topic&gt;</span> in our daily lives has led to various discussions and debates. This issue is crucial because of its influence on <span class="placeholder">&lt;impact area&gt;</span>, affecting both individuals and society. In this essay, I will examine <span class="placeholder">&lt;topic&gt;</span> by considering <span class="option">(advantages and disadvantages / causes and effects)</span>, and provide my perspective on the matter.</div>
       </div>
       <div class="template-section">
-        <div class="template-section-label">2 · Body Paragraph 1</div>
+        <div class="template-section-label">2 · Body Paragraph 1 (Topic + Explain + Example)</div>
         <div class="template-box">One of the main <span class="option">(advantages / causes)</span> related to <span class="placeholder">&lt;topic&gt;</span> is <span class="placeholder">&lt;point 1&gt;</span>. Studies indicate that <span class="placeholder">&lt;topic&gt;</span> <span class="option">(promotes / leads to)</span> <span class="placeholder">&lt;outcome&gt;</span>. Moreover, another significant <span class="option">(advantage / cause)</span> is <span class="placeholder">&lt;point 2&gt;</span>, which strongly affects people's lives.</div>
       </div>
       <div class="template-section">
-        <div class="template-section-label">3 · Body Paragraph 2</div>
+        <div class="template-section-label">3 · Body Paragraph 2 (Topic + Explain + Example)</div>
         <div class="template-box">On the other hand, there are also <span class="option">(disadvantages / consequences)</span> associated with <span class="placeholder">&lt;topic&gt;</span>. A major <span class="option">(drawback / effect)</span> is <span class="placeholder">&lt;point 3&gt;</span>, which becomes more obvious in situations such as <span class="placeholder">&lt;example&gt;</span>. Furthermore, <span class="placeholder">&lt;point 4&gt;</span> <span class="option">(creates obstacles / causes further impact)</span>, influencing both individuals and society.</div>
       </div>
       <div class="template-section">
-        <div class="template-section-label">4 · Conclusion</div>
+        <div class="template-section-label">4 · Conclusion (Restate + Summarize + Recommend)</div>
         <div class="template-box">In conclusion, <span class="placeholder">&lt;topic&gt;</span> has <span class="option">(both advantages and disadvantages / significant causes and effects)</span> that must be considered carefully. Looking ahead, it is essential to focus on maximizing the benefits while reducing the drawbacks.</div>
       </div>
     </div>
   </div>
 
+  <!-- SWT -->
   <div class="template-pane" id="tpl-swt">
     <div class="card">
-      <h3>Summarize Written Text (SWT)</h3>
-      <div class="text-sm text-muted" style="margin-bottom:16px;">One sentence only — never put a full stop in the middle.</div>
+      <h3>Summarize Written Text (ONE sentence, 5-75 words)</h3>
+      <div class="highlight-rule">
+        <strong>WIN CONDITION:</strong> ONE sentence only — no full stop in the middle. Watch subject-verb agreement and keep it under 75 words.
+      </div>
+      <div class="template-box mb-16" style="font-size:14px; line-height:2;">
+        "<span class="placeholder">[Main idea]</span>, and <span class="placeholder">[support 1]</span>, while <span class="placeholder">[support 2]</span>, which <span class="placeholder">[result/conclusion]</span>."
+      </div>
+      <div class="template-section-label">Alternative (Noun Connector)</div>
       <div class="template-box" style="font-size:14px; line-height:2;">
         <span class="placeholder">(Noun 1)</span> can be a major aspect that relates to modern society these days, so people must pay close attention to it; therefore, the importance of <span class="placeholder">(Noun 2)</span> must not be overlooked because <span class="placeholder">(Noun 3)</span> may affect <span class="placeholder">(Noun 4)</span>, and the text explains that <span class="placeholder">(Noun 5)</span> and <span class="placeholder">(Noun 6)</span> are very important.
       </div>
     </div>
   </div>
 
+  <!-- SST -->
   <div class="template-pane" id="tpl-sst">
     <div class="card">
-      <h3>Summarize Spoken Text (SST)</h3>
-      <div class="template-box" style="font-size:13.5px; line-height:2.2;">
-        The lecture was mainly about <span class="placeholder">[Main Topic]</span>. The speaker first discussed <span class="placeholder">[Noun 1]</span> and <span class="placeholder">[Noun 2]</span>, emphasizing their importance. In addition, <span class="placeholder">[Noun 3]</span> and <span class="placeholder">[Noun 4]</span> were highlighted as significant aspects. Moreover, the lecture mentioned <span class="placeholder">[Noun 5]</span>, along with <span class="placeholder">[Noun 6]</span> and <span class="placeholder">[Noun 7]</span>. Finally, it was concluded that <span class="placeholder">[Noun 8]</span> and <span class="placeholder">[Noun 9]</span> will have a positive influence.
+      <h3>Summarize Spoken Text (50-70 words)</h3>
+      <div class="highlight-rule">
+        <strong>WIN CONDITION:</strong> Scored on Content 4 / Form 2 (MUST be 50-70 words) / Grammar 2 / Vocab 2 / Spelling 2. Hit the word count and spell-check!
+      </div>
+      <div class="template-box mt-16" style="font-size:13.5px; line-height:2.2;">
+        The lecture discussed <span class="placeholder">[topic]</span>. The speaker first explained <span class="placeholder">[point 1]</span>. Then, <span class="placeholder">[point 2]</span>. Additionally, <span class="placeholder">[point 3]</span>. In conclusion, <span class="placeholder">[final point/implication]</span>.
       </div>
     </div>
   </div>
 
+  <!-- DI -->
   <div class="template-pane" id="tpl-di">
     <div class="card mb-16">
-      <h3>Describe Image (DI)</h3>
+      <h3>Describe Image (~40 sec)</h3>
+      <div class="highlight-rule">
+        <strong>WIN CONDITION:</strong> Keep talking — fluency scores even if you skip a detail. Never pause >3 seconds.
+      </div>
       <div class="template-box" style="font-size:13.5px; line-height:2.4;">
-        1. The given image gives important information about <span class="placeholder">(topic)</span>.<br>
-        2. It points out key details and shows how different aspects are connected.<br>
-        3. The highest value is <span class="placeholder">(X)</span> and the lowest value is <span class="placeholder">(Y)</span>.<br>
-        4. There are different colours, such as <span class="placeholder">(—, — and —)</span>.<br>
-        5. In conclusion, this image was very informative.
+        1. This <span class="placeholder">[graph/chart/image]</span> shows <span class="placeholder">[topic]</span>.<br>
+        2. The key feature is <span class="placeholder">[highest/lowest/biggest trend]</span>.<br>
+        3. Additionally, <span class="placeholder">[second feature]</span>.<br>
+        4. It is also notable that <span class="placeholder">[third feature / colors]</span>.<br>
+        5. In conclusion, <span class="placeholder">[overall trend/implication]</span>.
       </div>
     </div>
   </div>
 
+  <!-- RL -->
   <div class="template-pane" id="tpl-rl">
     <div class="card">
-      <h3>Re-tell Lecture (RL)</h3>
-      <div class="template-box" style="font-size:13.5px; line-height:2.4;">
-        1. At the beginning of this lecture, the speaker was talking about <span class="placeholder">(_, _, and _)</span>.<br>
-        2. After that, the speaker mentioned that <span class="placeholder">(_ and _)</span> are very important.<br>
-        3. Then, the speaker gave an example of <span class="placeholder">(_ and _)</span>.<br>
-        4. From this lecture, I can hear <span class="placeholder">(_ and _)</span>.<br>
-        5. Overall, the lecture was very informative.
+      <h3>Re-tell Lecture</h3>
+      <div class="highlight-rule">
+        <strong>WIN CONDITION:</strong> Take 3-4 keyword notes while listening: speak fluently from them. Fluency > perfect content.
       </div>
+      <div class="template-box" style="font-size:13.5px; line-height:2.4;">
+        1. The lecture was about <span class="placeholder">[topic]</span>.<br>
+        2. The speaker discussed <span class="placeholder">[point 1]</span>, <span class="placeholder">[point 2]</span> and <span class="placeholder">[point 3]</span>.<br>
+        3. They emphasized <span class="placeholder">[key detail]</span>.<br>
+        4. In conclusion, <span class="placeholder">[main message]</span>.
+      </div>
+    </div>
+  </div>
+
+  <!-- READING & GRAMMAR HACKS -->
+  <div class="template-pane" id="tpl-reading">
+    <div class="card mb-16">
+      <h3 style="margin-bottom:12px; display:flex; align-items:center; gap:8px;"><span>📚</span> Reading FIB Grammar Hacks</h3>
+      <p class="text-sm text-muted mb-16">Grammar rules can solve 50% of the blanks without even knowing the vocabulary meaning.</p>
+      <div class="tips-grid">
+        <div class="tip-card">
+          <h4>1. Parts of Speech</h4>
+          <ul class="tip-list">
+            <li><strong>Article + [Blank] + Noun:</strong> The blank is an Adjective. (e.g., <em>an <u>important</u> decision</em>)</li>
+            <li><strong>Preposition + [Blank]:</strong> Usually a Noun or V-ing (Gerund). (e.g., <em>by <u>implementing</u></em>)</li>
+            <li><strong>To + [Blank]:</strong> Almost always Verb in base form (V1). (e.g., <em>to <u>analyze</u></em>)</li>
+          </ul>
+        </div>
+        <div class="tip-card">
+          <h4>2. Collocations & Prepositions</h4>
+          <ul class="tip-list">
+            <li>Look at the word <strong>immediately after</strong> the blank.</li>
+            <li>Words pair naturally: <em>associated <u>with</u></em>, <em>responsible <u>for</u></em>, <em>contribute <u>to</u></em>, <em>focus <u>on</u></em>.</li>
+            <li>Memorize academic collocations (e.g., <em>draw a conclusion</em>, <em>make an impact</em>).</li>
+          </ul>
+        </div>
+        <div class="tip-card">
+          <h4>3. Subject-Verb Agreement</h4>
+          <ul class="tip-list">
+            <li>Singular subject = Verb with 's' (e.g., <em>The study <u>shows</u></em>)</li>
+            <li>Plural subject = Base verb (e.g., <em>The researchers <u>show</u></em>)</li>
+            <li>Look for tricky subjects like "A number of" (plural) vs "The number of" (singular).</li>
+          </ul>
+        </div>
+        <div class="tip-card">
+          <h4>4. Context Clues (Conjunctions)</h4>
+          <ul class="tip-list">
+            <li><strong>And / Or:</strong> Words on both sides must be the same type (Positive AND Positive, Noun AND Noun).</li>
+            <li><strong>But / However / Although:</strong> Look for a contrasting opposite word.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <h3 style="margin-bottom:12px; display:flex; align-items:center; gap:8px;"><span>🔄</span> Re-Order Paragraphs Hacks</h3>
+      <ul class="tip-list">
+        <li><strong>Find the Independent Sentence:</strong> This is the topic sentence. It stands alone. It will NEVER start with pronouns (He, They, It) or linking words (However, Moreover, Therefore).</li>
+        <li><strong>Look for Pairs (Nouns to Pronouns):</strong> If Sentence A says "Thomas Edison", Sentence B saying "He" comes after it.</li>
+        <li><strong>Time Sequences:</strong> Look for dates (1990 comes before 2005) or sequence words (Firstly, Initially -> Eventually, Finally).</li>
+        <li><strong>A/An vs The:</strong> "A company" (introducing it) always comes before "The company" (referring back to it).</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- LISTENING HACKS -->
+  <div class="template-pane" id="tpl-listening">
+    <div class="card mb-16" style="border-top: 3px solid var(--red);">
+      <h3 style="margin-bottom:12px; display:flex; align-items:center; gap:8px;"><span>✍️</span> WFD: The "Initials" Method</h3>
+      <div class="highlight-rule mb-16">
+        This is the single most powerful technique for Write from Dictation. It guarantees you capture the sequence of words.
+      </div>
+      <ul class="tip-list">
+        <li><strong>Step 1 (Listen):</strong> Do not start typing immediately. Listen to the whole sentence first.</li>
+        <li><strong>Step 2 (Type Initials):</strong> As the speaker talks, rapidly type the FIRST LETTER of every word on your notepad (or screen).<br>
+        <em style="color:var(--text2);">Audio: "The assignment is due on Thursday." -> You type: "T a i d o T"</em></li>
+        <li><strong>Step 3 (Reconstruct):</strong> Immediately after the audio stops, expand the initials into full words while the audio is still in your short-term memory.</li>
+        <li><strong>Step 4 (Grammar & Spell Check):</strong> This is crucial. Check for 's' / 'es' (plural nouns, singular verbs), 'ed' (past tense), and articles (a, an, the) — that is where most points are lost.</li>
+        <li><strong>Hack:</strong> If you are unsure between two words (e.g., "student" vs "students"), write BOTH. "The student students is..." You might get points for the correct one without penalty (check latest Pearson scoring rules, but adding extra valid words often works).</li>
+      </ul>
+    </div>
+    
+    <div class="tips-grid">
+      <div class="tip-card">
+        <h4>📝 Note-Taking (SST & RL)</h4>
+        <ul class="tip-list">
+          <li>Never try to write full sentences. You will fall behind.</li>
+          <li>Write down <strong>Nouns, Verbs, and Adjectives</strong>. Ignore "the, a, is, on".</li>
+          <li>Use symbols (&, ->, =, X).</li>
+          <li>If you miss a point, drop it immediately and listen for the next one. Don't freeze.</li>
+        </ul>
+      </div>
+      <div class="tip-card">
+        <h4>🖱️ HIW & FIB (Listening)</h4>
+        <ul class="tip-list">
+          <li><strong>HIW:</strong> Keep your mouse cursor directly under the words as the speaker talks. Do not look away from the screen.</li>
+          <li><strong>FIB:</strong> Do NOT use the mouse to click to the next box. Use the <strong>TAB key</strong> on the keyboard. Type fast, and correct spelling errors in the 10-second check at the end.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- SPEAKING TIPS -->
+  <div class="template-pane" id="tpl-speaking">
+    <div class="card mb-16">
+      <h3 style="margin-bottom:12px; display:flex; align-items:center; gap:8px;"><span>🗣️</span> The "Golden Rule" of Speaking</h3>
+      <div class="highlight-rule mb-16">
+        <strong>FLUENCY BEATS ACCURACY.</strong> The computer scores your rhythm, pacing, and lack of hesitation MUCH higher than your pronunciation or content perfection.
+      </div>
+      <div class="tips-grid">
+        <div class="tip-card">
+          <h4>🎤 Microphone & Breathing</h4>
+          <ul class="tip-list">
+            <li>Position the mic exactly between your nose and upper lip, about 2 fingers away. This avoids picking up heavy breathing (plosive sounds like P and B).</li>
+            <li>Take a deep, comfortable breath <em>before</em> the beep.</li>
+            <li>Speak at a moderate, consistent volume. Do not whisper, do not shout.</li>
+          </ul>
+        </div>
+        <div class="tip-card">
+          <h4>🚫 The "Never Correct" Rule</h4>
+          <ul class="tip-list">
+            <li>If you stumble on a word, mispronounce it, or skip it entirely... <strong>DO NOT go back to fix it.</strong></li>
+            <li>Self-correction destroys your Oral Fluency score (which drags down Reading/Listening too).</li>
+            <li>Just keep moving forward smoothly like nothing happened.</li>
+          </ul>
+        </div>
+        <div class="tip-card">
+          <h4>📖 Read Aloud Phrasing</h4>
+          <ul class="tip-list">
+            <li>Use prep time to chunk into phrases and mark stressed words.</li>
+            <li>Read in "meaningful chunks" (3-5 words at a time).</li>
+            <li>Do not read word-by-word like a robot. Connect words smoothly.</li>
+            <li>If you encounter a word you don't know, mumble it confidently or substitute it instantly. Do not freeze.</li>
+          </ul>
+        </div>
+        <div class="tip-card">
+          <h4>🧠 Repeat Sentence Strategy</h4>
+          <ul class="tip-list">
+            <li>Capture 3-4 word meaning-chunks, not single words.</li>
+            <li>Repeat IMMEDIATELY with the same rhythm and intonation.</li>
+            <li>If you only catch 50% of the sentence, say that 50% with absolute confidence and perfect fluency. Silence scores zero.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- EXAM DAY TAB -->
+  <div class="template-pane" id="tpl-examday">
+    <div class="card" style="background:var(--surface2);">
+      <h3 style="margin-bottom:12px; display:flex; align-items:center; gap:8px;"><span>📋</span> Exam-Day Checklist</h3>
+      <ul class="tip-list">
+        <li><strong>Warm up your voice</strong> with 5 Read Alouds before you leave home.</li>
+        <li><strong>Arrive early;</strong> test the microphone properly at the start (don't rush this!).</li>
+        <li><strong>Speak at a consistent volume;</strong> don't trail off or whisper at sentence ends.</li>
+        <li><strong>Manage Writing timing</strong> — don't overspend on the essay and starve your SWT time.</li>
+        <li><strong>In WFD, keep typing</strong> every word you caught; partial words still score marks.</li>
+        <li><strong>Don't dwell on a hard item</strong> — fluency and momentum matter more than any single answer. Keep moving forward.</li>
+      </ul>
     </div>
   </div>
 </div>
 
+<!-- ══════════════════════════════════════════ PAGE 6: ESSAY BANK ══ -->
 <div class="page" id="page-essays">
   <div class="section-title">Essay Bank Practice</div>
   <div class="card" style="padding:0; overflow:hidden;">
@@ -726,94 +941,95 @@
 </div>
 
 <script>
+// ── DATA ──
 const weeks = [
   {
-    num:1, label:"Week 1", dates:"Foundation", phase:"Foundation", phaseClass:"phase-foundation", note:"Build technique & templates",
+    num:1, label:"Week 1", dates:"Foundation", phase:"Foundation", phaseClass:"phase-foundation", note:"Build technique",
     days:[
-      {date:"Day 1", day:"Mon", focus:"Speak & Write", tasks:"Daily Core + Learn Essay Template & DI/RL formats.", time:"~80m", mock:""},
-      {date:"Day 2", day:"Tue", focus:"Listen", tasks:"Daily Core + Learn SST Template + RA practice.", time:"~80m", mock:""},
-      {date:"Day 3", day:"Wed", focus:"Sectional", tasks:"Daily Core + SPEAKING Sectional Test (untimed).", time:"~90m", mock:"Sectional"},
-      {date:"Day 4", day:"Thu", focus:"Read & Listen", tasks:"Daily Core + HIW ×10, Drag-Drop FIB ×5.", time:"~80m", mock:""},
-      {date:"Day 5", day:"Fri", focus:"Low-Yield", tasks:"Daily Core + 15 mins ONLY on MCQs, ASQ, SMW, Re-order.", time:"~60m", mock:""},
-      {date:"Day 6", day:"Sat", focus:"Practice", tasks:"Heavy Core Practice: WFD ×30, RS ×30, SWT ×3.", time:"~100m", mock:""},
-      {date:"Day 7", day:"Sun", focus:"Review", tasks:"Review mistakes. Re-do missed WFD/RS.", time:"~45m", mock:""},
+      {date:"Day 1", day:"Mon", focus:"Writing", tasks:"Learn essay template; write Essay #1", time:"120m"},
+      {date:"Day 2", day:"Tue", focus:"Speaking", tasks:"Learn DI & RL templates; record & review", time:"120m"},
+      {date:"Day 3", day:"Wed", focus:"Write + Listen", tasks:"SWT technique; SST template", time:"120m"},
+      {date:"Day 4", day:"Thu", focus:"Listening", tasks:"WFD deep-dive (30); HIW; L-FIB", time:"120m"},
+      {date:"Day 5", day:"Fri", focus:"Reading", tasks:"RWFIB; R-FIB; Re-order", time:"120m"},
+      {date:"Day 6", day:"Sat", focus:"Practice", tasks:"Heavy practice: WFD, RS, RA, SWT", time:"240m"},
+      {date:"Day 7", day:"Sun", focus:"Review", tasks:"Self-review; re-do missed WFD/RS", time:"180m"},
     ]
   },
   {
     num:2, label:"Week 2", dates:"Foundation", phase:"Foundation", phaseClass:"phase-foundation", note:"Baseline mock",
     days:[
-      {date:"Day 8", day:"Mon", focus:"Speak & Write", tasks:"Daily Core + Essay Bank #2 timed. Fix grammar.", time:"~80m", mock:""},
-      {date:"Day 9", day:"Tue", focus:"Listen", tasks:"Daily Core + DI ×5, RL ×3, RA ×10.", time:"~80m", mock:""},
-      {date:"Day 10", day:"Wed", focus:"Sectional", tasks:"Daily Core + READING Sectional Test (timed).", time:"~90m", mock:"Sectional"},
-      {date:"Day 11", day:"Thu", focus:"Read & Listen", tasks:"Daily Core + SST ×3, HIW ×10.", time:"~80m", mock:""},
-      {date:"Day 12", day:"Fri", focus:"Low-Yield", tasks:"Daily Core + 15 mins ONLY on MCQs, ASQ, SMW, Re-order.", time:"~60m", mock:""},
-      {date:"Day 13", day:"Sat 🎯", focus:"MOCK", tasks:"BASELINE Full Scored Mock Exam.", time:"~150m", mock:"Baseline"},
-      {date:"Day 14", day:"Sun", focus:"Review", tasks:"Deep-review baseline mock gaps.", time:"~60m", mock:""},
+      {date:"Day 1", day:"Mon", focus:"Writing", tasks:"Essay #2; SWT; fix grammar", time:"120m"},
+      {date:"Day 2", day:"Tue", focus:"Speaking", tasks:"DI; RL; record & score fluency", time:"120m"},
+      {date:"Day 3", day:"Wed", focus:"Write + Listen", tasks:"Essay #3; SST; L-FIB", time:"120m"},
+      {date:"Day 4", day:"Thu", focus:"Listening", tasks:"WFD; HIW; HCS", time:"120m"},
+      {date:"Day 5", day:"Fri", focus:"Reading", tasks:"RWFIB; R-FIB; Re-order", time:"120m"},
+      {date:"Day 6", day:"Sat 🎯", focus:"MOCK", tasks:"BASELINE full scored mock", time:"240m"},
+      {date:"Day 7", day:"Sun", focus:"Review", tasks:"Deep-review baseline gaps", time:"180m"},
     ]
   },
   {
-    num:3, label:"Week 3", dates:"Volume", phase:"Volume", phaseClass:"phase-volume", note:"Ramp up reps & Sectionals",
+    num:3, label:"Week 3", dates:"Volume", phase:"Volume", phaseClass:"phase-volume", note:"Ramp up reps",
     days:[
-      {date:"Day 15", day:"Mon", focus:"Speak & Write", tasks:"Daily Core + Essay Bank #3 timed. Send to mentor.", time:"~80m", mock:""},
-      {date:"Day 16", day:"Tue", focus:"Listen", tasks:"Daily Core + DI ×5, RL ×3, RA ×10.", time:"~80m", mock:""},
-      {date:"Day 17", day:"Wed", focus:"Sectional", tasks:"Daily Core + LISTENING Sectional Test (timed).", time:"~90m", mock:"Sectional"},
-      {date:"Day 18", day:"Thu", focus:"Read & Listen", tasks:"Daily Core + HIW ×10, Drag-Drop FIB ×5.", time:"~80m", mock:""},
-      {date:"Day 19", day:"Fri", focus:"Low-Yield", tasks:"Daily Core + 15 mins ONLY on MCQs, ASQ, SMW, Re-order.", time:"~60m", mock:""},
-      {date:"Day 20", day:"Sat 🎯", focus:"MOCK", tasks:"Full Scored Mock #2.", time:"~150m", mock:"Mock #2"},
-      {date:"Day 21", day:"Sun", focus:"Review", tasks:"Review Mock #2. Focus on weak cross-scored tasks.", time:"~60m", mock:""},
+      {date:"Day 1", day:"Mon", focus:"Writing", tasks:"Essay #4; SWT", time:"120m"},
+      {date:"Day 2", day:"Tue", focus:"Speaking", tasks:"DI; RL; RS accuracy drills", time:"120m"},
+      {date:"Day 3", day:"Wed", focus:"Write + Listen", tasks:"Essay #5; SST; L-FIB", time:"120m"},
+      {date:"Day 4", day:"Thu", focus:"Listening", tasks:"WFD +15; HIW; SST", time:"120m"},
+      {date:"Day 5", day:"Fri", focus:"Reading", tasks:"RWFIB; R-FIB; Re-order", time:"120m"},
+      {date:"Day 6", day:"Sat 🎯", focus:"MOCK", tasks:"Full scored mock #2", time:"240m"},
+      {date:"Day 7", day:"Sun", focus:"Review", tasks:"Review #2; fix weak tasks", time:"180m"},
     ]
   },
   {
-    num:4, label:"Week 4", dates:"Volume", phase:"Volume", phaseClass:"phase-volume", note:"Sustain reps & Sectionals",
+    num:4, label:"Week 4", dates:"Volume", phase:"Volume", phaseClass:"phase-volume", note:"Sustain reps",
     days:[
-      {date:"Day 22", day:"Mon", focus:"Speak & Write", tasks:"Daily Core + Essay Bank #4 timed. Send to mentor.", time:"~80m", mock:""},
-      {date:"Day 23", day:"Tue", focus:"Listen", tasks:"Daily Core + DI ×5, RL ×3, RA ×10.", time:"~80m", mock:""},
-      {date:"Day 24", day:"Wed", focus:"Sectional", tasks:"Daily Core + WRITING Sectional Test (timed).", time:"~90m", mock:"Sectional"},
-      {date:"Day 25", day:"Thu", focus:"Read & Listen", tasks:"Daily Core + SST ×3, HIW ×10.", time:"~80m", mock:""},
-      {date:"Day 26", day:"Fri", focus:"Low-Yield", tasks:"Daily Core + 15 mins ONLY on MCQs, ASQ, SMW, Re-order.", time:"~60m", mock:""},
-      {date:"Day 27", day:"Sat 🎯", focus:"MOCK", tasks:"Full Scored Mock #3.", time:"~150m", mock:"Mock #3"},
-      {date:"Day 28", day:"Sun", focus:"Review", tasks:"Review Mock #3. Turn weak tasks into templates.", time:"~60m", mock:""},
+      {date:"Day 1", day:"Mon", focus:"Writing", tasks:"Essay #6; SWT", time:"120m"},
+      {date:"Day 2", day:"Tue", focus:"Speaking", tasks:"Full Speaking section timed", time:"120m"},
+      {date:"Day 3", day:"Wed", focus:"Write + Listen", tasks:"Essay #7; SST; L-FIB", time:"120m"},
+      {date:"Day 4", day:"Thu", focus:"Listening", tasks:"WFD; HIW; HCS", time:"120m"},
+      {date:"Day 5", day:"Fri", focus:"Reading", tasks:"RWFIB; R-FIB; Re-order", time:"120m"},
+      {date:"Day 6", day:"Sat 🎯", focus:"MOCK", tasks:"Full scored mock #3", time:"240m"},
+      {date:"Day 7", day:"Sun", focus:"Review", tasks:"Turn weak tasks to templates", time:"180m"},
     ]
   },
   {
-    num:5, label:"Week 5", dates:"Simulation", phase:"Simulation", phaseClass:"phase-simulation", note:"Multiple Sectionals",
+    num:5, label:"Week 5", dates:"Simulation", phase:"Simulation", phaseClass:"phase-simulation", note:"Timed sections",
     days:[
-      {date:"Day 29", day:"Mon", focus:"Sectional", tasks:"Daily Core + SPEAKING Sectional Test (strict timing).", time:"~90m", mock:"Sectional"},
-      {date:"Day 30", day:"Tue", focus:"Sectional", tasks:"Daily Core + READING Sectional Test (strict timing).", time:"~90m", mock:"Sectional"},
-      {date:"Day 31", day:"Wed", focus:"Speak & Write", tasks:"Daily Core + Essay Bank #5 timed.", time:"~80m", mock:""},
-      {date:"Day 32", day:"Thu", focus:"Sectional", tasks:"Daily Core + LISTENING Sectional Test (strict timing).", time:"~90m", mock:"Sectional"},
-      {date:"Day 33", day:"Fri", focus:"Low-Yield", tasks:"Daily Core + 15 mins ONLY on MCQs, ASQ, SMW, Re-order.", time:"~60m", mock:""},
-      {date:"Day 34", day:"Sat 🎯", focus:"MOCK", tasks:"Full Mock #4 — Strict exam conditions.", time:"~150m", mock:"Mock #4"},
-      {date:"Day 35", day:"Sun", focus:"Review", tasks:"Final major review. Lock exam strategy.", time:"~60m", mock:""},
+      {date:"Day 1", day:"Mon", focus:"Writing", tasks:"Essay #8 timed; SWT timed", time:"120m"},
+      {date:"Day 2", day:"Tue", focus:"Speaking", tasks:"Full Speaking under exam timing", time:"120m"},
+      {date:"Day 3", day:"Wed", focus:"Write + Listen", tasks:"Essay #9 timed; SST; WFD spelling", time:"120m"},
+      {date:"Day 4", day:"Thu", focus:"Listening", tasks:"Full Listening under exam timing", time:"120m"},
+      {date:"Day 5", day:"Fri", focus:"Reading", tasks:"Full Reading under exam timing", time:"120m"},
+      {date:"Day 6", day:"Sat 🎯", focus:"MOCK", tasks:"Full mock #4 — strict conditions", time:"240m"},
+      {date:"Day 7", day:"Sun", focus:"Review", tasks:"Lock routine; prep taper", time:"180m"},
     ]
   },
   {
     num:6, label:"Week 6", dates:"Taper", phase:"Taper", phaseClass:"phase-taper", note:"Final Polish",
     days:[
-      {date:"Day 36", day:"Mon", focus:"Light Core", tasks:"WFD ×15, RS ×15, SWT ×1. Review all templates.", time:"~45m", mock:""},
-      {date:"Day 37", day:"Tue 🎯", focus:"MOCK", tasks:"Final Mock #5 (At least 3 days out).", time:"~150m", mock:"Final Mock"},
-      {date:"Day 38", day:"Wed", focus:"Review", tasks:"Review Mock #5. Fix only fast wins.", time:"~45m", mock:""},
-      {date:"Day 39", day:"Thu", focus:"Light Core", tasks:"WFD ×10, RS ×10. Rest voice.", time:"~30m", mock:""},
-      {date:"Day 40", day:"Fri", focus:"Pre-exam", tasks:"5 RA warmup. Re-read templates. Sleep.", time:"~20m", mock:""},
-      {date:"Day 41", day:"Sat", focus:"EXAM", tasks:"Arrive early; test mic thoroughly.", time:"—", mock:"EXAM DAY"},
-      {date:"Day 42", day:"Sun", focus:"Buffer", tasks:"Rest.", time:"—", mock:""},
+      {date:"Day 1", day:"Mon", focus:"Light", tasks:"Essay #10; Core LIGHT", time:"90m"},
+      {date:"Day 2", day:"Tue 🎯", focus:"MOCK", tasks:"Final Mock #5 (3+ days out)", time:"180m"},
+      {date:"Day 3", day:"Wed", focus:"Review", tasks:"Fix only fast wins; WFD/RS", time:"75m"},
+      {date:"Day 4", day:"Thu", focus:"Light", tasks:"WFD ×10; RS ×10; rest voice", time:"60m"},
+      {date:"Day 5", day:"Fri", focus:"Pre-exam", tasks:"Light WFD; 5 RA warmup; rest", time:"45m"},
+      {date:"Day 6", day:"Sat", focus:"EXAM", tasks:"Arrive early; test mic", time:"—"},
+      {date:"Day 7", day:"Sun", focus:"Buffer", tasks:"Rest", time:"—"},
     ]
   },
 ];
 
 const essays = [
-  {num:"★1", topic:"Many people take part in dangerous sports despite the risks. Why do people take part, and how can these dangers be reduced?", type:"Causes & Solutions", day:"Mon"},
-  {num:"★2", topic:"\"The only thing that interferes with my learning is education.\" (Einstein) — What did he mean, and do you agree?", type:"Agree / Disagree", day:"Mon"},
-  {num:"3", topic:"Online learning is becoming far more common. Do its advantages outweigh its disadvantages?", type:"Adv vs Disadv", day:"Wed"},
-  {num:"4", topic:"Some believe the world would be better with a single global language. Do the advantages outweigh the disadvantages?", type:"Adv vs Disadv", day:"Mon"},
-  {num:"5", topic:"Some think children should start formal schooling very early. Discuss both views.", type:"Discuss both views", day:"Wed"}
+  {num:"★1", topic:"Many people take part in dangerous sports despite the risks. Why do people take part, and how can these dangers be reduced?", type:"Causes & Solutions", day:"Mon Jun 8"},
+  {num:"★2", topic:"\"The only thing that interferes with my learning is education.\" (Einstein) — What did he mean, and do you agree?", type:"Agree / Disagree", day:"Mon Jun 15"},
+  {num:"3", topic:"Online learning is becoming far more common. Do its advantages outweigh its disadvantages?", type:"Adv vs Disadv", day:"Wed Jun 17"},
+  {num:"4", topic:"Some believe the world would be better with a single global language. Do the advantages outweigh the disadvantages?", type:"Adv vs Disadv", day:"Mon Jun 22"},
+  {num:"5", topic:"Some think children should start formal schooling very early. Discuss both views.", type:"Discuss both views", day:"Wed Jun 24"}
 ];
 
+// ── ADJUSTABLE COUNTDOWN DATE ──
 function getExamDate() {
   let savedDate = localStorage.getItem('pte_exam_date');
   if (!savedDate) {
-    let d = new Date();
-    d.setDate(d.getDate() + 42); 
+    let d = new Date(); d.setDate(d.getDate() + 42);
     savedDate = d.toISOString().split('T')[0];
     localStorage.setItem('pte_exam_date', savedDate);
   }
@@ -830,39 +1046,26 @@ function updateCountdown() {
   const diff = Math.ceil((examDate - today) / (1000*60*60*24));
   const textEl = document.getElementById('countdown-text');
   
-  if (diff < 0) { 
-    textEl.textContent = '🎉 Exam passed!'; 
-    textEl.style.color = 'var(--green)'; 
-  } else if (diff === 0) { 
-    textEl.textContent = '🔥 EXAM TODAY'; 
-    textEl.style.color = 'var(--red)'; 
-  } else { 
-    textEl.textContent = `⏳ ${diff} days left`; 
-    textEl.style.color = 'var(--gold)';
-  }
+  if (diff < 0) { textEl.textContent = '🎉 Exam passed!'; textEl.style.color = 'var(--green)'; } 
+  else if (diff === 0) { textEl.textContent = '🔥 EXAM TODAY'; textEl.style.color = 'var(--red)'; } 
+  else { textEl.textContent = `⏳ ${diff} days left`; textEl.style.color = 'var(--gold)'; }
 }
 
 function openDateModal() {
-  const modal = document.getElementById('dateModal');
-  const input = document.getElementById('examDateInput');
-  input.value = getExamDate();
-  modal.classList.add('active');
+  document.getElementById('examDateInput').value = getExamDate();
+  document.getElementById('dateModal').classList.add('active');
 }
-
-function closeDateModal() {
-  document.getElementById('dateModal').classList.remove('active');
-}
-
+function closeDateModal() { document.getElementById('dateModal').classList.remove('active'); }
 function saveDate() {
   const input = document.getElementById('examDateInput');
   if (input.value) {
     localStorage.setItem('pte_exam_date', input.value);
-    updateCountdown();
-    closeDateModal();
+    updateCountdown(); closeDateModal();
   }
 }
 updateCountdown();
 
+// ── NAV ──
 function showPage(id) {
   document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
   document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
@@ -871,6 +1074,7 @@ function showPage(id) {
   window.scrollTo(0,0);
 }
 
+// ── WEEKS ──
 function buildWeeks() {
   const container = document.getElementById('weeks-container');
   weeks.forEach((w, wi) => {
@@ -882,21 +1086,17 @@ function buildWeeks() {
           <span class="week-title">${w.label}</span>
           <span class="phase-block ${w.phaseClass}" style="padding:4px 10px; font-size:11px;">${w.phase}</span>
         </div>
-        <div class="week-meta">
-          <span class="text-xs text-muted">${w.note}</span>
-        </div>
+        <div class="week-meta"><span class="text-xs text-muted">${w.note}</span></div>
         <div class="week-chevron">▼</div>
       </div>
       <div class="week-days">
-        ${w.days.map(d => {
-          return `<div class="day-row">
+        ${w.days.map(d => `<div class="day-row">
             <div class="day-date font-mono">${d.date}</div>
             <div class="day-name">${d.day}</div>
             <div class="day-focus"><strong>${d.focus}</strong></div>
             <div class="day-tasks">${d.tasks}</div>
             <div class="day-time">${d.time}</div>
-          </div>`;
-        }).join('')}
+          </div>`).join('')}
       </div>`;
     container.appendChild(div);
   });
@@ -904,23 +1104,22 @@ function buildWeeks() {
 function toggleWeek(header) { header.parentElement.classList.toggle('open'); }
 buildWeeks();
 
+// ── CHECKLIST ──
 const checklistData = [
-  { week: "Week 1", drills: ["WFD ×20","RS ×20","SWT ×1","RWFIB ×3","Daily Focus"] },
-  { week: "Week 2", drills: ["WFD ×20","RS ×20","SWT ×1","RWFIB ×3","Daily Focus"] },
-  { week: "Week 3", drills: ["WFD ×25","RS ×25","SWT ×2","RWFIB ×5","Daily Focus"] },
-  { week: "Week 4", drills: ["WFD ×25","RS ×25","SWT ×2","RWFIB ×5","Daily Focus"] },
-  { week: "Week 5", drills: ["WFD ×25","RS ×25","SWT ×2","RWFIB ×5","Daily Focus"] },
-  { week: "Week 6 (Taper)", drills: ["WFD ×15","RS ×15","SWT ×1","RWFIB ×2","Daily Focus"] },
+  { week: "Week 1", drills: ["WFD (×20)","RS (×20)","SWT (×2)","R&W FIB (×5)","Daily Focus"] },
+  { week: "Week 2", drills: ["WFD (×20)","RS (×20)","SWT (×2)","R&W FIB (×5)","Daily Focus"] },
+  { week: "Week 3", drills: ["WFD (×25)","RS (×25)","SWT (×2)","R&W FIB (×5)","Daily Focus"] },
+  { week: "Week 4", drills: ["WFD (×25)","RS (×25)","SWT (×2)","R&W FIB (×5)","Daily Focus"] },
+  { week: "Week 5", drills: ["WFD (×25)","RS (×25)","SWT (×2)","R&W FIB (×5)","Daily Focus"] },
+  { week: "Week 6", drills: ["WFD (×15)","RS (×15)","SWT (×2)","R&W FIB (×3)","Daily Focus"] },
 ];
-
-const drillColors = {
-  "WFD ×20":"var(--listening-col)","WFD ×25":"var(--listening-col)","WFD ×15":"var(--listening-col)",
-  "RS ×20":"var(--speaking-col)","RS ×25":"var(--speaking-col)","RS ×15":"var(--speaking-col)",
-  "SWT ×1":"var(--writing-col)","SWT ×2":"var(--writing-col)",
-  "RWFIB ×3":"var(--reading-col)","RWFIB ×5":"var(--reading-col)","RWFIB ×2":"var(--reading-col)",
-  "Daily Focus":"var(--accent)"
+const drillColors = { 
+  "WFD (×20)":"var(--listening-col)","WFD (×25)":"var(--listening-col)","WFD (×15)":"var(--listening-col)", 
+  "RS (×20)":"var(--speaking-col)","RS (×25)":"var(--speaking-col)","RS (×15)":"var(--speaking-col)", 
+  "SWT (×2)":"var(--writing-col)",
+  "R&W FIB (×5)":"var(--reading-col)", "R&W FIB (×3)":"var(--reading-col)",
+  "Daily Focus":"var(--gold)" 
 };
-
 const checkState = {};
 
 function buildChecklist() {
@@ -994,6 +1193,7 @@ function updateProgress() {
 }
 buildChecklist();
 
+// ── ESSAYS ──
 function buildEssays() {
   const container = document.getElementById('essay-list');
   essays.forEach(e => {
@@ -1005,6 +1205,7 @@ function buildEssays() {
 }
 buildEssays();
 
+// ── TEMPLATES ──
 function showTemplate(id) {
   document.querySelectorAll('.template-pane').forEach(p => p.classList.remove('active'));
   document.querySelectorAll('.template-btn').forEach(b => b.classList.remove('active'));
@@ -1012,6 +1213,7 @@ function showTemplate(id) {
   event.target.classList.add('active');
 }
 
+// ── MOCK SCORE INPUTS ──
 function updateMockInput(input, target) {
   const val = parseInt(input.value);
   if (!isNaN(val) && val > 0) {
